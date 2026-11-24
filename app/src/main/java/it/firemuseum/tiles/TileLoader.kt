@@ -2,6 +2,7 @@ package it.firemuseum.tiles
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -109,13 +110,24 @@ class TileLoader(private val app: App, private val scope: CoroutineScope) {
                 }
             }
         }
-        val b = bmp ?: return
+        var b = bmp ?: return
+        if (app.memory.hardware && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && b.config != Bitmap.Config.HARDWARE) {
+            // tasselli ritagliati dall'originale (BitmapRegionDecoder): copia in memoria GPU qui, non al disegno
+            b.copy(Bitmap.Config.HARDWARE, false)?.let { b = it }
+        }
         app.memory.put(r.key, CachedTile(b, src.crop(r.k, r.x, r.y, b.width, b.height)))
         notifyReady()
     }
 
-    private fun decode(bytes: ByteArray, cfg: Bitmap.Config): Bitmap? =
-        BitmapFactory.decodeByteArray(bytes, 0, bytes.size, BitmapFactory.Options().apply { inPreferredConfig = cfg })
+    private fun decode(bytes: ByteArray, cfg: Bitmap.Config): Bitmap? {
+        if (app.memory.hardware && Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            // decodifica direttamente in memoria GPU; se il driver rifiuta, ripiega sulla RAM
+            runCatching {
+                BitmapFactory.decodeByteArray(bytes, 0, bytes.size, BitmapFactory.Options().apply { inPreferredConfig = Bitmap.Config.HARDWARE })
+            }.getOrNull()?.let { return it }
+        }
+        return BitmapFactory.decodeByteArray(bytes, 0, bytes.size, BitmapFactory.Options().apply { inPreferredConfig = cfg })
+    }
 
     private fun notifyReady() {
         if (posted.compareAndSet(false, true)) {

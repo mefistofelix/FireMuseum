@@ -73,7 +73,9 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
     private var vx = 0.0; private var vy = 0.0; private var zv = 0.0
     private var axX = 0f; private var axY = 0f; private var axZoom = 0f
     private var lastFrameNs = 0L
+    private var frameNs = 0L
     private var frameScheduled = false
+    private var fading = false
 
     // ---- finestre / portali ----
     private class Child(val portal: Portal, var art: Artwork?, var src: TileSource?, var loading: Boolean = false)
@@ -195,7 +197,7 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
         if (width == 0) return
         flightFrom.copyFrom(cam)
         flight = Flight(flightFrom, target, width.toDouble(), speed, minDur, maxDur)
-        flightStart = SystemClock.uptimeMillis()
+        flightStart = -1L          // fissato al primo vsync: il volo parte dal fotogramma successivo, senza salto
         flightDone = done
         vx = 0.0; vy = 0.0; zv = 0.0
         schedule()
@@ -309,6 +311,7 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
         frameScheduled = false
         val dt = if (lastFrameNs == 0L) 1 / 60.0 else ((ns - lastFrameNs) / 1e9).coerceIn(0.001, 0.1)
         lastFrameNs = ns
+        frameNs = ns
         val moving = step(dt)
         invalidate()
         if (moving) schedule() else lastFrameNs = 0L
@@ -327,7 +330,9 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
         val speed = app.settings.speed.toDouble()
 
         flight?.let { f ->
-            val t = (now - flightStart) / 1000.0 / f.duration
+            // tempo del vsync, non dell'orologio: posizioni equidistanti fotogramma per fotogramma
+            if (flightStart < 0) flightStart = frameNs
+            val t = (frameNs - flightStart) / 1e9 / f.duration
             f.at(t.coerceAtMost(1.0), cam)
             if (t >= 1.0) {
                 flight = null
@@ -512,6 +517,7 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
             return
         }
         reqs.clear()
+        fading = false
         val ox = width / 2.0 - cam.cx * cam.scale
         val oy = height / 2.0 - cam.cy * cam.scale
 
@@ -571,6 +577,7 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
         // invia le richieste solo se qualcosa è cambiato (camera o insieme richiesto)
         val sig = reqs.fold(17L) { acc, r -> acc * 31 + r.key.hashCode() }
         if (sig != lastSubmitSig) { lastSubmitSig = sig; app.loader.submit(ArrayList(reqs)) }
+        if (fading) postInvalidateOnAnimation()
     }
 
     /**
@@ -597,27 +604,35 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
             )
         }
 
-        // livello completo più fine
+        // livello completo più fine (un tassello ancora in dissolvenza non conta: sotto serve il livello grossolano)
+        val now = SystemClock.uptimeMillis()
         var kStart = kMax
         for (k in kIdeal..kMax) {
             val rg = range(k, 0)
             var complete = true
             loop@ for (y in rg[2]..rg[3]) for (x in rg[0]..rg[1]) {
-                if (app.memory[src.key(k, x, y)] == null) { complete = false; break@loop }
+                val t = app.memory[src.key(k, x, y)]
+                if (t == null || t.shownAt == 0L || now - t.shownAt < FADE_MS) { complete = false; break@loop }
             }
             if (complete) { kStart = k; break }
         }
 
-        tilePaint.alpha = alpha
         for (k in kStart downTo kIdeal) {
             val rg = range(k, 0)
             for (y in rg[2]..rg[3]) for (x in rg[0]..rg[1]) {
                 val t = app.memory[src.key(k, x, y)] ?: continue
                 val r: Rect = src.imageRect(k, x, y)
+                // coordinate frazionarie: arrotondare al pixel faceva avanzare i tasselli a scatti di 1 px
+                // nei movimenti lenti; i bordi condivisi hanno lo stesso valore, quindi niente fessure
                 dst.set(
-                    (ox + r.left * sc).roundToInt().toFloat(), (oy + r.top * sc).roundToInt().toFloat(),
-                    (ox + r.right * sc).roundToInt().toFloat(), (oy + r.bottom * sc).roundToInt().toFloat(),
+                    (ox + r.left * sc).toFloat(), (oy + r.top * sc).toFloat(),
+                    (ox + r.right * sc).toFloat(), (oy + r.bottom * sc).toFloat(),
                 )
+                // i dettagli nuovi entrano in dissolvenza sopra il livello più grossolano invece di "scattare"
+                if (t.shownAt == 0L) t.shownAt = now
+                val age = now - t.shownAt
+                val fade = if (k == kStart || age >= FADE_MS) 1f else { fading = true; age / FADE_MS.toFloat() }
+                tilePaint.alpha = (alpha * fade).roundToInt()
                 canvas.drawBitmap(t.bitmap, t.src, dst, tilePaint)
             }
         }
@@ -679,6 +694,7 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
     fun zoomFactor(): Double = cam.scale / fitScale()
 
     companion object {
+        private const val FADE_MS = 220L         // dissolvenza dei tasselli appena arrivati
         private const val TAP_MS = 160L
         private const val LONG_MS = 320L
         private const val NUDGE = 0.12           // passo breve: frazione dell'altezza schermo
