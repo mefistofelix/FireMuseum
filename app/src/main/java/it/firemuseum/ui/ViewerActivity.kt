@@ -68,6 +68,7 @@ class ViewerActivity : AppCompatActivity(), DeepZoomView.Listener {
         index = ids.indexOf(id).coerceAtLeast(0)
         slideshow = Slideshow(zoom, ::nextArtwork, { app.settings.slideSeconds }, { app.settings.slidePace }, ::showCaption) { on ->
             hudRefresh(); zoom.crosshair = game != null && !on
+            zoom.autoPlay = on; zoom.invalidate()
         }
 
         val a = id?.let { app.catalog.get(it) } ?: run { finish(); return }

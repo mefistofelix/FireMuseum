@@ -84,6 +84,8 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
     private val stack = ArrayDeque<Frame>()
     val depth: Int get() = stack.size
     var showPortalHints = true
+    /** Slideshow in corso: niente contorni tratteggiati delle finestre (servono solo navigando a mano). */
+    var autoPlay = false
 
     // ---- decorazioni (gioco, indizi) ----
     var decorate: ((Canvas) -> Unit)? = null
@@ -555,7 +557,7 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
                     canvas.restore()
                 }
             }
-            if (showPortalHints && size > 36 && size < max(width, height) * 0.8f) {
+            if (showPortalHints && !autoPlay && size > 36 && size < max(width, height) * 0.8f) {
                 hintPaint.alpha = (200 * (1 - smooth((size - 300.0) / 600.0))).roundToInt().coerceIn(40, 200)
                 canvas.drawRect(l, t, r, b, hintPaint)
             }
