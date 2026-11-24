@@ -48,12 +48,12 @@ class Settings(ctx: Context) {
         set(v) = p.edit().putBoolean("kids", v).apply()
 
     var slideSeconds: Int
-        get() = p.getInt("slideSec", 90)
+        get() = p.getInt("slideSec", 180)
         set(v) = p.edit().putInt("slideSec", v).apply()
 
-    /** Ritmo dei voli dello slideshow rispetto alla navigazione manuale (0,2 molto lento … 0,7 vivace). */
+    /** Ritmo dei voli dello slideshow rispetto alla navigazione manuale (0,1 molto lento … 0,5 vivace). */
     var slidePace: Float
-        get() = p.getFloat("slidePace", 0.3f)
+        get() = p.getFloat("slidePace", 0.15f)
         set(v) = p.edit().putFloat("slidePace", v).apply()
 
     /** Velocità percepita di pan/zoom (0.5 lento … 2.0 veloce). */

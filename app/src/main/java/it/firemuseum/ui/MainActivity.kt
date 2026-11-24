@@ -182,7 +182,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun paceName(p: Float) = when {
-        p < 0.25f -> "molto lento"; p < 0.4f -> "lento"; p < 0.6f -> "medio"; else -> "vivace"
+        p < 0.12f -> "molto lento"; p < 0.2f -> "lento"; p < 0.4f -> "medio"; else -> "vivace"
     }
 
     private fun settingsDialog() {
@@ -206,8 +206,8 @@ class MainActivity : AppCompatActivity() {
             when (w) {
                 0 -> { val v = listOf(0.6f, 0.8f, 1f, 1.25f, 1.6f, 2f); s.speed = v[(v.indexOfFirst { it >= s.speed - 0.01f } + 1) % v.size]; settingsDialog() }
                 1 -> { s.kidsOnly = !s.kidsOnly; refresh(); settingsDialog() }
-                2 -> { val v = listOf(20, 40, 60, 90, 120, 300); s.slideSeconds = v[(v.indexOf(s.slideSeconds) + 1) % v.size]; settingsDialog() }
-                3 -> { val v = listOf(0.2f, 0.3f, 0.45f, 0.7f); s.slidePace = v[(v.indexOfFirst { it >= s.slidePace - 0.01f } + 1) % v.size]; settingsDialog() }
+                2 -> { val v = listOf(30, 60, 120, 180, 300, 600); s.slideSeconds = v[(v.indexOf(s.slideSeconds) + 1) % v.size]; settingsDialog() }
+                3 -> { val v = listOf(0.1f, 0.15f, 0.25f, 0.5f); s.slidePace = v[(v.indexOfFirst { it >= s.slidePace - 0.01f } + 1) % v.size]; settingsDialog() }
                 4 -> { val v = listOf(0L, 2L, 5L, 10L, 20L, 50L, 100L).map { it shl 30 }; s.tileCacheMaxBytes = v[(v.indexOf(s.tileCacheMaxBytes) + 1) % v.size]; app.governor.trimAsync(); settingsDialog() }
                 5 -> { s.allowInternalFallback = !s.allowInternalFallback; app.storage.refresh(); settingsDialog() }
                 6 -> textDialog("Server LAN (es. http://192.168.1.10:8000/)", s.lanServer) { s.lanServer = it }

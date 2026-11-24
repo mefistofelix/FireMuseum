@@ -63,14 +63,14 @@ class Slideshow(
 
     fun stop() { job?.cancel(); job = null; view.cancelFlight() }
 
-    private suspend fun fly(r: NRect, fill: Double, speed: Double, maxDur: Double = 20.0) =
+    private suspend fun fly(r: NRect, fill: Double, speed: Double, maxDur: Double = 45.0) =
         suspendCancellableCoroutine<Unit> { c ->
             view.flyToRect(r, fill, speed * pace(), maxDur) { if (c.isActive) c.resume(Unit) }
             c.invokeOnCancellation { view.cancelFlight() }
         }
 
     private suspend fun flyHome() = suspendCancellableCoroutine<Unit> { c ->
-        view.flyTo(view.fitCam(), speed = 0.5 * pace(), maxDur = 14.0) { if (c.isActive) c.resume(Unit) }
+        view.flyTo(view.fitCam(), speed = 0.5 * pace(), maxDur = 30.0) { if (c.isActive) c.resume(Unit) }
         c.invokeOnCancellation { view.cancelFlight() }
     }
 
@@ -79,7 +79,7 @@ class Slideshow(
         val total = secondsPerArtwork().coerceIn(10, 600) * 1000L
         val t0 = System.currentTimeMillis()
         if (!view.isAtOverview) flyHome()
-        delay(5000)
+        delay(6000)
 
         val shots = pickShots(a)
         for (r in shots) {
@@ -87,20 +87,20 @@ class Slideshow(
             fly(r, fill = 0.55 + Random.nextDouble() * 0.25, speed = 0.30)
             // lenta deriva "Ken Burns" sul dettaglio
             val drift = NRect(r.x + (Random.nextFloat() - 0.5f) * r.w * 0.5f, r.y + (Random.nextFloat() - 0.5f) * r.h * 0.5f, r.w * 0.85f, r.h * 0.85f)
-            delay(1500)                                         // sosta sul dettaglio
-            fly(drift, fill = 0.6, speed = 0.15, maxDur = 12.0)
+            delay(3000)                                         // sosta sul dettaglio
+            fly(drift, fill = 0.6, speed = 0.15, maxDur = 20.0)
             if (view.artwork !== a) return true
         }
 
         if ((infiniteJourney || Random.nextFloat() < 0.35f) && a.portals.isNotEmpty()) {
             val p = a.portals.random()
             // prima davanti alla finestra, poi dentro solo quando il quadro è arrivato (altrimenti nero)
-            fly(p.rect, fill = 0.8, speed = 0.35, maxDur = 20.0)
+            fly(p.rect, fill = 0.8, speed = 0.35, maxDur = 45.0)
             var waited = 0
             while (!view.portalReady(p) && waited < 8000) { delay(250); waited += 250 }
             if (view.portalReady(p)) {
                 // l'ingresso avviene da solo quando la finestra riempie lo schermo
-                fly(p.rect, fill = 1.15, speed = 0.35, maxDur = 20.0)
+                fly(p.rect, fill = 1.15, speed = 0.35, maxDur = 45.0)
                 delay(300)
                 if (view.artwork !== a) return true
             }
