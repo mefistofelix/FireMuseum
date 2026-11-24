@@ -56,6 +56,9 @@ class CatalogRepository(private val app: App) {
 
     fun get(id: String): Artwork? = synchronized(byId) { byId[id] }
 
+    /** Opere con finestre (quadri di galleria): punti di partenza del viaggio infinito. */
+    fun galleries(): List<Artwork> = synchronized(byId) { byId.values.filter { it.portals.isNotEmpty() } }
+
     private fun norm(s: String) = Normalizer.normalize(s.lowercase(), Normalizer.Form.NFD).replace(Regex("\\p{M}"), "")
 
     fun search(query: String, filters: Set<Filter>, sort: Sort): List<Artwork> {

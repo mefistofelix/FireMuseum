@@ -40,6 +40,14 @@ class Slideshow(
                     val a = view.artwork ?: break
                     onCaption(a)
                     val enteredPortal = playArtwork(a)
+                    if (!enteredPortal && infiniteJourney && view.depth > 0) {
+                        // dentro un quadro senza altre finestre: si esce nella galleria e si sceglie un'altra finestra
+                        val d = view.depth
+                        view.popPortal()
+                        var waited = 0
+                        while (view.depth >= d && waited < 6000) { delay(100); waited += 100 }
+                        continue
+                    }
                     if (!enteredPortal) {
                         val n = nextArtwork() ?: break
                         val ok = suspendCancellableCoroutine<Boolean> { c -> view.open(n) { c.resume(it) } }
@@ -86,10 +94,16 @@ class Slideshow(
 
         if ((infiniteJourney || Random.nextFloat() < 0.35f) && a.portals.isNotEmpty()) {
             val p = a.portals.random()
-            // vola verso la finestra e oltre: l'ingresso avviene da solo quando la riempie
-            fly(p.rect, fill = 1.15, speed = 0.35, maxDur = 20.0)
-            delay(300)
-            if (view.artwork !== a) return true
+            // prima davanti alla finestra, poi dentro solo quando il quadro è arrivato (altrimenti nero)
+            fly(p.rect, fill = 0.8, speed = 0.35, maxDur = 20.0)
+            var waited = 0
+            while (!view.portalReady(p) && waited < 8000) { delay(250); waited += 250 }
+            if (view.portalReady(p)) {
+                // l'ingresso avviene da solo quando la finestra riempie lo schermo
+                fly(p.rect, fill = 1.15, speed = 0.35, maxDur = 20.0)
+                delay(300)
+                if (view.artwork !== a) return true
+            }
         }
         flyHome()
         delay(2500)

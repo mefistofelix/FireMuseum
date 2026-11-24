@@ -175,7 +175,19 @@ class ViewerActivity : AppCompatActivity(), DeepZoomView.Listener {
         }
     }
 
+    /** Riparte da capo in modalità viaggio; se l'opera non ha finestre si va prima in una galleria. */
+    private fun startJourney() {
+        slideshow.stop()
+        slideshow.infiniteJourney = true
+        val here = zoom.artwork
+        if (here != null && here.portals.isNotEmpty()) { slideshow.start(); return }
+        val g = app.catalog.galleries().randomOrNull() ?: run { say("Nessuna galleria con finestre nel catalogo", 4000); return }
+        openArtwork(g) { slideshow.start() }
+    }
+
     private fun nextArtwork(): Artwork? {
+        // viaggio infinito: si passa sempre a un'altra galleria, non a un'opera qualsiasi
+        if (slideshow.infiniteJourney) app.catalog.galleries().filter { it !== zoom.artwork }.randomOrNull()?.let { return it }
         if (ids.isEmpty()) return null
         index = (index + 1) % ids.size
         return app.catalog.get(ids[index])
@@ -280,7 +292,7 @@ class ViewerActivity : AppCompatActivity(), DeepZoomView.Listener {
         }
         item("➕ Aggiungi obiettivo qui (mirino)") { zoom.crosshair = true; zoom.invalidate(); addTargetHere() }
         item(if (slideshow.running) "⏸ Ferma slideshow" else "▶ Slideshow") { if (slideshow.running) slideshow.stop() else slideshow.start() }
-        item("∞ Viaggio infinito nelle finestre") { slideshow.infiniteJourney = true; slideshow.start() }
+        item("∞ Viaggio infinito nelle finestre") { startJourney() }
         item("🏠 Vista d'insieme") { zoom.home() }
         item(if (zoom.showPortalHints) "🪟 Nascondi contorni finestre" else "🪟 Mostra contorni finestre") { zoom.showPortalHints = !zoom.showPortalHints; zoom.invalidate() }
         (zoom.source as? CommonsSource)?.let { cs ->

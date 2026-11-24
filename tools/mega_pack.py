@@ -53,6 +53,7 @@ REMOTE = os.environ.get("FM_MEGA_REMOTE", "mega:FireMuseum/archivio")
 UA = "FireMuseum-pack/0.2 (https://github.com/mefistofelix/FireMuseum; one file at a time)"
 TILE, OVERLAP, Q = 510, 1, 82
 MAX_THUMB = 3840          # anteprima standard più grande di Wikimedia
+PORTAL_MAX = 12000        # lato massimo dei quadri raggiunti dalle finestre (bastano per lo zoom, pesano meno)
 BUDGET = int(float(os.environ.get("FM_BUDGET_GB", "12")) * 1e9)
 
 sys.stdout.reconfigure(encoding="utf-8", line_buffering=True)
@@ -121,7 +122,33 @@ def load_catalog() -> list[dict]:
     for f in sorted(ASSETS.glob("catalog*.json")):
         for a in json.loads(f.read_text(encoding="utf-8"))["artworks"]:
             by_id[a["id"]] = a
-    return list(by_id.values())
+    return add_portal_targets(list(by_id.values()))
+
+
+def add_portal_targets(arts: list[dict]) -> list[dict]:
+    """I quadri dentro le finestre ("wikidata:Q…") diventano voci del catalogo ospitate su MEGA.
+
+    Senza, l'app li scarica da Wikimedia mentre mostra la galleria: decine di richieste insieme,
+    429 e schermo nero entrando nella finestra. Ogni finestra punta poi all'id della voce.
+    Le voci create così partono con kidSafe=false (regola del catalogo per le voci automatiche).
+    """
+    by_qid = {a["qid"]: a for a in arts if a.get("qid")}
+    extra: dict[str, dict] = {}
+    for a in arts:
+        for p in a.get("portals") or []:
+            to = p.get("to", "")
+            if not to.startswith("wikidata:"):
+                continue
+            qid = to.split(":", 1)[1]
+            t = by_qid.get(qid) or extra.get(qid)
+            if t is None:
+                t = extra[qid] = {
+                    "id": f"wd-{qid.lower()}", "title": p.get("label") or qid, "author": "", "year": "",
+                    "tags": ["finestra"], "kidSafe": False, "warning": None,
+                    "source": {"type": "wikidata", "qid": qid}, "qid": qid, "host": "mega", "portalTarget": True,
+                }
+            p["to"] = t["id"]
+    return arts + list(extra.values())
 
 
 def p18(qid: str) -> str | None:
@@ -219,6 +246,8 @@ def cmd_build(only: list[str]) -> None:
         tmp = OUT / f"{aid}.tmp"
         shutil.rmtree(tmp, ignore_errors=True); tmp.mkdir()
         img = pyvips.Image.new_from_file(str(src), access="sequential")
+        if by_id[aid].get("portalTarget") and max(img.width, img.height) > PORTAL_MAX:
+            img = pyvips.Image.thumbnail(str(src), PORTAL_MAX, height=PORTAL_MAX, size="down")
         if img.hasalpha():
             img = img.flatten(background=[255, 255, 255])
         if img.interpretation not in ("srgb", "b-w"):
@@ -252,6 +281,9 @@ def write_index(arts: list[dict], files: dict, state: dict) -> None:
             a["host"], a["mirror"], a["mirrorBytes"] = "mega", pyr.name, pyr.stat().st_size
             if ii:
                 a["width"], a["height"], a["bytes"] = ii["width"], ii["height"], ii["size"]
+                k = PORTAL_MAX / max(ii["width"], ii["height"])
+                if a.get("portalTarget") and k < 1:              # piramide ridotta: misure vere
+                    a["width"], a["height"] = round(ii["width"] * k), round(ii["height"] * k)
         else:
             a["host"] = "origin"
             a.pop("mirror", None); a.pop("mirrorBytes", None)

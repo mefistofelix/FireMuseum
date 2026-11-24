@@ -438,7 +438,7 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
         if (stack.isNotEmpty() && cam.scale < fitScale() * 0.72) { exitPortal(); return }
         if (!zoomingIn) return
         for (c in children) {
-            if (c.src == null) continue
+            if (!childReady(c)) continue           // quadro non ancora arrivato: entrare darebbe schermo nero
             if (!childScreenRect(c, tmpRect)) continue
             val coversCenter = tmpRect.contains(width / 2f, height / 2f)
             if (coversCenter && (tmpRect.width() >= width * 0.92f || tmpRect.height() >= height * 0.92f)) {
@@ -495,6 +495,17 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
     }
 
     val isAtOverview: Boolean get() = cam.scale <= fitScale() * 1.05
+
+    /** Il quadro della finestra ha almeno il livello più grossolano in memoria. */
+    private fun childReady(c: Child): Boolean {
+        val cs = c.src ?: return false
+        val k = cs.maxK
+        for (y in 0 until cs.rows(k)) for (x in 0 until cs.cols(k)) if (app.memory[cs.key(k, x, y)] == null) return false
+        return true
+    }
+
+    /** Per lo slideshow: la finestra [p] dell'opera corrente è pronta per entrarci. */
+    fun portalReady(p: Portal): Boolean = children.firstOrNull { it.portal == p }?.let { childReady(it) } == true
 
     private fun ensureChild(c: Child) {
         if (c.src != null || c.loading) return
