@@ -10,14 +10,14 @@ captures/
 .cxx/
 
 # firma: MAI nel repo
-signing/
+/signing/
 *.jks
 *.keystore
 *.p12
 
 # lavoro degli strumenti PC (originali enormi, piramidi, cataloghi generati)
-work/
-catalog/
+/work/
+/catalog/
 
 # appunti personali di ricerca (non pubblicare)
 catalogo_immagini_gioco_ricerca_dettagli_*.md
