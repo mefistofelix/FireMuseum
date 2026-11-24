@@ -48,7 +48,7 @@ class Settings(ctx: Context) {
         set(v) = p.edit().putBoolean("kids", v).apply()
 
     var slideSeconds: Int
-        get() = p.getInt("slideSec", 40)
+        get() = p.getInt("slideSec", 90)
         set(v) = p.edit().putInt("slideSec", v).apply()
 
     /** Velocità percepita di pan/zoom (0.5 lento … 2.0 veloce). */
