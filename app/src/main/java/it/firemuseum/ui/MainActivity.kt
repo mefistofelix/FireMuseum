@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             app.catalog.load()
             refresh()
-            grid.post { grid.getChildAt(0)?.requestFocus() }
+            grid.postDelayed({ (grid.getChildAt(0) ?: grid).requestFocus() }, 150)  // non lasciare il focus sulla ricerca (apre la tastiera)
             // arricchimento Wikidata in background (autore, anno, stile, museo, obiettivi, finestre)
             app.catalog.all.forEach { a ->
                 if (a.qid != null || a.targets.isEmpty()) {
