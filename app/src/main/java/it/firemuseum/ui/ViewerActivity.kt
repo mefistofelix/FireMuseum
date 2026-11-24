@@ -66,7 +66,7 @@ class ViewerActivity : AppCompatActivity(), DeepZoomView.Listener {
         ids = intent.getStringArrayExtra(EXTRA_LIST)?.toList() ?: emptyList()
         val id = intent.getStringExtra(EXTRA_ID)
         index = ids.indexOf(id).coerceAtLeast(0)
-        slideshow = Slideshow(zoom, ::nextArtwork, { app.settings.slideSeconds }, ::showCaption) { on ->
+        slideshow = Slideshow(zoom, ::nextArtwork, { app.settings.slideSeconds }, { app.settings.slidePace }, ::showCaption) { on ->
             hudRefresh(); zoom.crosshair = game != null && !on
         }
 

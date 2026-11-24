@@ -178,6 +178,10 @@ class MainActivity : AppCompatActivity() {
         }.show()
     }
 
+    private fun paceName(p: Float) = when {
+        p < 0.25f -> "molto lento"; p < 0.4f -> "lento"; p < 0.6f -> "medio"; else -> "vivace"
+    }
+
     private fun settingsDialog() {
         val s = app.settings
         fun gb(b: Long) = if (b <= 0) "automatico" else "${b shr 30} GB"
@@ -185,6 +189,7 @@ class MainActivity : AppCompatActivity() {
             "Velocità movimento: ${"%.1f".format(s.speed)}×",
             "Solo opere adatte ai bambini: ${if (s.kidsOnly) "sì" else "no"}",
             "Secondi per opera nello slideshow: ${s.slideSeconds}",
+            "Ritmo dello slideshow: ${paceName(s.slidePace)}",
             "Limite cache su disco esterno: ${gb(s.tileCacheMaxBytes)}",
             "Cache interna se manca il disco: ${if (s.allowInternalFallback) "sì (${s.internalFallbackBytes shr 20} MB)" else "no"}",
             "Server LAN piramidi: ${s.lanServer.ifBlank { "nessuno" }}",
@@ -199,14 +204,15 @@ class MainActivity : AppCompatActivity() {
                 0 -> { val v = listOf(0.6f, 0.8f, 1f, 1.25f, 1.6f, 2f); s.speed = v[(v.indexOfFirst { it >= s.speed - 0.01f } + 1) % v.size]; settingsDialog() }
                 1 -> { s.kidsOnly = !s.kidsOnly; refresh(); settingsDialog() }
                 2 -> { val v = listOf(20, 40, 60, 90, 120, 300); s.slideSeconds = v[(v.indexOf(s.slideSeconds) + 1) % v.size]; settingsDialog() }
-                3 -> { val v = listOf(0L, 2L, 5L, 10L, 20L, 50L, 100L).map { it shl 30 }; s.tileCacheMaxBytes = v[(v.indexOf(s.tileCacheMaxBytes) + 1) % v.size]; app.governor.trimAsync(); settingsDialog() }
-                4 -> { s.allowInternalFallback = !s.allowInternalFallback; app.storage.refresh(); settingsDialog() }
-                5 -> textDialog("Server LAN (es. http://192.168.1.10:8000/)", s.lanServer) { s.lanServer = it }
-                6 -> textDialog("User-Agent (metti un contatto tuo)", s.userAgent) { s.userAgent = it.ifBlank { Settings.DEFAULT_UA } }
-                7 -> textDialog("Link cartella MEGA (vuoto = spento)", s.megaLink) { s.megaLink = it; recreate() }
-                8 -> Toast.makeText(this, app.catalog.exportUserTargets()?.path ?: "Nessun disco", Toast.LENGTH_LONG).show()
-                9 -> { lifecycleScope.launch(kotlinx.coroutines.Dispatchers.IO) { app.tiles.clear() }; app.memory.clear() }
-                10 -> AlertDialog.Builder(this).setTitle("Archivio").setMessage(
+                3 -> { val v = listOf(0.2f, 0.3f, 0.45f, 0.7f); s.slidePace = v[(v.indexOfFirst { it >= s.slidePace - 0.01f } + 1) % v.size]; settingsDialog() }
+                4 -> { val v = listOf(0L, 2L, 5L, 10L, 20L, 50L, 100L).map { it shl 30 }; s.tileCacheMaxBytes = v[(v.indexOf(s.tileCacheMaxBytes) + 1) % v.size]; app.governor.trimAsync(); settingsDialog() }
+                5 -> { s.allowInternalFallback = !s.allowInternalFallback; app.storage.refresh(); settingsDialog() }
+                6 -> textDialog("Server LAN (es. http://192.168.1.10:8000/)", s.lanServer) { s.lanServer = it }
+                7 -> textDialog("User-Agent (metti un contatto tuo)", s.userAgent) { s.userAgent = it.ifBlank { Settings.DEFAULT_UA } }
+                8 -> textDialog("Link cartella MEGA (vuoto = spento)", s.megaLink) { s.megaLink = it; recreate() }
+                9 -> Toast.makeText(this, app.catalog.exportUserTargets()?.path ?: "Nessun disco", Toast.LENGTH_LONG).show()
+                10 -> { lifecycleScope.launch(kotlinx.coroutines.Dispatchers.IO) { app.tiles.clear() }; app.memory.clear() }
+                11 -> AlertDialog.Builder(this).setTitle("Archivio").setMessage(
                     "${app.storage.describe()}\n\nPercorso: ${app.storage.current?.root}\n" +
                         "Tasselli: ${app.tiles.totalBytes shr 20} MB in ${app.tiles.segmentCount} segmenti\n" +
                         "Originali/anteprime: ${app.blobs.totalBytes shr 20} MB\n\n" +

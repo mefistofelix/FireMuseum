@@ -22,6 +22,7 @@ class Slideshow(
     private val view: DeepZoomView,
     private val nextArtwork: () -> Artwork?,
     private val secondsPerArtwork: () -> Int,
+    private val pace: () -> Float,
     private val onCaption: (Artwork) -> Unit,
     private val onState: (Boolean) -> Unit,
 ) {
@@ -54,14 +55,14 @@ class Slideshow(
 
     fun stop() { job?.cancel(); job = null; view.cancelFlight() }
 
-    private suspend fun fly(r: NRect, fill: Double, speed: Double, maxDur: Double = 14.0) =
+    private suspend fun fly(r: NRect, fill: Double, speed: Double, maxDur: Double = 20.0) =
         suspendCancellableCoroutine<Unit> { c ->
-            view.flyToRect(r, fill, speed * PACE, maxDur) { if (c.isActive) c.resume(Unit) }
+            view.flyToRect(r, fill, speed * pace(), maxDur) { if (c.isActive) c.resume(Unit) }
             c.invokeOnCancellation { view.cancelFlight() }
         }
 
     private suspend fun flyHome() = suspendCancellableCoroutine<Unit> { c ->
-        view.flyTo(view.fitCam(), speed = 0.5 * PACE, maxDur = 10.0) { if (c.isActive) c.resume(Unit) }
+        view.flyTo(view.fitCam(), speed = 0.5 * pace(), maxDur = 14.0) { if (c.isActive) c.resume(Unit) }
         c.invokeOnCancellation { view.cancelFlight() }
     }
 
@@ -79,14 +80,14 @@ class Slideshow(
             // lenta deriva "Ken Burns" sul dettaglio
             val drift = NRect(r.x + (Random.nextFloat() - 0.5f) * r.w * 0.5f, r.y + (Random.nextFloat() - 0.5f) * r.h * 0.5f, r.w * 0.85f, r.h * 0.85f)
             delay(1500)                                         // sosta sul dettaglio
-            fly(drift, fill = 0.6, speed = 0.08, maxDur = 9.0)
+            fly(drift, fill = 0.6, speed = 0.15, maxDur = 12.0)
             if (view.artwork !== a) return true
         }
 
         if ((infiniteJourney || Random.nextFloat() < 0.35f) && a.portals.isNotEmpty()) {
             val p = a.portals.random()
             // vola verso la finestra e oltre: l'ingresso avviene da solo quando la riempie
-            fly(p.rect, fill = 1.15, speed = 0.35, maxDur = 14.0)
+            fly(p.rect, fill = 1.15, speed = 0.35, maxDur = 20.0)
             delay(300)
             if (view.artwork !== a) return true
         }
@@ -110,10 +111,5 @@ class Slideshow(
             NRect(0.12f + Random.nextFloat() * (0.76f - w), 0.12f + Random.nextFloat() * (0.76f - h), w, h)
         }
         return (known + random).shuffled()
-    }
-
-    companion object {
-        /** Ritmo dei voli dello slideshow: 0,5 = metà della velocità di navigazione. */
-        private const val PACE = 0.5
     }
 }
