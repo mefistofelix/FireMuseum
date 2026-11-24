@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FireMuseum</string>
+    <string name="search_hint">Cerca titolo, autore, stile, museo, tag… (anche a voce)</string>
+</resources>

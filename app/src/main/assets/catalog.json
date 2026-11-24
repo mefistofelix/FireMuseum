@@ -1,0 +1,1568 @@
+{
+ "version": 1,
+ "artworks": [
+  {
+   "id": "beuckelaer-market-square",
+   "title": "Mercato nella piazza",
+   "titleOrig": "Market in the Square",
+   "author": "Joachim Beuckelaer",
+   "year": null,
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di mercato",
+   "museum": null,
+   "tags": [
+    "mercato",
+    "cibo",
+    "bancarelle",
+    "piazza"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 10699,
+   "height": 8777,
+   "bytes": 49754931,
+   "source": {
+    "type": "commons",
+    "file": "Joachim_Beuckelaer_-_Market_in_the_Square.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Joachim_Beuckelaer_-_Market_in_the_Square.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "beuckelaer-country-market",
+   "title": "Mercato di campagna",
+   "titleOrig": "Country Market",
+   "author": "Joachim Beuckelaer",
+   "year": null,
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di mercato",
+   "museum": null,
+   "tags": [
+    "mercato",
+    "cibo",
+    "animali"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 11852,
+   "height": 8337,
+   "bytes": 60439920,
+   "source": {
+    "type": "commons",
+    "file": "Joachim_Beuckelaer_-_Country_Market.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Joachim_Beuckelaer_-_Country_Market.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "beuckelaer-earth",
+   "title": "La Terra (Quattro elementi)",
+   "titleOrig": "Earth",
+   "author": "Joachim Beuckelaer",
+   "year": "1569",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di mercato",
+   "museum": "National Gallery, Londra",
+   "tags": [
+    "frutta",
+    "verdura",
+    "cesti",
+    "quattro elementi"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 6000,
+   "height": 4368,
+   "bytes": 18486394,
+   "source": {
+    "type": "commons",
+    "file": "Joachim_Beuckelaer_-_Earth.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Joachim_Beuckelaer_-_Earth.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "beuckelaer-water",
+   "title": "L'Acqua (Quattro elementi)",
+   "titleOrig": "Water",
+   "author": "Joachim Beuckelaer",
+   "year": "1569",
+   "style": "Rinascimento fiammingo",
+   "genre": "pescheria",
+   "museum": "National Gallery, Londra",
+   "tags": [
+    "pesci",
+    "pescheria",
+    "quattro elementi"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 6000,
+   "height": 4436,
+   "bytes": 17574133,
+   "source": {
+    "type": "commons",
+    "file": "Joachim_Beuckelaer_-_Water.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Joachim_Beuckelaer_-_Water.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "beuckelaer-air",
+   "title": "L'Aria (Quattro elementi)",
+   "titleOrig": "Air",
+   "author": "Joachim Beuckelaer",
+   "year": "1570",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di mercato",
+   "museum": "National Gallery, Londra",
+   "tags": [
+    "pollame",
+    "uova",
+    "strada",
+    "quattro elementi"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 6000,
+   "height": 4376,
+   "bytes": 17102274,
+   "source": {
+    "type": "commons",
+    "file": "Joachim_Beuckelaer_-_Air.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Joachim_Beuckelaer_-_Air.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "beuckelaer-fire",
+   "title": "Il Fuoco (Quattro elementi)",
+   "titleOrig": "Fire",
+   "author": "Joachim Beuckelaer",
+   "year": "1570",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di cucina",
+   "museum": "National Gallery, Londra",
+   "tags": [
+    "cucina",
+    "pentole",
+    "utensili",
+    "quattro elementi"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 6000,
+   "height": 4362,
+   "bytes": 16200499,
+   "source": {
+    "type": "commons",
+    "file": "Joachim_Beuckelaer_-_Fire.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Joachim_Beuckelaer_-_Fire.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "beuckelaer-groentemarkt",
+   "title": "Mercato delle verdure",
+   "titleOrig": "Groentemarkt",
+   "author": "Joachim Beuckelaer",
+   "year": "1567",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di mercato",
+   "museum": "KMSKA, Anversa",
+   "tags": [
+    "verdura",
+    "frutta",
+    "animali"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 6920,
+   "height": 4780,
+   "bytes": 6165626,
+   "source": {
+    "type": "commons",
+    "file": "Groentemarkt,_Joachim_Beuckelaer,_1567,_Koninklijk_Museum_voor_Schone_Kunsten_Antwerpen,_5045.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Groentemarkt,_Joachim_Beuckelaer,_1567,_Koninklijk_Museum_voor_Schone_Kunsten_Antwerpen,_5045.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "beuckelaer-keuken",
+   "title": "La cucina ben fornita",
+   "titleOrig": "De welvoorziene keuken",
+   "author": "Joachim Beuckelaer",
+   "year": "1566",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di cucina",
+   "museum": "Rijksmuseum, Amsterdam",
+   "tags": [
+    "cucina",
+    "cibo",
+    "stoviglie",
+    "animali"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 5956,
+   "height": 4090,
+   "bytes": 4099932,
+   "source": {
+    "type": "commons",
+    "file": "De_welvoorziene_keuken_Rijksmuseum_SK-A-1451.jpeg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:De_welvoorziene_keuken_Rijksmuseum_SK-A-1451.jpeg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "beuckelaer-emmaus",
+   "title": "Scena di cucina con Cristo a Emmaus",
+   "titleOrig": null,
+   "author": "Joachim Beuckelaer",
+   "year": null,
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di cucina",
+   "museum": null,
+   "tags": [
+    "cucina",
+    "natura morta",
+    "recipienti"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 6000,
+   "height": 3887,
+   "bytes": 7686062,
+   "source": {
+    "type": "commons",
+    "file": "Joachim_Beuckelaer_-_Kitchen_Scene_with_Christ_at_Emmaus.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Joachim_Beuckelaer_-_Kitchen_Scene_with_Christ_at_Emmaus.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "avercamp-winter",
+   "title": "Paesaggio invernale con pattinatori",
+   "titleOrig": "Winterlandschap met ijsvermaak",
+   "author": "Hendrick Avercamp",
+   "year": "1608",
+   "style": "Secolo d'oro olandese",
+   "genre": "paesaggio invernale",
+   "museum": "Rijksmuseum, Amsterdam",
+   "tags": [
+    "inverno",
+    "ghiaccio",
+    "pattinatori",
+    "bambini",
+    "barche"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 6278,
+   "height": 3626,
+   "bytes": 3984588,
+   "source": {
+    "type": "commons",
+    "file": "Hendrick_Avercamp_-_Winterlandschap_met_ijsvermaak.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Hendrick_Avercamp_-_Winterlandschap_met_ijsvermaak.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "canaletto-san-vio",
+   "title": "Il Canal Grande da Campo San Vio",
+   "titleOrig": null,
+   "author": "Canaletto",
+   "year": "1730",
+   "style": "Vedutismo",
+   "genre": "veduta",
+   "museum": "Memphis Brooks Museum of Art",
+   "tags": [
+    "venezia",
+    "gondole",
+    "barche",
+    "città",
+    "facciate"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 12026,
+   "height": 8446,
+   "bytes": 57294192,
+   "source": {
+    "type": "commons",
+    "file": "Canaletto_-_The_Grand_Canal_from_the_Campo_San_Vio,_c._1730-35,_K2173,_Memphis_Brooks_Museum_of_Art.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Canaletto_-_The_Grand_Canal_from_the_Campo_San_Vio,_c._1730-35,_K2173,_Memphis_Brooks_Museum_of_Art.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "canaletto-palazzo-corner",
+   "title": "Il Canal Grande con Palazzo Corner",
+   "titleOrig": null,
+   "author": "Canaletto",
+   "year": null,
+   "style": "Vedutismo",
+   "genre": "veduta",
+   "museum": null,
+   "tags": [
+    "venezia",
+    "gondole",
+    "finestre",
+    "città"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 11455,
+   "height": 7494,
+   "bytes": 21716008,
+   "source": {
+    "type": "commons",
+    "file": "Canaletto_-_The_Grand_Canal_in_Venice_with_the_Palazzo_Corner_Ca'Grande_-_Google_Art_Project.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Canaletto_-_The_Grand_Canal_in_Venice_with_the_Palazzo_Corner_Ca'Grande_-_Google_Art_Project.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vanderheyden-fantasy",
+   "title": "Fantasia architettonica",
+   "titleOrig": null,
+   "author": "Jan van der Heyden",
+   "year": null,
+   "style": "Secolo d'oro olandese",
+   "genre": "capriccio architettonico",
+   "museum": null,
+   "tags": [
+    "architettura",
+    "città",
+    "facciate"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 16952,
+   "height": 11830,
+   "bytes": 70579650,
+   "source": {
+    "type": "commons",
+    "file": "Jan_van_der_Heyden_-_An_Architectural_Fantasy.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Jan_van_der_Heyden_-_An_Architectural_Fantasy.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "teniers-gallery",
+   "title": "L'arciduca Leopoldo Guglielmo nella sua galleria a Bruxelles",
+   "titleOrig": null,
+   "author": "David Teniers il Giovane",
+   "year": "1651",
+   "style": "Barocco fiammingo",
+   "genre": "pittura di galleria",
+   "museum": null,
+   "tags": [
+    "quadri nel quadro",
+    "interno",
+    "galleria",
+    "collezione"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 6558,
+   "height": 4885,
+   "bytes": 12467568,
+   "source": {
+    "type": "commons",
+    "file": "David_Teniers_the_Younger_-_Archduke_Leopold_William_in_his_Gallery_at_Brussels_-_Google_Art_Project.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:David_Teniers_the_Younger_-_Archduke_Leopold_William_in_his_Gallery_at_Brussels_-_Google_Art_Project.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "panini-modern-rome-boston",
+   "title": "Galleria di vedute della Roma moderna (Boston)",
+   "titleOrig": null,
+   "author": "Giovanni Paolo Panini",
+   "year": "1757",
+   "style": "Vedutismo",
+   "genre": "pittura di galleria",
+   "museum": "Museum of Fine Arts, Boston",
+   "tags": [
+    "quadri nel quadro",
+    "interno",
+    "roma",
+    "sculture"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 6001,
+   "height": 4144,
+   "bytes": 10276044,
+   "source": {
+    "type": "commons",
+    "file": "Giovanni_Paolo_Pannini_-_Picture_Gallery_with_Views_of_Modern_Rome_-_Google_Art_Project.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Giovanni_Paolo_Pannini_-_Picture_Gallery_with_Views_of_Modern_Rome_-_Google_Art_Project.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "steen-sint-nicolaas",
+   "title": "La festa di San Nicola",
+   "titleOrig": null,
+   "author": "Jan Steen",
+   "year": "1665",
+   "style": "Secolo d'oro olandese",
+   "genre": "scena di genere",
+   "museum": "Rijksmuseum, Amsterdam",
+   "tags": [
+    "interno",
+    "famiglia",
+    "bambini",
+    "giocattoli",
+    "dolci"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 4610,
+   "height": 5382,
+   "bytes": 12981370,
+   "source": {
+    "type": "commons",
+    "file": "Jan_Steen_–_Het_Sint-Nicolaasfeest.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Jan_Steen_–_Het_Sint-Nicolaasfeest.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-childrens-games",
+   "title": "Giochi di bambini",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1560",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di genere / paesaggio",
+   "museum": "Kunsthistorisches Museum, Vienna",
+   "tags": [
+    "gigapixel",
+    "bambini",
+    "giochi",
+    "folla",
+    "piazza"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 41519,
+   "height": 29944,
+   "bytes": 255433113,
+   "source": {
+    "type": "commons",
+    "file": "Children's_Games_(Bruegel).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Children's_Games_(Bruegel).jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-carnival-lent",
+   "title": "Lotta tra Carnevale e Quaresima",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1559",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di genere / paesaggio",
+   "museum": "Kunsthistorisches Museum, Vienna",
+   "tags": [
+    "gigapixel",
+    "festa",
+    "folla",
+    "piazza",
+    "mercato"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 41472,
+   "height": 30219,
+   "bytes": 230665748,
+   "source": {
+    "type": "commons",
+    "file": "The_Fight_Between_Carnival_and_Lent.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Fight_Between_Carnival_and_Lent.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-babel",
+   "title": "La Torre di Babele",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1563",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di genere / paesaggio",
+   "museum": "Kunsthistorisches Museum, Vienna",
+   "tags": [
+    "gigapixel",
+    "architettura",
+    "operai",
+    "porto",
+    "città"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 39683,
+   "height": 29617,
+   "bytes": 317194240,
+   "source": {
+    "type": "commons",
+    "file": "The_Tower_of_Babel_(Bruegel).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Tower_of_Babel_(Bruegel).jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-hunters",
+   "title": "Cacciatori nella neve",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1565",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di genere / paesaggio",
+   "museum": "Kunsthistorisches Museum, Vienna",
+   "tags": [
+    "gigapixel",
+    "inverno",
+    "neve",
+    "villaggio",
+    "pattinatori",
+    "cani"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 40940,
+   "height": 29761,
+   "bytes": 302503690,
+   "source": {
+    "type": "commons",
+    "file": "The_Hunters_in_the_Snow.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Hunters_in_the_Snow.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-gloomy-day",
+   "title": "Il giorno cupo",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1565",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di genere / paesaggio",
+   "museum": "Kunsthistorisches Museum, Vienna",
+   "tags": [
+    "gigapixel",
+    "paesaggio",
+    "villaggio",
+    "mesi"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 41296,
+   "height": 30072,
+   "bytes": 247883366,
+   "source": {
+    "type": "commons",
+    "file": "The_Gloomy_Day_(Bruegel).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Gloomy_Day_(Bruegel).jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-return-herd",
+   "title": "Il ritorno della mandria",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1565",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di genere / paesaggio",
+   "museum": "Kunsthistorisches Museum, Vienna",
+   "tags": [
+    "gigapixel",
+    "mandria",
+    "mucche",
+    "paesaggio",
+    "mesi"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 40360,
+   "height": 29816,
+   "bytes": 257152778,
+   "source": {
+    "type": "commons",
+    "file": "The_Return_of_the_Herd.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Return_of_the_Herd.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-haymaking",
+   "title": "La fienagione",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1565",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di genere / paesaggio",
+   "museum": "Palazzo Lobkowicz, Praga",
+   "tags": [
+    "gigapixel",
+    "campagna",
+    "attrezzi",
+    "mesi"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 39114,
+   "height": 28084,
+   "bytes": 414858608,
+   "source": {
+    "type": "commons",
+    "file": "Haymaking,_1565.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Haymaking,_1565.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-peasant-dance",
+   "title": "Danza contadina",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1567",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di genere / paesaggio",
+   "museum": "Kunsthistorisches Museum, Vienna",
+   "tags": [
+    "gigapixel",
+    "festa",
+    "villaggio",
+    "musica"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 41945,
+   "height": 29385,
+   "bytes": 233035530,
+   "source": {
+    "type": "commons",
+    "file": "The_Peasant_Dance_(Bruegel).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Peasant_Dance_(Bruegel).jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-peasant-wedding",
+   "title": "Nozze contadine",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1567",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di genere / paesaggio",
+   "museum": "Kunsthistorisches Museum, Vienna",
+   "tags": [
+    "gigapixel",
+    "interno",
+    "banchetto",
+    "cibo"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 43283,
+   "height": 29567,
+   "bytes": 260550164,
+   "source": {
+    "type": "commons",
+    "file": "The_Peasant_Wedding_(Bruegel).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Peasant_Wedding_(Bruegel).jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-adoration-snow",
+   "title": "Adorazione dei Magi nella neve",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1563",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di genere / paesaggio",
+   "museum": "Collezione Oskar Reinhart, Winterthur",
+   "tags": [
+    "gigapixel",
+    "neve",
+    "villaggio",
+    "folla"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 27830,
+   "height": 17702,
+   "bytes": 128125501,
+   "source": {
+    "type": "commons",
+    "file": "Adoration_of_the_Magi_in_the_Snow,_1563.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Adoration_of_the_Magi_in_the_Snow,_1563.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-nest-robber",
+   "title": "Il contadino e il ladro di nidi",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1568",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di genere / paesaggio",
+   "museum": "Kunsthistorisches Museum, Vienna",
+   "tags": [
+    "gigapixel",
+    "bosco",
+    "paesaggio"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 36697,
+   "height": 30889,
+   "bytes": 173665157,
+   "source": {
+    "type": "commons",
+    "file": "The_Peasant_and_the_Nest_Robber.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Peasant_and_the_Nest_Robber.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-conversion-paul",
+   "title": "La conversione di san Paolo",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1567",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di genere / paesaggio",
+   "museum": "Kunsthistorisches Museum, Vienna",
+   "tags": [
+    "gigapixel",
+    "montagne",
+    "soldati",
+    "cavalli"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 39255,
+   "height": 27482,
+   "bytes": 228998512,
+   "source": {
+    "type": "commons",
+    "file": "Conversion_of_Paul_(Bruegel).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Conversion_of_Paul_(Bruegel).jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-calvary",
+   "title": "La salita al Calvario",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1564",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di genere / paesaggio",
+   "museum": "Kunsthistorisches Museum, Vienna",
+   "tags": [
+    "gigapixel",
+    "folla",
+    "paesaggio"
+   ],
+   "kidSafe": false,
+   "warning": "Soggetto religioso con scene di supplizio sullo sfondo",
+   "width": 44547,
+   "height": 32374,
+   "bytes": 296799436,
+   "source": {
+    "type": "commons",
+    "file": "The_Procession_to_Calvary_(Bruegel).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Procession_to_Calvary_(Bruegel).jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-dulle-griet",
+   "title": "Dulle Griet (Margherita la pazza)",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1563",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di genere / paesaggio",
+   "museum": "Museum Mayer van den Bergh, Anversa",
+   "tags": [
+    "gigapixel",
+    "fantastico",
+    "mostri"
+   ],
+   "kidSafe": false,
+   "warning": "Scena infernale, inquietante per i più piccoli",
+   "width": 46687,
+   "height": 33598,
+   "bytes": 441953812,
+   "source": {
+    "type": "commons",
+    "file": "Dull_Gret,_1563.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Dull_Gret,_1563.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-saul",
+   "title": "Il suicidio di Saul",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1562",
+   "style": "Rinascimento fiammingo",
+   "genre": "scena di genere / paesaggio",
+   "museum": "Kunsthistorisches Museum, Vienna",
+   "tags": [
+    "gigapixel",
+    "battaglia",
+    "soldati",
+    "montagne"
+   ],
+   "kidSafe": false,
+   "warning": "Battaglia, tema cupo",
+   "width": 46391,
+   "height": 28015,
+   "bytes": 428762726,
+   "source": {
+    "type": "commons",
+    "file": "The_Suicide_of_Saul,_1562.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Suicide_of_Saul,_1562.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bosch-garden",
+   "title": "Il Giardino delle delizie",
+   "titleOrig": null,
+   "author": "Hieronymus Bosch",
+   "year": null,
+   "style": "Primitivi fiamminghi",
+   "genre": "fantastico / religioso",
+   "museum": "Museo del Prado, Madrid",
+   "tags": [
+    "gigapixel",
+    "fantastico"
+   ],
+   "kidSafe": false,
+   "warning": "Scene fantastiche/infernali con nudità e mostri: esplorare prima di mostrarlo ai bambini",
+   "width": 30000,
+   "height": 16927,
+   "bytes": 249110200,
+   "source": {
+    "type": "commons",
+    "file": "The_Garden_of_Earthly_Delights,_ca._1480-1505.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Garden_of_Earthly_Delights,_ca._1480-1505.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bosch-temptation-lisbon",
+   "title": "Le tentazioni di sant'Antonio",
+   "titleOrig": null,
+   "author": "Hieronymus Bosch",
+   "year": null,
+   "style": "Primitivi fiamminghi",
+   "genre": "fantastico / religioso",
+   "museum": "Museu Nacional de Arte Antiga, Lisbona",
+   "tags": [
+    "gigapixel",
+    "fantastico"
+   ],
+   "kidSafe": false,
+   "warning": "Scene fantastiche/infernali con nudità e mostri: esplorare prima di mostrarlo ai bambini",
+   "width": 30000,
+   "height": 17557,
+   "bytes": 215367024,
+   "source": {
+    "type": "commons",
+    "file": "The_Temptation_of_Saint_Anthony,_ca._1495-1515.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Temptation_of_Saint_Anthony,_ca._1495-1515.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bosch-haywain",
+   "title": "Il trittico del carro di fieno",
+   "titleOrig": null,
+   "author": "Hieronymus Bosch",
+   "year": null,
+   "style": "Primitivi fiamminghi",
+   "genre": "fantastico / religioso",
+   "museum": "Museo del Prado, Madrid",
+   "tags": [
+    "gigapixel",
+    "fantastico"
+   ],
+   "kidSafe": false,
+   "warning": "Scene fantastiche/infernali con nudità e mostri: esplorare prima di mostrarlo ai bambini",
+   "width": 30000,
+   "height": 21037,
+   "bytes": 221983539,
+   "source": {
+    "type": "commons",
+    "file": "The_Haywain_Triptych,_ca._1516.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Haywain_Triptych,_ca._1516.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bosch-last-judgment-vienna",
+   "title": "Il Giudizio universale",
+   "titleOrig": null,
+   "author": "Hieronymus Bosch",
+   "year": null,
+   "style": "Primitivi fiamminghi",
+   "genre": "fantastico / religioso",
+   "museum": "Akademie der bildenden Künste, Vienna",
+   "tags": [
+    "gigapixel",
+    "fantastico"
+   ],
+   "kidSafe": false,
+   "warning": "Scene fantastiche/infernali con nudità e mostri: esplorare prima di mostrarlo ai bambini",
+   "width": 30000,
+   "height": 25277,
+   "bytes": 244506951,
+   "source": {
+    "type": "commons",
+    "file": "The_Last_Judgment,_ca._1486.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Last_Judgment,_ca._1486.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bosch-job",
+   "title": "Trittico di Giobbe",
+   "titleOrig": null,
+   "author": "Hieronymus Bosch",
+   "year": null,
+   "style": "Primitivi fiamminghi",
+   "genre": "fantastico / religioso",
+   "museum": "Groeningemuseum, Bruges",
+   "tags": [
+    "gigapixel",
+    "fantastico"
+   ],
+   "kidSafe": false,
+   "warning": "Scene fantastiche/infernali con nudità e mostri: esplorare prima di mostrarlo ai bambini",
+   "width": 30000,
+   "height": 22016,
+   "bytes": 243657605,
+   "source": {
+    "type": "commons",
+    "file": "Job_Triptych,_ca._1500-1524.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Job_Triptych,_ca._1500-1524.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bosch-pedlar",
+   "title": "Il venditore ambulante",
+   "titleOrig": null,
+   "author": "Hieronymus Bosch",
+   "year": null,
+   "style": "Primitivi fiamminghi",
+   "genre": "fantastico / religioso",
+   "museum": "Museum Boijmans Van Beuningen, Rotterdam",
+   "tags": [
+    "gigapixel",
+    "fantastico"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 17222,
+   "height": 17444,
+   "bytes": 77542195,
+   "source": {
+    "type": "commons",
+    "file": "The_Pedlar,_ca._1500.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Pedlar,_ca._1500.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bosch-conjurer",
+   "title": "Il prestigiatore",
+   "titleOrig": null,
+   "author": "Hieronymus Bosch",
+   "year": null,
+   "style": "Primitivi fiamminghi",
+   "genre": "fantastico / religioso",
+   "museum": null,
+   "tags": [
+    "gigapixel",
+    "fantastico"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 29280,
+   "height": 23970,
+   "bytes": 101439242,
+   "source": {
+    "type": "commons",
+    "file": "The_Conjurer,_ca._1502.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Conjurer,_ca._1502.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bosch-ship-fools",
+   "title": "La nave dei folli",
+   "titleOrig": null,
+   "author": "Hieronymus Bosch",
+   "year": null,
+   "style": "Primitivi fiamminghi",
+   "genre": "fantastico / religioso",
+   "museum": "Louvre, Parigi",
+   "tags": [
+    "gigapixel",
+    "fantastico"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 16112,
+   "height": 30000,
+   "bytes": 108695388,
+   "source": {
+    "type": "commons",
+    "file": "Ship_of_Fools,_ca._1490-1500.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Ship_of_Fools,_ca._1490-1500.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bosch-cure-folly",
+   "title": "La cura della follia",
+   "titleOrig": null,
+   "author": "Hieronymus Bosch",
+   "year": null,
+   "style": "Primitivi fiamminghi",
+   "genre": "fantastico / religioso",
+   "museum": "Museo del Prado, Madrid",
+   "tags": [
+    "gigapixel",
+    "fantastico"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 15264,
+   "height": 21424,
+   "bytes": 58059653,
+   "source": {
+    "type": "commons",
+    "file": "The_Cure_of_Folly,_ca._1501-05.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Cure_of_Folly,_ca._1501-05.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bosch-st-christopher",
+   "title": "San Cristoforo con Gesù Bambino",
+   "titleOrig": null,
+   "author": "Hieronymus Bosch",
+   "year": null,
+   "style": "Primitivi fiamminghi",
+   "genre": "fantastico / religioso",
+   "museum": "Museum Boijmans Van Beuningen, Rotterdam",
+   "tags": [
+    "gigapixel",
+    "fantastico"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 18617,
+   "height": 30000,
+   "bytes": 216153456,
+   "source": {
+    "type": "commons",
+    "file": "Saint_Christopher_Carrying_the_Christ_Child,_ca._1490-1500.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Saint_Christopher_Carrying_the_Christ_Child,_ca._1490-1500.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "wd-q28778382",
+   "title": "Galleria del Louvre",
+   "titleOrig": null,
+   "author": "Samuel Morse",
+   "year": null,
+   "style": null,
+   "genre": null,
+   "museum": null,
+   "tags": [
+    "quadri nel quadro",
+    "galleria",
+    "louvre",
+    "wikidata regioni"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 0,
+   "height": 0,
+   "bytes": 0,
+   "source": {
+    "type": "wikidata",
+    "qid": "Q28778382"
+   },
+   "qid": "Q28778382",
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://www.wikidata.org/wiki/Q28778382",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "wd-q7840471",
+   "title": "La Tribuna degli Uffizi",
+   "titleOrig": null,
+   "author": "Johann Zoffany",
+   "year": null,
+   "style": null,
+   "genre": null,
+   "museum": null,
+   "tags": [
+    "quadri nel quadro",
+    "galleria",
+    "uffizi",
+    "firenze",
+    "wikidata regioni"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 0,
+   "height": 0,
+   "bytes": 0,
+   "source": {
+    "type": "wikidata",
+    "qid": "Q7840471"
+   },
+   "qid": "Q7840471",
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://www.wikidata.org/wiki/Q7840471",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "wd-q14619165",
+   "title": "Galleria di vedute della Roma antica",
+   "titleOrig": null,
+   "author": "Giovanni Paolo Panini",
+   "year": null,
+   "style": null,
+   "genre": null,
+   "museum": null,
+   "tags": [
+    "quadri nel quadro",
+    "roma",
+    "rovine",
+    "wikidata regioni"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 0,
+   "height": 0,
+   "bytes": 0,
+   "source": {
+    "type": "wikidata",
+    "qid": "Q14619165"
+   },
+   "qid": "Q14619165",
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://www.wikidata.org/wiki/Q14619165",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "wd-q18611883",
+   "title": "Galleria di vedute della Roma moderna",
+   "titleOrig": null,
+   "author": "Giovanni Paolo Panini",
+   "year": null,
+   "style": null,
+   "genre": null,
+   "museum": null,
+   "tags": [
+    "quadri nel quadro",
+    "roma",
+    "wikidata regioni"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 0,
+   "height": 0,
+   "bytes": 0,
+   "source": {
+    "type": "wikidata",
+    "qid": "Q18611883"
+   },
+   "qid": "Q18611883",
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://www.wikidata.org/wiki/Q18611883",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "wd-q19939091",
+   "title": "Veduta del Salon Carré al Louvre",
+   "titleOrig": null,
+   "author": "Alexandre Jean-Baptiste Brun",
+   "year": null,
+   "style": null,
+   "genre": null,
+   "museum": null,
+   "tags": [
+    "quadri nel quadro",
+    "louvre",
+    "wikidata regioni"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 0,
+   "height": 0,
+   "bytes": 0,
+   "source": {
+    "type": "wikidata",
+    "qid": "Q19939091"
+   },
+   "qid": "Q19939091",
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://www.wikidata.org/wiki/Q19939091",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "wd-q132172839",
+   "title": "Il Salon Carré del Louvre, verso il 1870",
+   "titleOrig": null,
+   "author": null,
+   "year": null,
+   "style": null,
+   "genre": null,
+   "museum": null,
+   "tags": [
+    "quadri nel quadro",
+    "louvre",
+    "wikidata regioni"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 0,
+   "height": 0,
+   "bytes": 0,
+   "source": {
+    "type": "wikidata",
+    "qid": "Q132172839"
+   },
+   "qid": "Q132172839",
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://www.wikidata.org/wiki/Q132172839",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "wd-q17337965",
+   "title": "La galleria d'arte di Jan Gildemeester",
+   "titleOrig": null,
+   "author": "Adriaan de Lelie",
+   "year": null,
+   "style": null,
+   "genre": null,
+   "museum": null,
+   "tags": [
+    "quadri nel quadro",
+    "amsterdam",
+    "wikidata regioni"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 0,
+   "height": 0,
+   "bytes": 0,
+   "source": {
+    "type": "wikidata",
+    "qid": "Q17337965"
+   },
+   "qid": "Q17337965",
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://www.wikidata.org/wiki/Q17337965",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "wd-q19960951",
+   "title": "La galleria di Cornelis van der Geest",
+   "titleOrig": null,
+   "author": "Willem van Haecht",
+   "year": null,
+   "style": null,
+   "genre": null,
+   "museum": null,
+   "tags": [
+    "quadri nel quadro",
+    "anversa",
+    "wikidata regioni"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 0,
+   "height": 0,
+   "bytes": 0,
+   "source": {
+    "type": "wikidata",
+    "qid": "Q19960951"
+   },
+   "qid": "Q19960951",
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://www.wikidata.org/wiki/Q19960951",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "wd-q17484654",
+   "title": "Il museo di Rennes verso il 1900",
+   "titleOrig": null,
+   "author": null,
+   "year": null,
+   "style": null,
+   "genre": null,
+   "museum": null,
+   "tags": [
+    "quadri nel quadro",
+    "museo",
+    "wikidata regioni"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 0,
+   "height": 0,
+   "bytes": 0,
+   "source": {
+    "type": "wikidata",
+    "qid": "Q17484654"
+   },
+   "qid": "Q17484654",
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://www.wikidata.org/wiki/Q17484654",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "wd-q1231009",
+   "title": "L'incoronazione di Napoleone",
+   "titleOrig": null,
+   "author": "Jacques-Louis David",
+   "year": null,
+   "style": null,
+   "genre": null,
+   "museum": null,
+   "tags": [
+    "folla",
+    "personaggi storici",
+    "louvre",
+    "wikidata regioni"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 0,
+   "height": 0,
+   "bytes": 0,
+   "source": {
+    "type": "wikidata",
+    "qid": "Q1231009"
+   },
+   "qid": "Q1231009",
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://www.wikidata.org/wiki/Q1231009",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "wd-q3202169",
+   "title": "L'apoteosi di Omero",
+   "titleOrig": null,
+   "author": "Jean-Auguste-Dominique Ingres",
+   "year": null,
+   "style": null,
+   "genre": null,
+   "museum": null,
+   "tags": [
+    "personaggi storici",
+    "louvre",
+    "wikidata regioni"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 0,
+   "height": 0,
+   "bytes": 0,
+   "source": {
+    "type": "wikidata",
+    "qid": "Q3202169"
+   },
+   "qid": "Q3202169",
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://www.wikidata.org/wiki/Q3202169",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "rijks-pjezo",
+   "title": "Rijksmuseum — esempio IIIF Micrio (probabilmente La ronda di notte)",
+   "titleOrig": null,
+   "author": "Rembrandt van Rijn (da verificare)",
+   "year": "1642",
+   "style": "Secolo d'oro olandese",
+   "genre": "ritratto di gruppo",
+   "museum": "Rijksmuseum, Amsterdam",
+   "tags": [
+    "iiif",
+    "rijksmuseum"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 14645,
+   "height": 12158,
+   "bytes": 0,
+   "source": {
+    "type": "iiif",
+    "info": "https://iiif.micr.io/PJEZO/info.json"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": null,
+   "targets": [],
+   "portals": []
+  }
+ ]
+}

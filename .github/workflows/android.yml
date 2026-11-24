@@ -1,0 +1,77 @@
+name: Android build & release
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: android-actions/setup-android@v3
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.10.2"
+
+      - name: Versione
+        run: |
+          if [[ "$GITHUB_REF" == refs/tags/v* ]]; then
+            echo "FM_VERSION_NAME=${GITHUB_REF_NAME#v}" >> "$GITHUB_ENV"
+          else
+            echo "FM_VERSION_NAME=0.1.0-dev.${GITHUB_RUN_NUMBER}" >> "$GITHUB_ENV"
+          fi
+          echo "FM_VERSION_CODE=${GITHUB_RUN_NUMBER}" >> "$GITHUB_ENV"
+
+      - name: Chiave di firma (se presente nei segreti)
+        env:
+          KS_B64: ${{ secrets.FM_KEYSTORE_BASE64 }}
+          KS_PASS: ${{ secrets.FM_KEYSTORE_PASSWORD }}
+        run: |
+          if [ -n "$KS_B64" ]; then
+            echo "$KS_B64" | base64 -d > "$RUNNER_TEMP/release.p12"
+            echo "FM_KEYSTORE=$RUNNER_TEMP/release.p12" >> "$GITHUB_ENV"
+            echo "FM_KEYSTORE_PASSWORD=$KS_PASS" >> "$GITHUB_ENV"
+          else
+            echo "::warning::Nessun FM_KEYSTORE_BASE64: APK firmato con chiave di debug (gli aggiornamenti richiederanno disinstallazione)"
+          fi
+
+      - name: Build
+        run: gradle --no-daemon :app:assembleRelease :app:lintRelease --stacktrace
+
+      - name: Rinomina APK
+        run: |
+          mkdir -p out
+          cp app/build/outputs/apk/release/app-release.apk "out/FireMuseum-${FM_VERSION_NAME}.apk"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FireMuseum-${{ env.FM_VERSION_NAME }}
+          path: out/*.apk
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lint-report
+          path: app/build/reports/lint-results-release.html
+          if-no-files-found: ignore
+
+      - name: Release GitHub
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: out/*.apk
+          generate_release_notes: true

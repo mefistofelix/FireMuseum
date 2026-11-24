@@ -1,0 +1,25 @@
+# build
+.gradle/
+build/
+app/build/
+local.properties
+*.iml
+.idea/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# firma: MAI nel repo
+signing/
+*.jks
+*.keystore
+*.p12
+
+# lavoro degli strumenti PC (originali enormi, piramidi, cataloghi generati)
+work/
+catalog/
+
+# appunti personali di ricerca (non pubblicare)
+catalogo_immagini_gioco_ricerca_dettagli_*.md
+
+.claude/
