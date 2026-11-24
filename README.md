@@ -43,9 +43,31 @@ Le velocità sono in pixel *dello schermo*, quindi la sensazione è la stessa a 
 | Sorgente | Come | Dettaglio massimo |
 |---|---|---|
 | **Piramide `.zip` sul disco** (`pyramids/<id>.zip`) | preparata sul PC con `tools/make_pyramids.py` (libvips) | piena risoluzione, il più veloce |
+| **Archivio MEGA** (predefinito) | piramidi già pronte di tutto il catalogo, lette un tassello alla volta dal link pubblico della cartella | piena risoluzione, nessun limite Wikimedia |
 | **Piramide in LAN** | `tools/make_pyramids.py --serve` + *Impostazioni → Server LAN* | piena risoluzione |
 | **IIIF** (Rijksmuseum/Micrio, National Gallery of Art, …) | il server dei musei taglia i tasselli | piena risoluzione |
 | **Wikimedia Commons** | anteprime standard da 1280 e 3840 px, poi l'originale scaricato su richiesta (≡ → *Scarica l'originale*) | 3840 px; piena con l'originale |
+
+### Archivio MEGA
+
+Le sorgenti originali danno problemi di accesso: Wikimedia risponde 429 a chi scarica originali, LoC e AIC bloccano i client automatici. Per questo tutto il catalogo è preparato una volta sul PC e pubblicato in una cartella MEGA con link pubblico fisso, senza password:
+
+- `index.json`: il catalogo completo. Per ogni opera indica da dove leggerla: `host: "mega"` con la piramide (`mirror`), oppure `host: "origin"` con la sorgente originale. Su MEGA vanno solo le opere Commons più larghe di 3840 px, che senza l'originale non arriverebbero a piena risoluzione. IIIF dei musei e immagini piccole restano sulla sorgente originale. Il campo `host` nel catalogo forza la scelta, e se MEGA non risponde l'app ripiega sull'originale;
+- `thumbs.zip`: le anteprime da 400 px;
+- `<id>.zip`: la piramide Deep Zoom di ogni opera (libvips `dzsave`, zip non compresso).
+
+L'app legge la cartella senza account. MEGA cifra i file in AES-CTR, quindi l'app può decifrare a partire da qualsiasi posizione e chiede solo gli intervalli che servono: la directory dello zip e poi un tassello alla volta. Indice, anteprime e tasselli già visti restano sul disco USB. Il link si cambia da *Impostazioni → Archivio MEGA*; con il campo vuoto l'archivio è spento.
+
+```
+# sul PC: scarica gli originali (uno alla volta), crea piramidi e anteprime, poi carica
+uv run --python 3.13 --with "pyvips[binary]" --with cryptography tools/mega_pack.py build
+uv run --python 3.13 --with cryptography tools/mega_pack.py upload
+uv run --python 3.13 --with cryptography tools/mega_pack.py check
+```
+
+`upload` usa rclone con il remote `mega:` (configurazione di RetroFire, oppure `FM_RCLONE` e `FM_RCLONE_CONFIG`) e carica in `mega:FireMuseum/archivio`. Il link della cartella va creato una sola volta dall'app MEGA (*Condividi → Copia link*) e salvato in `tools/mega_link.txt`. Dopo ogni caricamento lo script aggiunge ai file la chiave della condivisione, che rclone non mette, e rilegge tutto dal link come fa il Fire TV.
+
+### Piramidi sul PC
 
 Per i file giga di Commons (Bruegel 40.000 px, Bosch 30.000 px) conviene la piramide preparata sul PC. Il Fire TV ha 1,7 GB di RAM e non decodifica bene a regioni i JPEG *progressive* o da 400 MB. Inoltre Wikimedia limita (HTTP 429) chi scarica molti originali in fretta.
 

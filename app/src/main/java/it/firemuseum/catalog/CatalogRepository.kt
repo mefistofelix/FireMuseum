@@ -43,6 +43,8 @@ class CatalogRepository(private val app: App) {
         // catalog.json (scelte curate) poi catalog_*.json (generati da tools/build_catalog.py)
         (app.assets.list("")?.filter { it.startsWith("catalog") && it.endsWith(".json") }?.sorted() ?: listOf("catalog.json"))
             .forEach { name -> ingest(app.assets.open(name).bufferedReader().readText(), "assets/$name") }
+        // archivio MEGA: catalogo completo con piramidi pronte (sostituisce le voci con lo stesso id)
+        runCatching { app.mega.indexText() }.getOrNull()?.let { ingest(it, "mega/index.json") }
         app.storage.dir("catalog")?.listFiles { f -> f.name.endsWith(".json") }?.sortedBy { it.name }?.forEach {
             ingest(it.readText(), it.name)
         }

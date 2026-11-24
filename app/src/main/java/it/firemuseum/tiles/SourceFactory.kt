@@ -12,6 +12,7 @@ import java.io.File
  * Crea (e tiene aperte le ultime) sorgenti di tasselli. Priorità per ogni opera:
  *   1. piramide preparata sul PC e copiata sul disco esterno:  <volume>/pyramids/<id>.zip  o  <id>/<id>.dzi
  *   2. piramide servita in LAN dal PC:                          <server>/pyramids/<id>.dzi
+ *   2b. archivio MEGA (tools/mega_pack.py), letto a intervalli dal link pubblico;
  *   3. sorgente dichiarata nel catalogo (IIIF, Commons a strati, DZI remoto, file locale).
  */
 class SourceFactory(private val app: App) {
@@ -45,6 +46,10 @@ class SourceFactory(private val app: App) {
             File(d, "${a.id}.zip").takeIf { it.exists() }?.let { f -> DziSource.openZip(f)?.let { return it } }
             File(d, "${a.id}/${a.id}.dzi").takeIf { it.exists() }?.let { f -> DziSource.openDir(f)?.let { return it } }
             File(d, "${a.id}.dzi").takeIf { it.exists() }?.let { f -> DziSource.openDir(f)?.let { return it } }
+        }
+        // opera per opera: archivio MEGA se l'indice lo indica, altrimenti (o se MEGA non risponde) la sorgente originale
+        if (a.mirror != null && a.host != "origin") {
+            runCatching { app.mega.source(a) }.onFailure { Log.w(TAG, "mega ${a.id}: ${it.message}") }.getOrNull()?.let { return it }
         }
         val lan = app.settings.lanServer.trim()
         if (lan.isNotEmpty() && a.id !in lanMisses) {

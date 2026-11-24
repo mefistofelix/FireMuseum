@@ -23,3 +23,4 @@ captures/
 catalogo_immagini_gioco_ricerca_dettagli_*.md
 
 .claude/
+__pycache__/

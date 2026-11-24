@@ -6,6 +6,14 @@ import android.content.Context
 class Settings(ctx: Context) {
     private val p = ctx.getSharedPreferences("settings", Context.MODE_PRIVATE)
 
+    /** Link fisso dell'archivio MEGA scritto da tools/mega_pack.py in assets/mega_link.txt. */
+    private val defaultMega: String = runCatching { ctx.assets.open("mega_link.txt").bufferedReader().readText().trim() }.getOrDefault("")
+
+    /** Link pubblico della cartella MEGA con indice e piramidi (vuoto = non usarlo). */
+    var megaLink: String
+        get() = p.getString("mega", null) ?: defaultMega
+        set(v) = p.edit().putString("mega", v).apply()
+
     /** Budget massimo della cache tasselli sul disco esterno (byte). 0 = automatico (60% dello spazio libero). */
     var tileCacheMaxBytes: Long
         get() = p.getLong("tileCacheMax", 0L)

@@ -11,6 +11,8 @@ import okhttp3.Callback
 import okhttp3.ConnectionPool
 import okhttp3.Dispatcher
 import okhttp3.FormBody
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.RequestBody.Companion.toRequestBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.Response
@@ -107,6 +109,31 @@ class Net(private val settings: Settings) {
             if (r.code == 429) { noteBackoff(host, r); return null }
             if (!r.isSuccessful) return null
             return withContext(Dispatchers.IO) { JSONObject(r.body!!.string()) }
+        }
+    }
+
+    /** POST con corpo JSON (API di MEGA). Restituisce il testo della risposta. */
+    suspend fun postJson(url: String, body: String): String {
+        val req = Request.Builder().url(url)
+            .post(body.toRequestBody("application/json".toMediaType())).build()
+        val host = req.url.host
+        var attempt = 0
+        while (true) {
+            respectBackoff(host)
+            try {
+                client.newCall(req).await().use { r ->
+                    if (r.isSuccessful) return withContext(Dispatchers.IO) { r.body!!.string() }
+                    if (r.code == 429 || r.code == 503) noteBackoff(host, r)
+                    else if (r.code < 500) throw HttpException(r.code, "HTTP ${r.code} $host")
+                }
+            } catch (e: HttpException) {
+                throw e
+            } catch (e: IOException) {
+                if (attempt >= 3) throw e
+            }
+            attempt++
+            if (attempt > 3) throw IOException("giving up $host")
+            delay(500L * attempt * attempt)
         }
     }
 

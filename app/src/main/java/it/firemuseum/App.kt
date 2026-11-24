@@ -8,6 +8,7 @@ import it.firemuseum.cache.MemoryTileCache
 import it.firemuseum.cache.SegmentCache
 import it.firemuseum.cache.SpaceGovernor
 import it.firemuseum.catalog.CatalogRepository
+import it.firemuseum.catalog.MegaArchive
 import it.firemuseum.catalog.Wikidata
 import it.firemuseum.net.Net
 import it.firemuseum.storage.StorageManager
@@ -38,6 +39,7 @@ class App : Application() {
     lateinit var sources: SourceFactory; private set
     lateinit var catalog: CatalogRepository; private set
     lateinit var wikidata: Wikidata; private set
+    lateinit var mega: MegaArchive; private set
 
     override fun onCreate() {
         super.onCreate()
@@ -63,6 +65,7 @@ class App : Application() {
         loader = TileLoader(this, appScope)
         sources = SourceFactory(this)
         wikidata = Wikidata(this)
+        mega = MegaArchive(this)
         catalog = CatalogRepository(this)
     }
 

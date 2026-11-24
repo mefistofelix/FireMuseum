@@ -10,13 +10,15 @@ App Android TV / **Fire TV** in Kotlin, a View classiche (niente Compose, niente
 ui/        MainActivity (galleria, ricerca, filtri, impostazioni) · ViewerActivity (overlay, menu, tasti)
 viewer/    DeepZoomView (rendering a tasselli, fisica input, portali) · Camera/Flight (volo van Wijk) · Slideshow
 game/      Game (cerca e trova: mirino, indizi, punteggio)
-tiles/     TileSource (griglia uniforme 2^k) · IiifSource · DziSource (http/dir/zip) · LocalRegionSource
+tiles/     TileSource (griglia uniforme 2^k) · IiifSource · DziSource (http/dir/zip/zip remoto) · RangeZip · LocalRegionSource
            CommonsSource (strati 1280/3840/originale) · SourceFactory (priorità piramidi) · TileLoader (coda a priorità)
 cache/     SegmentCache (tasselli log-structured su USB) · BlobStore (file grandi) · SpaceGovernor (pulizia) · MemoryTileCache
 storage/   StorageManager (sceglie il volume esterno, ascolta mount/unmount)
-catalog/   CatalogRepository (assets + disco + obiettivi utente) · Wikidata (metadati, regioni P2677, finestre)
+catalog/   CatalogRepository (assets + MEGA + disco + obiettivi utente) · MegaArchive · Wikidata (metadati, regioni P2677, finestre)
+net/       Net (rete educata) · MegaFolder (cartella pubblica MEGA: elenco, letture a intervalli AES-CTR)
 model/     Artwork, Source, Target, Portal, NRect (coordinate normalizzate 0..1)
-tools/     script Python per il PC (solo stdlib): make_pyramids.py, build_catalog.py, seed/make_seed.py
+tools/     script Python per il PC: make_pyramids.py, build_catalog.py, seed/make_seed.py (solo stdlib),
+           mega_pack.py (archivio MEGA: pyvips + cryptography via uv)
 ```
 
 ## Regole da non violare
@@ -50,13 +52,14 @@ tools/     script Python per il PC (solo stdlib): make_pyramids.py, build_catalo
 } ] }
 ```
 
-I tipi di `source` sono `commons{file}`, `iiif{info}`, `dzi{url}` (http oppure un percorso relativo al volume, `.dzi` o `.zip`), `local{path}` e `wikidata{qid}` (risolto tramite P18). Il campo `portals[].to` accetta un id di catalogo, `commons:…`, `wikidata:Q…` o `iiif:…`. I file caricati dopo sovrascrivono quelli precedenti con lo stesso `id`.
+I tipi di `source` sono `commons{file}`, `iiif{info}`, `dzi{url}` (http oppure un percorso relativo al volume, `.dzi` o `.zip`), `local{path}` e `wikidata{qid}` (risolto tramite P18). Il campo `portals[].to` accetta un id di catalogo, `commons:…`, `wikidata:Q…` o `iiif:…`. I file caricati dopo sovrascrivono quelli precedenti con lo stesso `id`. L'`index.json` dell'archivio MEGA usa lo stesso formato e aggiunge `host` (`mega` oppure `origin`), `mirror` (nome dello zip nella cartella) e `mirrorBytes`. Ogni voce tiene sempre anche la `source` originale: l'app legge da MEGA solo se `host` è `mega` e ripiega sull'originale se MEGA non risponde. Su MEGA vanno solo le opere Commons più larghe di 3840 px; il campo `host` nel catalogo forza la scelta. Si carica dopo gli assets e prima dei cataloghi sul disco.
 
 ## Build e CI
 
 - Gradle 8.10.2, AGP 8.7.3, Kotlin 2.0.21, JDK 17, `minSdk 25` (Fire OS 6+), `targetSdk 34`.
 - Nel repo non c'è il wrapper jar: la CI usa `gradle/actions/setup-gradle` con una versione fissata. In locale usa Android Studio.
 - `.github/workflows/android.yml`: build + lint a ogni push e PR. Sui tag `v*` crea la release con l'APK. La firma arriva dai segreti `FM_KEYSTORE_BASE64` e `FM_KEYSTORE_PASSWORD` (PKCS12, alias `firemuseum`). Senza segreti si usa la chiave di debug.
+- Archivio MEGA: `tools/mega_pack.py build|upload|check` (vedi README). Il link fisso sta in `tools/mega_link.txt` e in `app/src/main/assets/mega_link.txt`; non ricrearlo, perché le app installate usano quello. Ordine delle sorgenti in `SourceFactory`: piramide su USB, archivio MEGA (`mirror`), server LAN, sorgente del catalogo. Su MEGA non si mettono password né file personali: il link è pubblico.
 - Rigenera il catalogo di serie con `python tools/seed/make_seed.py` e quello Wikidata con `python tools/build_catalog.py --wikidata-regions 10 --out app/src/main/assets/catalog_wikidata.json`.
 
 ## Dispositivi di riferimento

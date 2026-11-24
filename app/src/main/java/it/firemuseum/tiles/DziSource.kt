@@ -79,6 +79,16 @@ class DziSource private constructor(
                 local = true, closer = {}, label = "Deep Zoom · disco")
         }
 
+        /** Piramide zip remota letta a intervalli (archivio MEGA): i tasselli finiscono nella cache su USB. */
+        suspend fun openRangeZip(id: String, zip: RangeZip, label: String): DziSource? {
+            val dziName = zip.entries.keys.firstOrNull { it.endsWith(".dzi") } ?: return null
+            val xml = zip.bytes(dziName)?.toString(Charsets.UTF_8) ?: return null
+            val p = parse(xml) ?: return null
+            val prefix = dziName.removeSuffix(".dzi") + "_files/"
+            return DziSource(id, p[0], p[1], p[2], p[3], fmt(xml), { rel -> zip.bytes(prefix + rel) },
+                local = false, closer = {}, label = label)
+        }
+
         /** .zip prodotto da `vips dzsave img out.zip` (compressione 0 = accesso casuale veloce). */
         suspend fun openZip(zip: File): DziSource? = withContext(Dispatchers.IO) {
             val zf = runCatching { ZipFile(zip) }.getOrNull() ?: return@withContext null

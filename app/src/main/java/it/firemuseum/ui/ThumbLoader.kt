@@ -43,7 +43,7 @@ class ThumbLoader(private val scope: CoroutineScope) {
         return scope.launch {
             val bmp = permits.withPermit {
                 withContext(Dispatchers.IO) {
-                    val bytes = app.tiles.get(key) ?: runCatching {
+                    val bytes = app.tiles.get(key) ?: runCatching { app.mega.thumb(a) }.getOrNull() ?: runCatching {
                         url(a)?.let { app.net.bytes(it) }?.also { app.tiles.put(key, it) }
                     }.getOrNull()
                     bytes?.let {

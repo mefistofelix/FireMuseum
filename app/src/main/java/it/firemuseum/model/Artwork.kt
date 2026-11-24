@@ -104,6 +104,11 @@ data class Artwork(
     val targets: MutableList<Target> = mutableListOf(),
     val portals: MutableList<Portal> = mutableListOf(),
     var enriched: Boolean = false,
+    /** Nome della piramide zip nell'archivio MEGA (tools/mega_pack.py), se c'è. */
+    var mirror: String? = null,
+    /** Da dove leggere l'opera: "mega" (archivio, con [mirror]) oppure "origin" (sorgente originale). */
+    var host: String? = null,
+    var mirrorBytes: Long = 0,
 ) {
     val megapixels: Double get() = width.toDouble() * height / 1e6
     val maxSide: Int get() = maxOf(width, height)
@@ -126,7 +131,7 @@ data class Artwork(
         putOpt("year", year); putOpt("style", style); putOpt("genre", genre); putOpt("museum", museum)
         putOpt("description", description); putOpt("license", license); put("tags", JSONArray(tags))
         put("kidSafe", kidSafe); putOpt("warning", warning); put("width", width); put("height", height)
-        put("bytes", bytes); put("source", source.toJson()); putOpt("qid", qid); putOpt("pageUrl", pageUrl)
+        put("bytes", bytes); put("source", source.toJson()); putOpt("mirror", mirror); putOpt("host", host); if (mirrorBytes > 0) put("mirrorBytes", mirrorBytes); putOpt("qid", qid); putOpt("pageUrl", pageUrl)
         put("targets", JSONArray(targets.filter { it.origin == "catalog" }.map { t ->
             JSONObject().put("label", t.label).put("x", t.rect.x).put("y", t.rect.y).put("w", t.rect.w)
                 .put("h", t.rect.h).putOpt("hint", t.hint).put("difficulty", t.difficulty)
@@ -149,6 +154,7 @@ data class Artwork(
                 kidSafe = o.optBoolean("kidSafe", true), warning = s("warning"),
                 width = o.optInt("width"), height = o.optInt("height"), bytes = o.optLong("bytes"),
                 source = src, qid = s("qid"), pageUrl = s("pageUrl"),
+                mirror = s("mirror"), host = s("host"), mirrorBytes = o.optLong("mirrorBytes"),
             )
             o.optJSONArray("targets")?.let { arr ->
                 for (i in 0 until arr.length()) {

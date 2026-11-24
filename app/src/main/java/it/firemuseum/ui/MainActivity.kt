@@ -189,6 +189,7 @@ class MainActivity : AppCompatActivity() {
             "Cache interna se manca il disco: ${if (s.allowInternalFallback) "sì (${s.internalFallbackBytes shr 20} MB)" else "no"}",
             "Server LAN piramidi: ${s.lanServer.ifBlank { "nessuno" }}",
             "User-Agent / contatto per Wikimedia",
+            "Archivio MEGA: ${if (s.megaLink.isBlank()) "spento" else app.mega.describe()}",
             "Esporta i miei obiettivi",
             "Svuota cache tasselli",
             "Stato archivio",
@@ -202,9 +203,10 @@ class MainActivity : AppCompatActivity() {
                 4 -> { s.allowInternalFallback = !s.allowInternalFallback; app.storage.refresh(); settingsDialog() }
                 5 -> textDialog("Server LAN (es. http://192.168.1.10:8000/)", s.lanServer) { s.lanServer = it }
                 6 -> textDialog("User-Agent (metti un contatto tuo)", s.userAgent) { s.userAgent = it.ifBlank { Settings.DEFAULT_UA } }
-                7 -> Toast.makeText(this, app.catalog.exportUserTargets()?.path ?: "Nessun disco", Toast.LENGTH_LONG).show()
-                8 -> { lifecycleScope.launch(kotlinx.coroutines.Dispatchers.IO) { app.tiles.clear() }; app.memory.clear() }
-                9 -> AlertDialog.Builder(this).setTitle("Archivio").setMessage(
+                7 -> textDialog("Link cartella MEGA (vuoto = spento)", s.megaLink) { s.megaLink = it; recreate() }
+                8 -> Toast.makeText(this, app.catalog.exportUserTargets()?.path ?: "Nessun disco", Toast.LENGTH_LONG).show()
+                9 -> { lifecycleScope.launch(kotlinx.coroutines.Dispatchers.IO) { app.tiles.clear() }; app.memory.clear() }
+                10 -> AlertDialog.Builder(this).setTitle("Archivio").setMessage(
                     "${app.storage.describe()}\n\nPercorso: ${app.storage.current?.root}\n" +
                         "Tasselli: ${app.tiles.totalBytes shr 20} MB in ${app.tiles.segmentCount} segmenti\n" +
                         "Originali/anteprime: ${app.blobs.totalBytes shr 20} MB\n\n" +
