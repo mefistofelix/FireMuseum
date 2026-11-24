@@ -66,8 +66,8 @@ I tipi di `source` sono `commons{file}`, `iiif{info}`, `dzi{url}` (http oppure u
 
 | Modello | Fire OS / API | RAM | Note |
 |---|---|---|---|
-| Fire TV Stick 4K Max (AFTKA) | 7.7 / 28 | 1,7 GB | ~1,9 GB liberi interni: non usarli |
-| Fire TV Stick 4K 2ª gen (AFTKRT) | 8.1 / 30 | 1,7 GB | disco USB visto come `/storage/XXXX-XXXX` |
+| Fire TV Stick 4K Max 1ª gen (AFTKA) | 7.7 / 28 | 1,7 GB | ~1,9 GB liberi interni: non usarli |
+| Fire TV Stick 4K Max 2ª gen (AFTKRT), la più potente | 8.1 / 30 | 1,7 GB | disco USB visto come `/storage/XXXX-XXXX`; dispositivo di prova |
 
 L'interfaccia è renderizzata a 1920×1080 anche sui modelli 4K.
 
