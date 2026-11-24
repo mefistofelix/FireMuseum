@@ -68,8 +68,8 @@ class App : Application() {
 
     override fun onTrimMemory(level: Int) {
         super.onTrimMemory(level)
-        if (level >= TRIM_MEMORY_RUNNING_LOW) memory.trimTo(0.4f)
-        if (level >= TRIM_MEMORY_RUNNING_CRITICAL) memory.trimTo(0.1f)
+        if (level >= android.content.ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW) memory.trimTo(0.4f)
+        if (level >= android.content.ComponentCallbacks2.TRIM_MEMORY_RUNNING_CRITICAL) memory.trimTo(0.1f)
     }
 
     companion object {

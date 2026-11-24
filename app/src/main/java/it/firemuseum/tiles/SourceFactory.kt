@@ -16,7 +16,7 @@ import java.io.File
  */
 class SourceFactory(private val app: App) {
 
-    private val open = object : LinkedHashMap<String, TileSource>(16, 0.75f, true) {
+    private val opened = object : LinkedHashMap<String, TileSource>(16, 0.75f, true) {
         override fun removeEldestEntry(e: MutableMap.MutableEntry<String, TileSource>): Boolean {
             if (size > 8) { runCatching { e.value.close() }; return true }
             return false
@@ -26,17 +26,17 @@ class SourceFactory(private val app: App) {
     private val mutex = Mutex()
 
     suspend fun get(a: Artwork): TileSource? = mutex.withLock {
-        open[a.id]?.let { return it }
+        opened[a.id]?.let { return it }
         val s = runCatching { create(a) }.onFailure { Log.w(TAG, "open ${a.id} failed", it) }.getOrNull()
         if (s != null) {
-            open[a.id] = s
+            opened[a.id] = s
             if (a.width <= 0) { a.width = s.width; a.height = s.height }
         }
         s
     }
 
     /** Dopo il download dell'originale o la copia di una piramide: forza la riapertura. */
-    suspend fun invalidate(id: String) = mutex.withLock { open.remove(id)?.close() }
+    suspend fun invalidate(id: String) = mutex.withLock { opened.remove(id)?.close(); Unit }
 
     fun pyramidDir(): File? = app.storage.dir("pyramids")
 

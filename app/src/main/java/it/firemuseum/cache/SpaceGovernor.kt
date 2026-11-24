@@ -49,7 +49,7 @@ class SpaceGovernor(
         return used + extra > budget || v.free - extra < storage.reserve(v)
     }
 
-    suspend fun trim(urgent: Boolean = false) = mutex.withLock {
+    suspend fun trim(urgent: Boolean = false): Unit = mutex.withLock {
         var steps = 0
         while (overBudget()) {
             val freed = if (tiles.segmentCount > MIN_SEGMENTS) tiles.dropOldestSegment() else 0L
@@ -65,6 +65,7 @@ class SpaceGovernor(
         }
         blobs.flush()
         if (steps > 0) Log.i(TAG, "trim done: $steps steps, usage=${usage() shr 20} MB")
+        Unit
     }
 
     /** Prova a fare spazio per un download di [bytes]. false se proprio non ci sta. */
