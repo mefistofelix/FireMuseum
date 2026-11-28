@@ -152,6 +152,7 @@ class ViewerActivity : AppCompatActivity(), DeepZoomView.Listener {
     private fun openArtwork(a: Artwork, then: (() -> Unit)? = null) {
         zoom.open(a) { ok ->
             if (!ok) { say("Impossibile aprire l'immagine (rete o file mancante)", 4000); return@open }
+            hudRefresh()                       // dopo l'inquadratura d'insieme: prima mostrava lo zoom dell'opera precedente
             then?.invoke()
         }
         lifecycleScope.launch {
