@@ -242,6 +242,48 @@ add('vernet-ponte-rotto', 'Il Ponte Rotto a Roma', 'Le_Ponte_Rotto_à_Rome_-_Cla
 add('turner-nantes', "Nantes dall'Île Feydeau", 'J._M._W._Turner_-_Nantes_from_the_Ile_Feydeau_(1830).jpg', 'J. M. W. Turner', '1830', 33245, 22133, 182.53,
     museum='Château des ducs de Bretagne, Nantes', style='Romanticismo', genre='veduta', tags=['città', 'fiume', 'mercato', 'barche'])
 
+# ---------------- Capolavori scelti (alla risoluzione più alta su Commons, anche sotto la soglia) ----------------
+add('leonardo-lady-ermine', "La dama con l'ermellino", 'Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg', 'Leonardo da Vinci', '1489-1491', 30894, 41545, 102.16,
+    museum='Museo Czartoryski, Cracovia', style='Rinascimento', genre='ritratto', tags=['ermellino', 'animali', 'Leonardo', 'capolavoro'])
+add('leonardo-mona-lisa', 'La Gioconda', 'Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg', 'Leonardo da Vinci', '1503-1519', 7479, 11146, 89.94,
+    museum='Louvre, Parigi', style='Rinascimento', genre='ritratto', tags=['Monna Lisa', 'paesaggio', 'Leonardo', 'capolavoro'])
+add('leonardo-last-supper', "L'Ultima Cena", 'La_última_cena_(1494-1498)_de_Leonardo_da_Vinci_-_Basilica_di_Santa_Maria_delle_Grazie_(Milán).jpg', 'Leonardo da Vinci', '1494-1498', 43047, 23404, 649.33,
+    museum='Santa Maria delle Grazie, Milano', style='Rinascimento', genre='affresco', tags=['affresco', 'Milano', 'Leonardo', 'capolavoro'])
+add('leonardo-st-anne', "Sant'Anna, la Madonna e il Bambino con l'agnellino", 'Leonardo_da_Vinci_-_Virgin_and_Child_with_St_Anne_C2RMF_retouched.jpg', 'Leonardo da Vinci', '1503-1519', 13295, 17828, 71.71,
+    museum='Louvre, Parigi', style='Rinascimento', genre='pittura religiosa', tags=['agnello', 'montagne', 'Leonardo', 'capolavoro'])
+add('leonardo-st-john', 'San Giovanni Battista', 'Leonardo_da_Vinci_-_Saint_John_the_Baptist_C2RMF_retouched.jpg', 'Leonardo da Vinci', '1513-1516', 10446, 13522, 90.13,
+    museum='Louvre, Parigi', style='Rinascimento', genre='pittura religiosa', tags=['Leonardo', 'capolavoro'])
+add('leonardo-annunciation', "L'Annunciazione", 'Annunciation_(Leonardo_c._1472–1476).jpg', 'Leonardo da Vinci', '1472-1476', 7776, 3569, 26.20,
+    museum='Galleria degli Uffizi, Firenze', style='Rinascimento', genre='pittura religiosa', tags=['angelo', 'giardino', 'Leonardo', 'capolavoro'])
+add('vangogh-sunflowers-munich', 'Vaso con dodici girasoli', 'Sunflowers_-_Vincent_van_Gogh_(Munich_version).jpg', 'Vincent van Gogh', '1888', 5388, 6828, 17.01,
+    museum='Neue Pinakothek, Monaco di Baviera', style='Post-impressionismo', genre='natura morta', tags=['girasoli', 'fiori', 'vaso', 'van Gogh', 'capolavoro'])
+add('vangogh-sunflowers-london', 'I girasoli', 'Vincent_van_Gogh_-_Sunflowers_(1888,_National_Gallery_London).jpg', 'Vincent van Gogh', '1888', 4719, 6000, 11.49,
+    museum='National Gallery, Londra', style='Post-impressionismo', genre='natura morta', tags=['girasoli', 'fiori', 'vaso', 'van Gogh', 'capolavoro'])
+
+# ---------------- Van Gogh (immagini Commons da almeno 10.000 px) ----------------
+add('vangogh-starry-night', 'Notte stellata', 'Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg', 'Vincent van Gogh', '1889', 44567, 35291, 663.94,
+    museum='MoMA, New York', style='Post-impressionismo', genre='paesaggio notturno', tags=['stelle', 'notte', 'cipresso', 'villaggio', 'van Gogh'])
+add('vangogh-bedroom', 'La camera da letto', 'Vincent_van_Gogh_-_De_slaapkamer_-_Google_Art_Project.jpg', 'Vincent van Gogh', '1888', 30000, 23803, 252.37,
+    museum='Van Gogh Museum, Amsterdam', style='Post-impressionismo', genre='interno', tags=['camera', 'letto', 'sedie', 'Arles', 'van Gogh'])
+add('vangogh-irises', 'Iris', 'Irises-Vincent_van_Gogh.jpg', 'Vincent van Gogh', '1889', 11516, 8801, 33.74,
+    museum='Getty Center, Los Angeles', style='Post-impressionismo', genre='paesaggio', tags=['fiori', 'iris', 'giardino', 'van Gogh'])
+add('vangogh-roses', 'Rose', 'Roses_-_Vincent_van_Gogh.JPG', 'Vincent van Gogh', '1890', 18086, 14324, 97.14,
+    museum='National Gallery of Art, Washington', style='Post-impressionismo', genre='natura morta', tags=['fiori', 'rose', 'vaso', 'van Gogh'])
+add('vangogh-farmhouse-provence', 'Casa colonica in Provenza', 'Farmhouse_in_Provence,_1888,_Vincent_van_Gogh,_NGA.jpg', 'Vincent van Gogh', '1888', 16428, 12392, 97.23,
+    museum='National Gallery of Art, Washington', style='Post-impressionismo', genre='paesaggio', tags=['campagna', 'casa', 'papaveri', 'estate', 'van Gogh'])
+add('vangogh-green-wheat', 'Campi di grano verde ad Auvers', 'Vincent_van_Gogh_-_Green_Wheat_Fields,_Auvers_(1890).jpg', 'Vincent van Gogh', '1890', 16266, 12770, 88.56,
+    museum='National Gallery of Art, Washington', style='Post-impressionismo', genre='paesaggio', tags=['grano', 'campi', 'nuvole', 'van Gogh'])
+add('vangogh-wheat-cypresses', 'Campo di grano con cipressi', 'Vincent_van_Gogh_-_Wheat_Field_with_Cypresses_(National_Gallery_version).jpg', 'Vincent van Gogh', '1889', 10882, 8653, 55.80,
+    museum='National Gallery, Londra', style='Post-impressionismo', genre='paesaggio', tags=['grano', 'cipressi', 'montagne', 'nuvole', 'van Gogh'])
+add('vangogh-plane-trees', 'I grandi platani (gli stradini a Saint-Rémy)', 'The_Large_Plane_Trees_(Road_Menders_at_Saint-Rémy),_by_Vincent_van_Gogh,_Cleveland_Museum_of_Art,_1947.209.jpg', 'Vincent van Gogh', '1889', 14395, 11486, 51.73,
+    museum='Cleveland Museum of Art', style='Post-impressionismo', genre='veduta', tags=['alberi', 'strada', 'paese', 'van Gogh'])
+add('vangogh-two-poplars', 'Due pioppi sulle Alpilles', 'Two_Poplars_in_the_Alpilles_near_Saint-Rémy,_by_Vincent_Van_Gogh,_Cleveland_Museum_of_Art,_1958.32.jpg', 'Vincent van Gogh', '1889', 10950, 14640, 45.71,
+    museum='Cleveland Museum of Art', style='Post-impressionismo', genre='paesaggio di montagna', tags=['pioppi', 'montagne', 'autunno', 'van Gogh'])
+add('vangogh-olive-cabins', 'Capanne tra ulivi e cipressi', 'Vincent_van_Gogh_-_Cabanes_de_bois_parmi_les_oliviers_et_cyprés_(F_623).jpg', 'Vincent van Gogh', '1889', 14687, 10915, 43.90,
+    museum=None, style='Post-impressionismo', genre='paesaggio', tags=['ulivi', 'cipressi', 'capanne', 'van Gogh'])
+add('vangogh-boats-saintes-maries', 'Barche da pesca sulla spiaggia di Saintes-Maries', 'Vincent_van_Gogh_-_Vissersboten_op_het_strand_van_Les_Saintes-Maries-de-la-Mer_(1888).jpg', 'Vincent van Gogh', '1888', 11733, 9435, 49.83,
+    museum='Van Gogh Museum, Amsterdam', style='Post-impressionismo', genre='marina', tags=['barche', 'spiaggia', 'mare', 'van Gogh'])
+
 # ---------------- Selezione di serie ----------------
 # Solo scene affollate adatte ai bambini (paesaggi, vedute, mercati, feste, interni: stile fiammingo)
 # e solo immagini abbastanza grandi da regalare dettagli nuovi a ogni zoom sul televisore.
@@ -249,10 +291,11 @@ add('turner-nantes', "Nantes dall'Île Feydeau", 'J._M._W._Turner_-_Nantes_from_
 MIN_SIDE = 10000                      # px sul lato lungo: almeno ~5 raddoppi di zoom su 1920×1080
 EXCLUDE_GENRES = {"fantastico / religioso", "ritratto di gruppo"}
 A = [a for a in A
-     if a["kidSafe"]
-     and max(a["width"], a["height"]) >= MIN_SIDE
-     and a["genre"] not in EXCLUDE_GENRES
-     and not a["id"].startswith("wd-")]
+     if "capolavoro" in a["tags"]          # scelti uno per uno: alla risoluzione migliore che c'è
+     or (a["kidSafe"]
+         and max(a["width"], a["height"]) >= MIN_SIDE
+         and a["genre"] not in EXCLUDE_GENRES
+         and not a["id"].startswith("wd-"))]
 
 OUT.parent.mkdir(parents=True, exist_ok=True)
 OUT.write_text(json.dumps({"version": 1, "artworks": A}, ensure_ascii=False, indent=1), encoding="utf-8")

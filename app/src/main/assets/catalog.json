@@ -1933,6 +1933,580 @@
    "pageUrl": "https://commons.wikimedia.org/wiki/File:J._M._W._Turner_-_Nantes_from_the_Ile_Feydeau_(1830).jpg",
    "targets": [],
    "portals": []
+  },
+  {
+   "id": "leonardo-lady-ermine",
+   "title": "La dama con l'ermellino",
+   "titleOrig": null,
+   "author": "Leonardo da Vinci",
+   "year": "1489-1491",
+   "style": "Rinascimento",
+   "genre": "ritratto",
+   "museum": "Museo Czartoryski, Cracovia",
+   "tags": [
+    "ermellino",
+    "animali",
+    "Leonardo",
+    "capolavoro"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 30894,
+   "height": 41545,
+   "bytes": 107122524,
+   "source": {
+    "type": "commons",
+    "file": "Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Lady_with_an_Ermine_-_Leonardo_da_Vinci_-_Google_Art_Project.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "leonardo-mona-lisa",
+   "title": "La Gioconda",
+   "titleOrig": null,
+   "author": "Leonardo da Vinci",
+   "year": "1503-1519",
+   "style": "Rinascimento",
+   "genre": "ritratto",
+   "museum": "Louvre, Parigi",
+   "tags": [
+    "Monna Lisa",
+    "paesaggio",
+    "Leonardo",
+    "capolavoro"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 7479,
+   "height": 11146,
+   "bytes": 94308925,
+   "source": {
+    "type": "commons",
+    "file": "Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "leonardo-last-supper",
+   "title": "L'Ultima Cena",
+   "titleOrig": null,
+   "author": "Leonardo da Vinci",
+   "year": "1494-1498",
+   "style": "Rinascimento",
+   "genre": "affresco",
+   "museum": "Santa Maria delle Grazie, Milano",
+   "tags": [
+    "affresco",
+    "Milano",
+    "Leonardo",
+    "capolavoro"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 43047,
+   "height": 23404,
+   "bytes": 680871854,
+   "source": {
+    "type": "commons",
+    "file": "La_última_cena_(1494-1498)_de_Leonardo_da_Vinci_-_Basilica_di_Santa_Maria_delle_Grazie_(Milán).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:La_última_cena_(1494-1498)_de_Leonardo_da_Vinci_-_Basilica_di_Santa_Maria_delle_Grazie_(Milán).jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "leonardo-st-anne",
+   "title": "Sant'Anna, la Madonna e il Bambino con l'agnellino",
+   "titleOrig": null,
+   "author": "Leonardo da Vinci",
+   "year": "1503-1519",
+   "style": "Rinascimento",
+   "genre": "pittura religiosa",
+   "museum": "Louvre, Parigi",
+   "tags": [
+    "agnello",
+    "montagne",
+    "Leonardo",
+    "capolavoro"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 13295,
+   "height": 17828,
+   "bytes": 75193384,
+   "source": {
+    "type": "commons",
+    "file": "Leonardo_da_Vinci_-_Virgin_and_Child_with_St_Anne_C2RMF_retouched.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Leonardo_da_Vinci_-_Virgin_and_Child_with_St_Anne_C2RMF_retouched.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "leonardo-st-john",
+   "title": "San Giovanni Battista",
+   "titleOrig": null,
+   "author": "Leonardo da Vinci",
+   "year": "1513-1516",
+   "style": "Rinascimento",
+   "genre": "pittura religiosa",
+   "museum": "Louvre, Parigi",
+   "tags": [
+    "Leonardo",
+    "capolavoro"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 10446,
+   "height": 13522,
+   "bytes": 94508154,
+   "source": {
+    "type": "commons",
+    "file": "Leonardo_da_Vinci_-_Saint_John_the_Baptist_C2RMF_retouched.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Leonardo_da_Vinci_-_Saint_John_the_Baptist_C2RMF_retouched.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "leonardo-annunciation",
+   "title": "L'Annunciazione",
+   "titleOrig": null,
+   "author": "Leonardo da Vinci",
+   "year": "1472-1476",
+   "style": "Rinascimento",
+   "genre": "pittura religiosa",
+   "museum": "Galleria degli Uffizi, Firenze",
+   "tags": [
+    "angelo",
+    "giardino",
+    "Leonardo",
+    "capolavoro"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 7776,
+   "height": 3569,
+   "bytes": 27472691,
+   "source": {
+    "type": "commons",
+    "file": "Annunciation_(Leonardo_c._1472–1476).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Annunciation_(Leonardo_c._1472–1476).jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vangogh-sunflowers-munich",
+   "title": "Vaso con dodici girasoli",
+   "titleOrig": null,
+   "author": "Vincent van Gogh",
+   "year": "1888",
+   "style": "Post-impressionismo",
+   "genre": "natura morta",
+   "museum": "Neue Pinakothek, Monaco di Baviera",
+   "tags": [
+    "girasoli",
+    "fiori",
+    "vaso",
+    "van Gogh",
+    "capolavoro"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 5388,
+   "height": 6828,
+   "bytes": 17836277,
+   "source": {
+    "type": "commons",
+    "file": "Sunflowers_-_Vincent_van_Gogh_(Munich_version).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Sunflowers_-_Vincent_van_Gogh_(Munich_version).jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vangogh-sunflowers-london",
+   "title": "I girasoli",
+   "titleOrig": null,
+   "author": "Vincent van Gogh",
+   "year": "1888",
+   "style": "Post-impressionismo",
+   "genre": "natura morta",
+   "museum": "National Gallery, Londra",
+   "tags": [
+    "girasoli",
+    "fiori",
+    "vaso",
+    "van Gogh",
+    "capolavoro"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 4719,
+   "height": 6000,
+   "bytes": 12048138,
+   "source": {
+    "type": "commons",
+    "file": "Vincent_van_Gogh_-_Sunflowers_(1888,_National_Gallery_London).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Vincent_van_Gogh_-_Sunflowers_(1888,_National_Gallery_London).jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vangogh-starry-night",
+   "title": "Notte stellata",
+   "titleOrig": null,
+   "author": "Vincent van Gogh",
+   "year": "1889",
+   "style": "Post-impressionismo",
+   "genre": "paesaggio notturno",
+   "museum": "MoMA, New York",
+   "tags": [
+    "stelle",
+    "notte",
+    "cipresso",
+    "villaggio",
+    "van Gogh"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 44567,
+   "height": 35291,
+   "bytes": 696191549,
+   "source": {
+    "type": "commons",
+    "file": "Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vangogh-bedroom",
+   "title": "La camera da letto",
+   "titleOrig": null,
+   "author": "Vincent van Gogh",
+   "year": "1888",
+   "style": "Post-impressionismo",
+   "genre": "interno",
+   "museum": "Van Gogh Museum, Amsterdam",
+   "tags": [
+    "camera",
+    "letto",
+    "sedie",
+    "Arles",
+    "van Gogh"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 30000,
+   "height": 23803,
+   "bytes": 264629125,
+   "source": {
+    "type": "commons",
+    "file": "Vincent_van_Gogh_-_De_slaapkamer_-_Google_Art_Project.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Vincent_van_Gogh_-_De_slaapkamer_-_Google_Art_Project.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vangogh-irises",
+   "title": "Iris",
+   "titleOrig": null,
+   "author": "Vincent van Gogh",
+   "year": "1889",
+   "style": "Post-impressionismo",
+   "genre": "paesaggio",
+   "museum": "Getty Center, Los Angeles",
+   "tags": [
+    "fiori",
+    "iris",
+    "giardino",
+    "van Gogh"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 11516,
+   "height": 8801,
+   "bytes": 35378954,
+   "source": {
+    "type": "commons",
+    "file": "Irises-Vincent_van_Gogh.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Irises-Vincent_van_Gogh.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vangogh-roses",
+   "title": "Rose",
+   "titleOrig": null,
+   "author": "Vincent van Gogh",
+   "year": "1890",
+   "style": "Post-impressionismo",
+   "genre": "natura morta",
+   "museum": "National Gallery of Art, Washington",
+   "tags": [
+    "fiori",
+    "rose",
+    "vaso",
+    "van Gogh"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 18086,
+   "height": 14324,
+   "bytes": 101858672,
+   "source": {
+    "type": "commons",
+    "file": "Roses_-_Vincent_van_Gogh.JPG"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Roses_-_Vincent_van_Gogh.JPG",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vangogh-farmhouse-provence",
+   "title": "Casa colonica in Provenza",
+   "titleOrig": null,
+   "author": "Vincent van Gogh",
+   "year": "1888",
+   "style": "Post-impressionismo",
+   "genre": "paesaggio",
+   "museum": "National Gallery of Art, Washington",
+   "tags": [
+    "campagna",
+    "casa",
+    "papaveri",
+    "estate",
+    "van Gogh"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 16428,
+   "height": 12392,
+   "bytes": 101953044,
+   "source": {
+    "type": "commons",
+    "file": "Farmhouse_in_Provence,_1888,_Vincent_van_Gogh,_NGA.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Farmhouse_in_Provence,_1888,_Vincent_van_Gogh,_NGA.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vangogh-green-wheat",
+   "title": "Campi di grano verde ad Auvers",
+   "titleOrig": null,
+   "author": "Vincent van Gogh",
+   "year": "1890",
+   "style": "Post-impressionismo",
+   "genre": "paesaggio",
+   "museum": "National Gallery of Art, Washington",
+   "tags": [
+    "grano",
+    "campi",
+    "nuvole",
+    "van Gogh"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 16266,
+   "height": 12770,
+   "bytes": 92861890,
+   "source": {
+    "type": "commons",
+    "file": "Vincent_van_Gogh_-_Green_Wheat_Fields,_Auvers_(1890).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Vincent_van_Gogh_-_Green_Wheat_Fields,_Auvers_(1890).jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vangogh-wheat-cypresses",
+   "title": "Campo di grano con cipressi",
+   "titleOrig": null,
+   "author": "Vincent van Gogh",
+   "year": "1889",
+   "style": "Post-impressionismo",
+   "genre": "paesaggio",
+   "museum": "National Gallery, Londra",
+   "tags": [
+    "grano",
+    "cipressi",
+    "montagne",
+    "nuvole",
+    "van Gogh"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 10882,
+   "height": 8653,
+   "bytes": 58510540,
+   "source": {
+    "type": "commons",
+    "file": "Vincent_van_Gogh_-_Wheat_Field_with_Cypresses_(National_Gallery_version).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Vincent_van_Gogh_-_Wheat_Field_with_Cypresses_(National_Gallery_version).jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vangogh-plane-trees",
+   "title": "I grandi platani (gli stradini a Saint-Rémy)",
+   "titleOrig": null,
+   "author": "Vincent van Gogh",
+   "year": "1889",
+   "style": "Post-impressionismo",
+   "genre": "veduta",
+   "museum": "Cleveland Museum of Art",
+   "tags": [
+    "alberi",
+    "strada",
+    "paese",
+    "van Gogh"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 14395,
+   "height": 11486,
+   "bytes": 54242836,
+   "source": {
+    "type": "commons",
+    "file": "The_Large_Plane_Trees_(Road_Menders_at_Saint-Rémy),_by_Vincent_van_Gogh,_Cleveland_Museum_of_Art,_1947.209.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Large_Plane_Trees_(Road_Menders_at_Saint-Rémy),_by_Vincent_van_Gogh,_Cleveland_Museum_of_Art,_1947.209.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vangogh-two-poplars",
+   "title": "Due pioppi sulle Alpilles",
+   "titleOrig": null,
+   "author": "Vincent van Gogh",
+   "year": "1889",
+   "style": "Post-impressionismo",
+   "genre": "paesaggio di montagna",
+   "museum": "Cleveland Museum of Art",
+   "tags": [
+    "pioppi",
+    "montagne",
+    "autunno",
+    "van Gogh"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 10950,
+   "height": 14640,
+   "bytes": 47930408,
+   "source": {
+    "type": "commons",
+    "file": "Two_Poplars_in_the_Alpilles_near_Saint-Rémy,_by_Vincent_Van_Gogh,_Cleveland_Museum_of_Art,_1958.32.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Two_Poplars_in_the_Alpilles_near_Saint-Rémy,_by_Vincent_Van_Gogh,_Cleveland_Museum_of_Art,_1958.32.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vangogh-olive-cabins",
+   "title": "Capanne tra ulivi e cipressi",
+   "titleOrig": null,
+   "author": "Vincent van Gogh",
+   "year": "1889",
+   "style": "Post-impressionismo",
+   "genre": "paesaggio",
+   "museum": null,
+   "tags": [
+    "ulivi",
+    "cipressi",
+    "capanne",
+    "van Gogh"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 14687,
+   "height": 10915,
+   "bytes": 46032486,
+   "source": {
+    "type": "commons",
+    "file": "Vincent_van_Gogh_-_Cabanes_de_bois_parmi_les_oliviers_et_cyprés_(F_623).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Vincent_van_Gogh_-_Cabanes_de_bois_parmi_les_oliviers_et_cyprés_(F_623).jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vangogh-boats-saintes-maries",
+   "title": "Barche da pesca sulla spiaggia di Saintes-Maries",
+   "titleOrig": null,
+   "author": "Vincent van Gogh",
+   "year": "1888",
+   "style": "Post-impressionismo",
+   "genre": "marina",
+   "museum": "Van Gogh Museum, Amsterdam",
+   "tags": [
+    "barche",
+    "spiaggia",
+    "mare",
+    "van Gogh"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 11733,
+   "height": 9435,
+   "bytes": 52250542,
+   "source": {
+    "type": "commons",
+    "file": "Vincent_van_Gogh_-_Vissersboten_op_het_strand_van_Les_Saintes-Maries-de-la-Mer_(1888).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Vincent_van_Gogh_-_Vissersboten_op_het_strand_van_Les_Saintes-Maries-de-la-Mer_(1888).jpg",
+   "targets": [],
+   "portals": []
   }
  ]
 }
