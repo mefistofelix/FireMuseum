@@ -1281,6 +1281,658 @@
    "pageUrl": "https://commons.wikimedia.org/wiki/File:Peter_Paul_Rubens_-_View_of_Het_Steen_in_the_Early_Morning.jpg",
    "targets": [],
    "portals": []
+  },
+  {
+   "id": "bierstadt-buffalo-trail",
+   "title": "Il sentiero dei bisonti, tempesta in arrivo",
+   "titleOrig": null,
+   "author": "Albert Bierstadt",
+   "year": "1869",
+   "style": "Hudson River School",
+   "genre": "paesaggio",
+   "museum": "National Gallery of Art, Washington",
+   "tags": [
+    "bisonti",
+    "prateria",
+    "nuvole",
+    "animali"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 21225,
+   "height": 12646,
+   "bytes": 100464066,
+   "source": {
+    "type": "commons",
+    "file": "Albert_Bierstadt_-_Buffalo_Trail,_The_Impending_Storm_(1869)_-_NGA.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Albert_Bierstadt_-_Buffalo_Trail,_The_Impending_Storm_(1869)_-_NGA.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bierstadt-sunrise-yosemite",
+   "title": "Alba nella valle di Yosemite",
+   "titleOrig": null,
+   "author": "Albert Bierstadt",
+   "year": "1870 ca.",
+   "style": "Hudson River School",
+   "genre": "paesaggio di montagna",
+   "museum": "Amon Carter Museum, Fort Worth",
+   "tags": [
+    "montagne",
+    "valle",
+    "alberi"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 12732,
+   "height": 8815,
+   "bytes": 50509905,
+   "source": {
+    "type": "commons",
+    "file": "Albert_Bierstadt_-_Sunrise,_Yosemite_Valley_(c._1870).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Albert_Bierstadt_-_Sunrise,_Yosemite_Valley_(c._1870).jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bierstadt-yosemite-view",
+   "title": "Veduta della valle di Yosemite",
+   "titleOrig": null,
+   "author": "Albert Bierstadt",
+   "year": "1865 ca.",
+   "style": "Hudson River School",
+   "genre": "paesaggio di montagna",
+   "museum": null,
+   "tags": [
+    "montagne",
+    "rocce",
+    "bosco"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 10173,
+   "height": 6596,
+   "bytes": 38356910,
+   "source": {
+    "type": "commons",
+    "file": "Albert_Bierstadt_-_View_in_the_Yosemite_Valley.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Albert_Bierstadt_-_View_in_the_Yosemite_Valley.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bierstadt-sierra-nevada",
+   "title": "Tra le montagne della Sierra Nevada",
+   "titleOrig": null,
+   "author": "Albert Bierstadt",
+   "year": "1868",
+   "style": "Hudson River School",
+   "genre": "paesaggio di montagna",
+   "museum": "Smithsonian American Art Museum, Washington",
+   "tags": [
+    "montagne",
+    "lago",
+    "cervi",
+    "cascata"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 10500,
+   "height": 6298,
+   "bytes": 24232591,
+   "source": {
+    "type": "commons",
+    "file": "Bierstadt_-_Among_the_Sierra_Nevada_Mountains_-_1868.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Bierstadt_-_Among_the_Sierra_Nevada_Mountains_-_1868.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "cole-notch",
+   "title": "Il passo della Notch nelle White Mountains",
+   "titleOrig": null,
+   "author": "Thomas Cole",
+   "year": "1839",
+   "style": "Hudson River School",
+   "genre": "paesaggio di montagna",
+   "museum": "National Gallery of Art, Washington",
+   "tags": [
+    "montagne",
+    "autunno",
+    "bosco",
+    "diligenza"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 10152,
+   "height": 6610,
+   "bytes": 30922506,
+   "source": {
+    "type": "commons",
+    "file": "Thomas_Cole_-_A_View_of_the_Mountain_Pass_Called_the_Notch_of_the_White_Mountains.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Thomas_Cole_-_A_View_of_the_Mountain_Pass_Called_the_Notch_of_the_White_Mountains.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "cole-tivoli",
+   "title": "Le cascatelle di Tivoli verso Roma",
+   "titleOrig": null,
+   "author": "Thomas Cole",
+   "year": "1832 ca.",
+   "style": "Hudson River School",
+   "genre": "paesaggio",
+   "museum": "Columbus Museum of Art",
+   "tags": [
+    "cascate",
+    "paese",
+    "campagna"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 10144,
+   "height": 7372,
+   "bytes": 54221864,
+   "source": {
+    "type": "commons",
+    "file": "Thomas_Cole_-_The_Cascatelli,_Tivoli,_Looking_Towards_Rome_(c._1832).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Thomas_Cole_-_The_Cascatelli,_Tivoli,_Looking_Towards_Rome_(c._1832).jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "church-niagara",
+   "title": "Le cascate del Niagara",
+   "titleOrig": null,
+   "author": "Frederic Edwin Church",
+   "year": "1857",
+   "style": "Hudson River School",
+   "genre": "paesaggio",
+   "museum": "National Gallery of Art, Washington",
+   "tags": [
+    "cascate",
+    "acqua",
+    "arcobaleno"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 27911,
+   "height": 12955,
+   "bytes": 84378910,
+   "source": {
+    "type": "commons",
+    "file": "Frederic_Edwin_Church_-_Niagara_Falls_-_WGA04867.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Frederic_Edwin_Church_-_Niagara_Falls_-_WGA04867.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "friedrich-sturmhaube",
+   "title": "Veduta di Warmbrunn verso la Kleine Sturmhaube",
+   "titleOrig": null,
+   "author": "Caspar David Friedrich",
+   "year": "1810 ca.",
+   "style": "Romanticismo",
+   "genre": "paesaggio di montagna",
+   "museum": null,
+   "tags": [
+    "montagne",
+    "campi",
+    "villaggio"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 10544,
+   "height": 8112,
+   "bytes": 27493662,
+   "source": {
+    "type": "commons",
+    "file": "Caspar_David_Friedrich_-_Blick_von_Warmbrunn_auf_die_Kleine_Sturmhaube.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Caspar_David_Friedrich_-_Blick_von_Warmbrunn_auf_die_Kleine_Sturmhaube.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "friedrich-garden-terrace",
+   "title": "La terrazza del giardino",
+   "titleOrig": null,
+   "author": "Caspar David Friedrich",
+   "year": "1811",
+   "style": "Romanticismo",
+   "genre": "paesaggio",
+   "museum": "Schloss Charlottenhof, Potsdam",
+   "tags": [
+    "giardino",
+    "alberi",
+    "prato"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 13788,
+   "height": 9818,
+   "bytes": 43065016,
+   "source": {
+    "type": "commons",
+    "file": "Friedrich,_Caspar_David_-_Gartenterrasse.jpeg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Friedrich,_Caspar_David_-_Gartenterrasse.jpeg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "lorrain-river-shepherds",
+   "title": "Paesaggio fluviale con pastori",
+   "titleOrig": null,
+   "author": "Claude Lorrain",
+   "year": "1640 ca.",
+   "style": "Barocco",
+   "genre": "paesaggio",
+   "museum": "Statens Museum for Kunst, Copenaghen",
+   "tags": [
+    "fiume",
+    "castello",
+    "pastori",
+    "mucche"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 11924,
+   "height": 8083,
+   "bytes": 76703334,
+   "source": {
+    "type": "commons",
+    "file": "Claude_Lorrain,_Flodlandskab_med_hyrder,_,_KMS4898,_Statens_Museum_for_Kunst.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Claude_Lorrain,_Flodlandskab_med_hyrder,_,_KMS4898,_Statens_Museum_for_Kunst.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "lorrain-seaport-sunset",
+   "title": "Porto di mare al tramonto",
+   "titleOrig": null,
+   "author": "Claude Lorrain",
+   "year": "1639",
+   "style": "Barocco",
+   "genre": "marina",
+   "museum": "Louvre, Parigi",
+   "tags": [
+    "porto",
+    "navi",
+    "tramonto",
+    "palazzi"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 10869,
+   "height": 7926,
+   "bytes": 29790044,
+   "source": {
+    "type": "commons",
+    "file": "Port_de_mer_au_soleil_couchant_-_Claude_Gellée_dit_Le_Lorrain_-_Musée_du_Louvre_Peintures_INV_4715_;_MR_1740.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Port_de_mer_au_soleil_couchant_-_Claude_Gellée_dit_Le_Lorrain_-_Musée_du_Louvre_Peintures_INV_4715_;_MR_1740.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "avdvelde-pasture",
+   "title": "Pascolo con cavalli e mucche",
+   "titleOrig": null,
+   "author": "Adriaen van de Velde",
+   "year": "1660",
+   "style": "Secolo d'oro olandese",
+   "genre": "paesaggio",
+   "museum": "Statens Museum for Kunst, Copenaghen",
+   "tags": [
+    "prato",
+    "cavalli",
+    "mucche",
+    "animali"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 9330,
+   "height": 10043,
+   "bytes": 57923338,
+   "source": {
+    "type": "commons",
+    "file": "Adriaen_van_de_Velde,_Græsgang_med_heste_og_kvæg,_1660,_KMS3608,_Statens_Museum_for_Kunst.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Adriaen_van_de_Velde,_Græsgang_med_heste_og_kvæg,_1660,_KMS3608,_Statens_Museum_for_Kunst.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vanwittel-navona",
+   "title": "Piazza Navona",
+   "titleOrig": null,
+   "author": "Gaspar van Wittel",
+   "year": "1699",
+   "style": "Barocco",
+   "genre": "veduta",
+   "museum": "Museo Thyssen-Bornemisza, Madrid",
+   "tags": [
+    "Roma",
+    "piazza",
+    "mercato",
+    "fontane"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 14167,
+   "height": 6240,
+   "bytes": 29527900,
+   "source": {
+    "type": "commons",
+    "file": "Piazza_Navona,_Rome_(by_Gaspar_van_Wittel)_-_Thyssen-Bornemisza_Museum,_Madrid.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Piazza_Navona,_Rome_(by_Gaspar_van_Wittel)_-_Thyssen-Bornemisza_Museum,_Madrid.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "panini-navona-fireworks",
+   "title": "Preparativi per i fuochi d'artificio in piazza Navona",
+   "titleOrig": null,
+   "author": "Giovanni Paolo Panini",
+   "year": "1729",
+   "style": "Barocco",
+   "genre": "veduta",
+   "museum": "Louvre, Parigi",
+   "tags": [
+    "Roma",
+    "piazza",
+    "festa",
+    "folla"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 10893,
+   "height": 4662,
+   "bytes": 22009610,
+   "source": {
+    "type": "commons",
+    "file": "Préparation_du_feu_d'artifice_et_de_la_décoration_de_la_fête_donnée_sur_la_place_Navone_à_l'occasion_de_la_naissance_du_Dauphin_-_Paolo_Panini_-_Musée_du_Louvre_Peintures_INV_415_;_MR_375.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Préparation_du_feu_d'artifice_et_de_la_décoration_de_la_fête_donnée_sur_la_place_Navone_à_l'occasion_de_la_naissance_du_Dauphin_-_Paolo_Panini_-_Musée_du_Louvre_Peintures_INV_415_;_MR_375.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "panini-teatro-argentina",
+   "title": "Festa musicale al Teatro Argentina",
+   "titleOrig": null,
+   "author": "Giovanni Paolo Panini",
+   "year": "1747",
+   "style": "Barocco",
+   "genre": "interno",
+   "museum": "Louvre, Parigi",
+   "tags": [
+    "teatro",
+    "musica",
+    "folla",
+    "palchi"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 10475,
+   "height": 8326,
+   "bytes": 37570478,
+   "source": {
+    "type": "commons",
+    "file": "Fête_musicale_donnée_par_le_cardinal_de_La_Rochefoucauld_au_théâtre_Argentina_de_Rome_en_1747_-_Paolo_Panini_-_Musée_du_Louvre_Peintures_INV_414.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Fête_musicale_donnée_par_le_cardinal_de_La_Rochefoucauld_au_théâtre_Argentina_de_Rome_en_1747_-_Paolo_Panini_-_Musée_du_Louvre_Peintures_INV_414.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "panini-ancient-rome",
+   "title": "Galleria di vedute della Roma antica",
+   "titleOrig": null,
+   "author": "Giovanni Paolo Panini",
+   "year": "1758",
+   "style": "Barocco",
+   "genre": "interno",
+   "museum": "Louvre, Parigi",
+   "tags": [
+    "galleria",
+    "quadri",
+    "statue",
+    "Roma"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 10688,
+   "height": 7804,
+   "bytes": 27462205,
+   "source": {
+    "type": "commons",
+    "file": "Galerie_de_vues_de_la_Rome_antique_-_Giovanni_Paolo_Pannini_-_Musée_du_Louvre_Peintures_RF_1944_21.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Galerie_de_vues_de_la_Rome_antique_-_Giovanni_Paolo_Pannini_-_Musée_du_Louvre_Peintures_RF_1944_21.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "panini-modern-rome",
+   "title": "Galleria di vedute della Roma moderna",
+   "titleOrig": null,
+   "author": "Giovanni Paolo Panini",
+   "year": "1759",
+   "style": "Barocco",
+   "genre": "interno",
+   "museum": "Louvre, Parigi",
+   "tags": [
+    "galleria",
+    "quadri",
+    "statue",
+    "Roma"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 10587,
+   "height": 7882,
+   "bytes": 33019658,
+   "source": {
+    "type": "commons",
+    "file": "Galerie_de_vues_de_la_Rome_moderne_-_Giovanni_Paolo_Pannini_-_Musée_du_Louvre_Peintures_RF_1944_22.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Galerie_de_vues_de_la_Rome_moderne_-_Giovanni_Paolo_Pannini_-_Musée_du_Louvre_Peintures_RF_1944_22.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "panini-roman-ruins",
+   "title": "Rovine romane con figure",
+   "titleOrig": null,
+   "author": "Giovanni Paolo Panini",
+   "year": "1730 ca.",
+   "style": "Barocco",
+   "genre": "capriccio architettonico",
+   "museum": null,
+   "tags": [
+    "rovine",
+    "piramide",
+    "colonne"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 14813,
+   "height": 11491,
+   "bytes": 62547558,
+   "source": {
+    "type": "commons",
+    "file": "Roman_Ruins_with_Figures_by_Giovanni_Paolo_Panini.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Roman_Ruins_with_Figures_by_Giovanni_Paolo_Panini.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vanhaecht-van-der-geest",
+   "title": "La galleria di Cornelis van der Geest",
+   "titleOrig": null,
+   "author": "Willem van Haecht",
+   "year": "1628",
+   "style": "Barocco fiammingo",
+   "genre": "interno",
+   "museum": "Rubenshuis, Anversa",
+   "tags": [
+    "galleria",
+    "quadri",
+    "collezione",
+    "folla"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 30000,
+   "height": 21806,
+   "bytes": 533400125,
+   "source": {
+    "type": "commons",
+    "file": "Willem_van_Haecht_-_The_Gallery_of_Cornelis_van_der_Geest,_1628.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Willem_van_Haecht_-_The_Gallery_of_Cornelis_van_der_Geest,_1628.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "dehooch-delft-courtyard",
+   "title": "Cortile a Delft",
+   "titleOrig": null,
+   "author": "Pieter de Hooch",
+   "year": "1658 ca.",
+   "style": "Secolo d'oro olandese",
+   "genre": "interno",
+   "museum": null,
+   "tags": [
+    "cortile",
+    "casa",
+    "bambina",
+    "Delft"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 16193,
+   "height": 18755,
+   "bytes": 103462993,
+   "source": {
+    "type": "commons",
+    "file": "Pieter_de_Hooch_012.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Pieter_de_Hooch_012.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vernet-ponte-rotto",
+   "title": "Il Ponte Rotto a Roma",
+   "titleOrig": null,
+   "author": "Claude-Joseph Vernet",
+   "year": "1745",
+   "style": "Barocco",
+   "genre": "veduta",
+   "museum": "Louvre, Parigi",
+   "tags": [
+    "Roma",
+    "fiume",
+    "ponte"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 10330,
+   "height": 5022,
+   "bytes": 26455572,
+   "source": {
+    "type": "commons",
+    "file": "Le_Ponte_Rotto_à_Rome_-_Claude-Joseph_Vernet_-_Musée_du_Louvre_Peintures_INV_8348_;_MR_2625.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Le_Ponte_Rotto_à_Rome_-_Claude-Joseph_Vernet_-_Musée_du_Louvre_Peintures_INV_8348_;_MR_2625.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "turner-nantes",
+   "title": "Nantes dall'Île Feydeau",
+   "titleOrig": null,
+   "author": "J. M. W. Turner",
+   "year": "1830",
+   "style": "Romanticismo",
+   "genre": "veduta",
+   "museum": "Château des ducs de Bretagne, Nantes",
+   "tags": [
+    "città",
+    "fiume",
+    "mercato",
+    "barche"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 33245,
+   "height": 22133,
+   "bytes": 191396577,
+   "source": {
+    "type": "commons",
+    "file": "J._M._W._Turner_-_Nantes_from_the_Ile_Feydeau_(1830).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:J._M._W._Turner_-_Nantes_from_the_Ile_Feydeau_(1830).jpg",
+   "targets": [],
+   "portals": []
   }
  ]
 }

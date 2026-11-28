@@ -196,6 +196,52 @@ add('asselijn-ponte-molle', 'Il Tevere con Ponte Milvio al tramonto', "'The_Tibe
 add('rubens-het-steen', 'Veduta di Het Steen al mattino', 'Peter_Paul_Rubens_-_View_of_Het_Steen_in_the_Early_Morning.jpg', 'Pieter Paul Rubens', '1636 ca.', 21256, 12628, 97.27,
     museum='National Gallery, Londra', style='Barocco fiammingo', genre='paesaggio', tags=['campagna', 'castello', 'carro', 'cacciatore'])
 
+# ---------------- Montagne, prati, città, interni (immagini Commons da almeno 10.000 px) ----------------
+add('bierstadt-buffalo-trail', 'Il sentiero dei bisonti, tempesta in arrivo', 'Albert_Bierstadt_-_Buffalo_Trail,_The_Impending_Storm_(1869)_-_NGA.jpg', 'Albert Bierstadt', '1869', 21225, 12646, 95.81,
+    museum='National Gallery of Art, Washington', style='Hudson River School', genre='paesaggio', tags=['bisonti', 'prateria', 'nuvole', 'animali'])
+add('bierstadt-sunrise-yosemite', 'Alba nella valle di Yosemite', 'Albert_Bierstadt_-_Sunrise,_Yosemite_Valley_(c._1870).jpg', 'Albert Bierstadt', '1870 ca.', 12732, 8815, 48.17,
+    museum='Amon Carter Museum, Fort Worth', style='Hudson River School', genre='paesaggio di montagna', tags=['montagne', 'valle', 'alberi'])
+add('bierstadt-yosemite-view', 'Veduta della valle di Yosemite', 'Albert_Bierstadt_-_View_in_the_Yosemite_Valley.jpg', 'Albert Bierstadt', '1865 ca.', 10173, 6596, 36.58,
+    museum=None, style='Hudson River School', genre='paesaggio di montagna', tags=['montagne', 'rocce', 'bosco'])
+add('bierstadt-sierra-nevada', 'Tra le montagne della Sierra Nevada', 'Bierstadt_-_Among_the_Sierra_Nevada_Mountains_-_1868.jpg', 'Albert Bierstadt', '1868', 10500, 6298, 23.11,
+    museum='Smithsonian American Art Museum, Washington', style='Hudson River School', genre='paesaggio di montagna', tags=['montagne', 'lago', 'cervi', 'cascata'])
+add('cole-notch', 'Il passo della Notch nelle White Mountains', 'Thomas_Cole_-_A_View_of_the_Mountain_Pass_Called_the_Notch_of_the_White_Mountains.jpg', 'Thomas Cole', '1839', 10152, 6610, 29.49,
+    museum='National Gallery of Art, Washington', style='Hudson River School', genre='paesaggio di montagna', tags=['montagne', 'autunno', 'bosco', 'diligenza'])
+add('cole-tivoli', 'Le cascatelle di Tivoli verso Roma', 'Thomas_Cole_-_The_Cascatelli,_Tivoli,_Looking_Towards_Rome_(c._1832).jpg', 'Thomas Cole', '1832 ca.', 10144, 7372, 51.71,
+    museum='Columbus Museum of Art', style='Hudson River School', genre='paesaggio', tags=['cascate', 'paese', 'campagna'])
+add('church-niagara', 'Le cascate del Niagara', 'Frederic_Edwin_Church_-_Niagara_Falls_-_WGA04867.jpg', 'Frederic Edwin Church', '1857', 27911, 12955, 80.47,
+    museum='National Gallery of Art, Washington', style='Hudson River School', genre='paesaggio', tags=['cascate', 'acqua', 'arcobaleno'])
+add('friedrich-sturmhaube', 'Veduta di Warmbrunn verso la Kleine Sturmhaube', 'Caspar_David_Friedrich_-_Blick_von_Warmbrunn_auf_die_Kleine_Sturmhaube.jpg', 'Caspar David Friedrich', '1810 ca.', 10544, 8112, 26.22,
+    museum=None, style='Romanticismo', genre='paesaggio di montagna', tags=['montagne', 'campi', 'villaggio'])
+add('friedrich-garden-terrace', 'La terrazza del giardino', 'Friedrich,_Caspar_David_-_Gartenterrasse.jpeg', 'Caspar David Friedrich', '1811', 13788, 9818, 41.07,
+    museum='Schloss Charlottenhof, Potsdam', style='Romanticismo', genre='paesaggio', tags=['giardino', 'alberi', 'prato'])
+add('lorrain-river-shepherds', 'Paesaggio fluviale con pastori', 'Claude_Lorrain,_Flodlandskab_med_hyrder,_,_KMS4898,_Statens_Museum_for_Kunst.jpg', 'Claude Lorrain', '1640 ca.', 11924, 8083, 73.15,
+    museum='Statens Museum for Kunst, Copenaghen', style='Barocco', genre='paesaggio', tags=['fiume', 'castello', 'pastori', 'mucche'])
+add('lorrain-seaport-sunset', 'Porto di mare al tramonto', 'Port_de_mer_au_soleil_couchant_-_Claude_Gellée_dit_Le_Lorrain_-_Musée_du_Louvre_Peintures_INV_4715_;_MR_1740.jpg', 'Claude Lorrain', '1639', 10869, 7926, 28.41,
+    museum='Louvre, Parigi', style='Barocco', genre='marina', tags=['porto', 'navi', 'tramonto', 'palazzi'])
+add('avdvelde-pasture', 'Pascolo con cavalli e mucche', 'Adriaen_van_de_Velde,_Græsgang_med_heste_og_kvæg,_1660,_KMS3608,_Statens_Museum_for_Kunst.jpg', 'Adriaen van de Velde', '1660', 9330, 10043, 55.24,
+    museum='Statens Museum for Kunst, Copenaghen', style="Secolo d'oro olandese", genre='paesaggio', tags=['prato', 'cavalli', 'mucche', 'animali'])
+add('vanwittel-navona', 'Piazza Navona', 'Piazza_Navona,_Rome_(by_Gaspar_van_Wittel)_-_Thyssen-Bornemisza_Museum,_Madrid.jpg', 'Gaspar van Wittel', '1699', 14167, 6240, 28.16,
+    museum='Museo Thyssen-Bornemisza, Madrid', style='Barocco', genre='veduta', tags=['Roma', 'piazza', 'mercato', 'fontane'])
+add('panini-navona-fireworks', "Preparativi per i fuochi d'artificio in piazza Navona", "Préparation_du_feu_d'artifice_et_de_la_décoration_de_la_fête_donnée_sur_la_place_Navone_à_l'occasion_de_la_naissance_du_Dauphin_-_Paolo_Panini_-_Musée_du_Louvre_Peintures_INV_415_;_MR_375.jpg", 'Giovanni Paolo Panini', '1729', 10893, 4662, 20.99,
+    museum='Louvre, Parigi', style='Barocco', genre='veduta', tags=['Roma', 'piazza', 'festa', 'folla'])
+add('panini-teatro-argentina', 'Festa musicale al Teatro Argentina', 'Fête_musicale_donnée_par_le_cardinal_de_La_Rochefoucauld_au_théâtre_Argentina_de_Rome_en_1747_-_Paolo_Panini_-_Musée_du_Louvre_Peintures_INV_414.jpg', 'Giovanni Paolo Panini', '1747', 10475, 8326, 35.83,
+    museum='Louvre, Parigi', style='Barocco', genre='interno', tags=['teatro', 'musica', 'folla', 'palchi'])
+add('panini-ancient-rome', 'Galleria di vedute della Roma antica', 'Galerie_de_vues_de_la_Rome_antique_-_Giovanni_Paolo_Pannini_-_Musée_du_Louvre_Peintures_RF_1944_21.jpg', 'Giovanni Paolo Panini', '1758', 10688, 7804, 26.19,
+    museum='Louvre, Parigi', style='Barocco', genre='interno', tags=['galleria', 'quadri', 'statue', 'Roma'])
+add('panini-modern-rome', 'Galleria di vedute della Roma moderna', 'Galerie_de_vues_de_la_Rome_moderne_-_Giovanni_Paolo_Pannini_-_Musée_du_Louvre_Peintures_RF_1944_22.jpg', 'Giovanni Paolo Panini', '1759', 10587, 7882, 31.49,
+    museum='Louvre, Parigi', style='Barocco', genre='interno', tags=['galleria', 'quadri', 'statue', 'Roma'])
+add('panini-roman-ruins', 'Rovine romane con figure', 'Roman_Ruins_with_Figures_by_Giovanni_Paolo_Panini.jpg', 'Giovanni Paolo Panini', '1730 ca.', 14813, 11491, 59.65,
+    museum=None, style='Barocco', genre='capriccio architettonico', tags=['rovine', 'piramide', 'colonne'])
+add('vanhaecht-van-der-geest', 'La galleria di Cornelis van der Geest', 'Willem_van_Haecht_-_The_Gallery_of_Cornelis_van_der_Geest,_1628.jpg', 'Willem van Haecht', '1628', 30000, 21806, 508.69,
+    museum='Rubenshuis, Anversa', style='Barocco fiammingo', genre='interno', tags=['galleria', 'quadri', 'collezione', 'folla'])
+add('dehooch-delft-courtyard', 'Cortile a Delft', 'Pieter_de_Hooch_012.jpg', 'Pieter de Hooch', '1658 ca.', 16193, 18755, 98.67,
+    museum=None, style="Secolo d'oro olandese", genre='interno', tags=['cortile', 'casa', 'bambina', 'Delft'])
+add('vernet-ponte-rotto', 'Il Ponte Rotto a Roma', 'Le_Ponte_Rotto_à_Rome_-_Claude-Joseph_Vernet_-_Musée_du_Louvre_Peintures_INV_8348_;_MR_2625.jpg', 'Claude-Joseph Vernet', '1745', 10330, 5022, 25.23,
+    museum='Louvre, Parigi', style='Barocco', genre='veduta', tags=['Roma', 'fiume', 'ponte'])
+add('turner-nantes', "Nantes dall'Île Feydeau", 'J._M._W._Turner_-_Nantes_from_the_Ile_Feydeau_(1830).jpg', 'J. M. W. Turner', '1830', 33245, 22133, 182.53,
+    museum='Château des ducs de Bretagne, Nantes', style='Romanticismo', genre='veduta', tags=['città', 'fiume', 'mercato', 'barche'])
+
 # ---------------- Selezione di serie ----------------
 # Solo scene affollate adatte ai bambini (paesaggi, vedute, mercati, feste, interni: stile fiammingo)
 # e solo immagini abbastanza grandi da regalare dettagli nuovi a ogni zoom sul televisore.
