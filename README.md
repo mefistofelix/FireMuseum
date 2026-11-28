@@ -6,8 +6,8 @@ App per **Amazon Fire TV** (e Android TV) che fa da museo a zoom infinito: puoi 
 - **Slideshow "documentario"**: la telecamera vola sui dettagli con Ken Burns e didascalie.
 - **Ricerca** per titolo, autore, anno, stile, genere, museo e tag (anche a voce, con il microfono della tastiera Fire TV).
 - **Scheda dell'opera**: autore, anno, stile/movimento, genere, museo, tecnica, dimensioni e licenza, completate in automatico da Wikidata.
-- **Gioco "cerca e trova"** sulle immagini: mirino, indizi progressivi, punteggio, obiettivi creati da te.
-- **Finestre**: dentro un quadro che contiene altri quadri ci si *entra* zoomando, senza stacchi, e si continua all'infinito.
+- **Inquadratura senza fasce vuote**: zoomando verso un angolo i bordi del quadro restano agganciati ai lati del televisore; le fasce della vista d'insieme prendono il colore medio di quello che si vede.
+- **Galleria scelta per bambini**: scene affollate in stile fiammingo (paesaggi, vedute, mercati, feste), solo immagini da almeno 10.000 px.
 - **Cache sul disco esterno USB**, mai sulla memoria interna, con eliminazione incrementale automatica quando lo spazio finisce.
 
 > Progetto personale e non commerciale. Le opere antiche sono di pubblico dominio, ma le riproduzioni fotografiche possono avere condizioni d'uso proprie. «Gratis da vedere» non significa «libero da ripubblicare».
@@ -25,14 +25,17 @@ App per **Amazon Fire TV** (e Android TV) che fa da museo a zoom infinito: puoi 
 
 ## Telecomando
 
-| Tasto | Esplorazione | Gioco |
-|---|---|---|
-| ◀ ▲ ▼ ▶ | tocco = piccolo passo preciso · tenuto = scorre e **accelera** (fino a ~1,7 schermi/s) | uguale |
-| OK | tocco = zoom ×2 animato · tenuto = **zoom continuo che accelera** | tocco = «è qui!» · tenuto = zoom |
-| ⏩ / ⏪ | zoom avanti / indietro (tocco ×2, tenuto continuo) | uguale |
-| INDIETRO | zoom out → esce dalla finestra → (×2) torna alla galleria | uguale |
-| ⏯ | avvia / ferma lo slideshow | |
-| ≡ MENU | info, gioco, indizio, aggiungi obiettivo, scarica originale, preferiti, viaggio infinito | |
+| Tasto | Azione |
+|---|---|
+| ◀ ▲ ▼ ▶ | tocco = piccolo passo preciso · tenuto = scorre e **accelera** (fino a ~1,7 schermi/s) |
+| OK | tocco = zoom ×2 animato · tenuto = **zoom continuo che accelera** |
+| programma su / giù | zoom avanti / indietro (tocco ×2, tenuto continuo) |
+| ⏩ / ⏪ | quadro successivo / precedente, con la didascalia in alto a sinistra |
+| INDIETRO | zoom out → (×2) torna alla galleria |
+| ⏯ | avvia / ferma lo slideshow |
+| ≡ MENU | info, scarica originale, preferiti, quadro successivo/precedente |
+
+Il volume resta al televisore.
 
 Gamepad: levetta sinistra = spostamento analogico (risposta cubica); grilletti o levetta destra = zoom.
 
@@ -85,14 +88,11 @@ python tools/build_catalog.py --commons-category "Gigapixel images from the Bosc
 - **Senza disco esterno**: c'è al massimo una piccola cache interna (200 MB, disattivabile) e gli originali **non** vengono scaricati.
 - **Estrazione del disco**: l'app se ne accorge (broadcast `MEDIA_*`) e riapre la cache sul volume giusto. I record troncati vengono trattati come mancanti.
 
-## Finestre e "infinite picture"
+## Catalogo di serie
 
-Wikidata ha già, compilate a mano dalla comunità, **migliaia di regioni** "raffigura" (P180) con la posizione nel quadro (qualificatore P2677). L'app le usa in due modi:
+`tools/seed/make_seed.py` genera `catalog.json` e tiene solo le voci adatte ai bambini, con il lato lungo da almeno 10.000 px, escluse le scene fantastiche/infernali e i ritratti. L'indice dell'archivio MEGA aggiorna solo le voci già presenti: le altre opere dell'archivio non compaiono in galleria.
 
-- come **obiettivi del gioco** già pronti: nel catalogo incluso ci sono 52 dipinti e 1.219 obiettivi;
-- come **finestre**, quando l'oggetto raffigurato è a sua volta un dipinto con immagine. Esempi: *Galleria del Louvre* di Morse, *Tribuna degli Uffizi* di Zoffany, Salon Carré, Gildemeester, van der Geest. Nel catalogo incluso le finestre sono 137.
-
-Il *Viaggio infinito* (≡ o la galleria) vola da un quadro all'altro passando per queste finestre.
+Il gioco "cerca e trova" e le finestre (quadri dentro i quadri) per ora sono stati tolti.
 
 ## Compilare
 

@@ -1,9 +1,9 @@
 package it.firemuseum.viewer
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.DashPathEffect
 import android.graphics.Paint
 import android.graphics.PointF
 import android.graphics.Rect
@@ -16,9 +16,9 @@ import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.View
 import it.firemuseum.App
+import it.firemuseum.cache.CachedTile
 import it.firemuseum.model.Artwork
 import it.firemuseum.model.NRect
-import it.firemuseum.model.Portal
 import it.firemuseum.tiles.TileReq
 import it.firemuseum.tiles.TileSource
 import kotlinx.coroutines.CoroutineScope
@@ -26,6 +26,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kotlin.math.abs
 import kotlin.math.exp
 import kotlin.math.floor
@@ -40,18 +41,19 @@ import kotlin.math.roundToInt
  * Visualizzatore a zoom profondo pensato per il telecomando:
  *  - D-pad: spostamento con accelerazione progressiva (tocco breve = piccolo passo preciso);
  *  - OK breve: zoom ×2 animato; OK tenuto premuto: zoom continuo che accelera;
- *  - ⏪/⏩ tenuti premuti: zoom indietro/avanti continuo; INDIETRO: zoom out a scatti;
+ *  - programma su/giù tenuti premuti: zoom avanti/indietro continuo; INDIETRO: zoom out a scatti;
  *  - gamepad: levetta sinistra = spostamento analogico, grilletti/levetta destra = zoom.
  * Velocità in pixel-SCHERMO al secondo: la sensazione è identica a ogni livello di zoom.
  *
- * "Finestre" (portali): un'opera può contenere rettangoli che rimandano a un'altra opera.
- * Avvicinandosi la si vede comparire in dissolvenza al suo posto; quando riempie lo schermo
- * ci si "entra" senza stacchi. Allontanandosi oltre la vista d'insieme si torna al quadro esterno.
+ * Inquadratura: mai più piccola della vista d'insieme e, appena l'immagine supera lo schermo
+ * in un asse, i bordi restano agganciati ai lati del televisore (niente fasce vuote zoomando
+ * verso un angolo). Le fasce inevitabili della vista d'insieme prendono il colore medio di
+ * quello che si vede, con una dissolvenza lenta.
  */
 class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? = null) : View(ctx, attrs) {
 
     interface Listener {
-        fun onArtworkChanged(a: Artwork, depth: Int) {}
+        fun onArtworkChanged(a: Artwork) {}
         fun onUserMoved() {}
         fun onCenterTap() {}
     }
@@ -77,32 +79,17 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
     private var frameScheduled = false
     private var fading = false
 
-    // ---- finestre / portali ----
-    private class Child(val portal: Portal, var art: Artwork?, var src: TileSource?, var loading: Boolean = false)
-    private class Frame(val art: Artwork, val src: TileSource, val portal: Portal, val child: Child)
-    private val children = ArrayList<Child>()
-    private val stack = ArrayDeque<Frame>()
-    val depth: Int get() = stack.size
-    var showPortalHints = true
-    /** Slideshow in corso: niente contorni tratteggiati delle finestre (servono solo navigando a mano). */
-    var autoPlay = false
-
-    // ---- decorazioni (gioco, indizi) ----
-    var decorate: ((Canvas) -> Unit)? = null
-    var crosshair = false
+    // ---- colore di sfondo dalle tinte dell'opera ----
+    private class Ambient(val src: TileSource, val w: Int, val h: Int, val px: IntArray)
+    private var ambient: Ambient? = null
+    private var ambientBuilding: TileSource? = null
+    private var bgR = 0f; private var bgG = 0f; private var bgB = 0f
+    private var bgMs = 0L
 
     // ---- disegno ----
     private val tilePaint = Paint(Paint.FILTER_BITMAP_FLAG).apply { isDither = false }
-    private val portalPaint = Paint(Paint.FILTER_BITMAP_FLAG)
-    private val hintPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        style = Paint.Style.STROKE; strokeWidth = 3f; color = 0xCCE8B04B.toInt()
-        pathEffect = DashPathEffect(floatArrayOf(14f, 10f), 0f)
-    }
-    private val crossPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.STROKE; strokeWidth = 3f; color = Color.WHITE }
-    private val crossShadow = Paint(Paint.ANTI_ALIAS_FLAG).apply { style = Paint.Style.STROKE; strokeWidth = 6f; color = 0x99000000.toInt() }
     private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply { color = Color.WHITE; textSize = 34f; textAlign = Paint.Align.CENTER }
     private val dst = RectF()
-    private val tmpRect = RectF()
     private val reqs = ArrayList<TileReq>(256)
     private var lastSubmitSig = 0L
 
@@ -111,7 +98,6 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
     init {
         isFocusable = true
         isFocusableInTouchMode = true
-        setBackgroundColor(Color.BLACK)
     }
 
     override fun onAttachedToWindow() { super.onAttachedToWindow(); app.loader.addListener(onTile) }
@@ -126,7 +112,6 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
     // =====================================================================================
 
     fun open(a: Artwork, onReady: ((Boolean) -> Unit)? = null) {
-        stack.clear()
         scope.launch {
             val s = app.sources.get(a)
             if (s == null) { onReady?.invoke(false); return@launch }
@@ -150,17 +135,9 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
     }
 
     private fun setCurrent(a: Artwork, s: TileSource) {
+        cancelFlight()
         artwork = a; source = s
-        children.clear()
-        a.portals.forEach { children += Child(it, null, null) }
-        listener?.onArtworkChanged(a, stack.size)
-        invalidate()
-    }
-
-    fun refreshPortals() {
-        val a = artwork ?: return
-        val existing = children.map { it.portal }.toSet()
-        a.portals.filter { it !in existing }.forEach { children += Child(it, null, null) }
+        listener?.onArtworkChanged(a)
         invalidate()
     }
 
@@ -172,7 +149,7 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
 
     private fun maxScale(): Double {
         val s = source ?: return 4.0
-        return 2.5 / (1 shl s.minK())
+        return max(2.5 / (1 shl s.minK()), fitScale(s))
     }
 
     fun fitCam(): Cam {
@@ -191,14 +168,28 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
         if (ow == 0 && source != null) fitNow()
     }
 
+    /**
+     * Inquadratura lecita: scala tra vista d'insieme e massimo; in ogni asse in cui l'immagine è più
+     * grande dello schermo i bordi non entrano nello schermo, negli altri l'immagine resta centrata.
+     * È continua, quindi applicarla a ogni fotogramma dei voli non crea scatti.
+     */
+    private fun constrain(c: Cam, s: TileSource) {
+        c.scale = c.scale.coerceIn(fitScale(s), maxScale())
+        val hw = width / 2.0 / c.scale; val hh = height / 2.0 / c.scale
+        c.cx = if (s.width > 2 * hw) c.cx.coerceIn(hw, s.width - hw) else s.width / 2.0
+        c.cy = if (s.height > 2 * hh) c.cy.coerceIn(hh, s.height - hh) else s.height / 2.0
+    }
+
     // =====================================================================================
     // Movimento automatico
     // =====================================================================================
 
     fun flyTo(target: Cam, speed: Double = 1.0, minDur: Double = 0.35, maxDur: Double = 7.0, done: (() -> Unit)? = null) {
-        if (width == 0) return
+        val s = source
+        if (width == 0 || s == null) return
+        val to = target.copy().also { constrain(it, s) }
         flightFrom.copyFrom(cam)
-        flight = Flight(flightFrom, target, width.toDouble(), speed, minDur, maxDur)
+        flight = Flight(flightFrom, to, width.toDouble(), speed, minDur, maxDur)
         flightStart = -1L          // fissato al primo vsync: il volo parte dal fotogramma successivo, senza salto
         flightDone = done
         vx = 0.0; vy = 0.0; zv = 0.0
@@ -209,13 +200,12 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
     fun flyToRect(r: NRect, fill: Double = 0.6, speed: Double = 1.0, maxDur: Double = 7.0, done: (() -> Unit)? = null) {
         val s = source ?: return
         val rw = max(r.w * s.width.toDouble(), 1.0); val rh = max(r.h * s.height.toDouble(), 1.0)
-        val sc = min(width * fill / rw, height * fill / rh).coerceIn(fitScale() * 0.9, maxScale())
+        val sc = min(width * fill / rw, height * fill / rh)
         flyTo(Cam(r.cx * s.width.toDouble(), r.cy * s.height.toDouble(), sc), speed, 0.35, maxDur, done)
     }
 
     fun zoomStep(factor: Double) {
-        val target = Cam(cam.cx, cam.cy, (cam.scale * factor).coerceIn(fitScale() * 0.7, maxScale()))
-        flyTo(target, speed = 1.6, minDur = 0.28, maxDur = 0.6)
+        flyTo(Cam(cam.cx, cam.cy, cam.scale * factor), speed = 1.6, minDur = 0.28, maxDur = 0.6)
     }
 
     fun home() = flyTo(fitCam(), speed = 1.4)
@@ -228,8 +218,8 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
     // =====================================================================================
 
     private val panKeys = setOf(KeyEvent.KEYCODE_DPAD_LEFT, KeyEvent.KEYCODE_DPAD_RIGHT, KeyEvent.KEYCODE_DPAD_UP, KeyEvent.KEYCODE_DPAD_DOWN)
-    private val zoomInKeys = setOf(KeyEvent.KEYCODE_MEDIA_FAST_FORWARD, KeyEvent.KEYCODE_BUTTON_R1, KeyEvent.KEYCODE_PAGE_DOWN, KeyEvent.KEYCODE_CHANNEL_UP)
-    private val zoomOutKeys = setOf(KeyEvent.KEYCODE_MEDIA_REWIND, KeyEvent.KEYCODE_BUTTON_L1, KeyEvent.KEYCODE_PAGE_UP, KeyEvent.KEYCODE_CHANNEL_DOWN)
+    private val zoomInKeys = setOf(KeyEvent.KEYCODE_CHANNEL_UP, KeyEvent.KEYCODE_BUTTON_R1, KeyEvent.KEYCODE_PAGE_UP, KeyEvent.KEYCODE_ZOOM_IN)
+    private val zoomOutKeys = setOf(KeyEvent.KEYCODE_CHANNEL_DOWN, KeyEvent.KEYCODE_BUTTON_L1, KeyEvent.KEYCODE_PAGE_DOWN, KeyEvent.KEYCODE_ZOOM_OUT)
     private val centerKeys = setOf(KeyEvent.KEYCODE_DPAD_CENTER, KeyEvent.KEYCODE_ENTER, KeyEvent.KEYCODE_BUTTON_A, KeyEvent.KEYCODE_NUMPAD_ENTER)
 
     /** Restituisce true se il tasto è stato consumato dal visualizzatore. */
@@ -292,7 +282,7 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
             MotionEvent.ACTION_DOWN -> { lastTouch = PointF(e.x, e.y); cancelFlight() }
             MotionEvent.ACTION_MOVE -> lastTouch?.let {
                 cam.cx -= (e.x - it.x) / cam.scale; cam.cy -= (e.y - it.y) / cam.scale
-                it.set(e.x, e.y); clamp(0.0); invalidate()
+                it.set(e.x, e.y); clamp(); invalidate()
             }
             MotionEvent.ACTION_UP -> lastTouch = null
         }
@@ -336,12 +326,12 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
             if (flightStart < 0) flightStart = frameNs
             val t = (frameNs - flightStart) / 1e9 / f.duration
             f.at(t.coerceAtMost(1.0), cam)
+            constrain(cam, src)
             if (t >= 1.0) {
                 flight = null
                 val d = flightDone; flightDone = null
                 d?.invoke()
             }
-            checkPortals(true)
             return true
         }
 
@@ -388,8 +378,7 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
         cam.cx += vx * dt / cam.scale
         cam.cy += vy * dt / cam.scale
         cam.scale *= 2.0.pow(zv * dt)
-        clamp(dt)
-        checkPortals(zv > 0.05)
+        clamp()
 
         val moving = abs(vx) > 2 || abs(vy) > 2 || abs(zv) > 0.01 || held.isNotEmpty() ||
             axX != 0f || axY != 0f || axZoom != 0f
@@ -397,126 +386,82 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
         return moving
     }
 
-    private fun clamp(dt: Double) {
+    private fun clamp() {
         val s = source ?: return
-        val minS = fitScale() * (if (stack.isEmpty()) 0.85 else 0.5)
-        if (cam.scale > maxScale()) { cam.scale = maxScale(); zv = min(zv, 0.0) }
-        if (cam.scale < minS) { cam.scale = minS; zv = max(zv, 0.0) }
-        cam.cx = cam.cx.coerceIn(0.0, s.width.toDouble())
-        cam.cy = cam.cy.coerceIn(0.0, s.height.toDouble())
-        // sotto la vista d'insieme: riporta dolcemente al centro
-        if (cam.scale <= fitScale() * 1.001 && dt > 0) {
-            val k = min(1.0, dt * 6)
-            cam.cx += (s.width / 2.0 - cam.cx) * k
-            cam.cy += (s.height / 2.0 - cam.cy) * k
-        }
-    }
-
-    // =====================================================================================
-    // Portali: entrata / uscita
-    // =====================================================================================
-
-    /** Rettangolo (schermo) in cui va disegnata l'opera figlia: "contain" dentro il portale. */
-    private fun childScreenRect(c: Child, out: RectF): Boolean {
-        val s = source ?: return false
-        val cs = c.src ?: return false
-        val ox = width / 2.0 - cam.cx * cam.scale
-        val oy = height / 2.0 - cam.cy * cam.scale
-        val pl = ox + c.portal.rect.x * s.width * cam.scale
-        val pt = oy + c.portal.rect.y * s.height * cam.scale
-        val pw = c.portal.rect.w * s.width * cam.scale
-        val ph = c.portal.rect.h * s.height * cam.scale
-        val k = min(pw / cs.width, ph / cs.height)
-        val w = cs.width * k; val h = cs.height * k
-        out.set((pl + (pw - w) / 2).toFloat(), (pt + (ph - h) / 2).toFloat(), (pl + (pw + w) / 2).toFloat(), (pt + (ph + h) / 2).toFloat())
-        return true
-    }
-
-    private fun checkPortals(zoomingIn: Boolean) {
-        val s = source ?: return
-        // uscita: troppo lontani dentro un'opera figlia
-        if (stack.isNotEmpty() && cam.scale < fitScale() * 0.72) { exitPortal(); return }
-        if (!zoomingIn) return
-        for (c in children) {
-            if (!childReady(c)) continue           // quadro non ancora arrivato: entrare darebbe schermo nero
-            if (!childScreenRect(c, tmpRect)) continue
-            val coversCenter = tmpRect.contains(width / 2f, height / 2f)
-            if (coversCenter && (tmpRect.width() >= width * 0.92f || tmpRect.height() >= height * 0.92f)) {
-                enterPortal(c, RectF(tmpRect), s)
-                return
-            }
-        }
-    }
-
-    private fun enterPortal(c: Child, r: RectF, parentSrc: TileSource) {
-        val a = artwork ?: return
-        val cs = c.src ?: return
-        val ca = c.art ?: return
-        val k = r.width() / cs.width.toDouble()
-        val ccx = (width / 2.0 - r.left) / k
-        val ccy = (height / 2.0 - r.top) / k
-        stack.addLast(Frame(a, parentSrc, c.portal, c))
-        if (stack.size > 12) stack.removeFirst()
-        val fl = flight; val fd = flightDone
-        setCurrent(ca, cs)
-        cam.cx = ccx; cam.cy = ccy; cam.scale = k
-        if (fl != null) { flight = null; flightDone = null; fd?.invoke() }
-    }
-
-    private fun exitPortal() {
-        val f = stack.removeLastOrNull() ?: return
-        val cs = source ?: return
-        // rettangolo attuale dell'opera figlia sullo schermo
-        val left = width / 2.0 - cam.cx * cam.scale
-        val top = height / 2.0 - cam.cy * cam.scale
-        val cwScreen = cs.width * cam.scale
-        // rettangolo "contain" della figlia dentro il portale, in pixel del padre
-        val pr = f.portal.rect
-        val pw = pr.w * f.src.width; val ph = pr.h * f.src.height
-        val k = min(pw / cs.width, ph / cs.height)
-        val rw = cs.width * k; val rh = cs.height * k
-        val rl = pr.x * f.src.width + (pw - rw) / 2
-        val rt = pr.y * f.src.height + (ph - rh) / 2
-        val ps = cwScreen / rw
-        f.child.src = cs
-        setCurrent(f.art, f.src)
-        children.firstOrNull { it.portal == f.portal }?.let { it.src = cs; it.art = f.child.art }
-        cam.scale = ps
-        cam.cx = rl + (width / 2.0 - left) / ps
-        cam.cy = rt + (height / 2.0 - top) / ps
-    }
-
-    /** Torna indietro di un livello di finestra (tasto INDIETRO a vista d'insieme). */
-    fun popPortal(): Boolean {
-        if (stack.isEmpty()) return false
-        // anima un'uscita: zoom out fino alla soglia, poi exitPortal scatta da solo
-        flyTo(Cam(cam.cx, cam.cy, fitScale() * 0.6), speed = 1.5, maxDur = 1.2)
-        return true
+        if (cam.scale >= maxScale()) zv = min(zv, 0.0)
+        if (cam.scale <= fitScale()) zv = max(zv, 0.0)
+        val bx = cam.cx; val by = cam.cy
+        constrain(cam, s)
+        if (cam.cx != bx) vx = 0.0          // contro il bordo: niente inerzia che "spinge"
+        if (cam.cy != by) vy = 0.0
     }
 
     val isAtOverview: Boolean get() = cam.scale <= fitScale() * 1.05
 
-    /** Il quadro della finestra ha almeno il livello più grossolano in memoria. */
-    private fun childReady(c: Child): Boolean {
-        val cs = c.src ?: return false
-        val k = cs.maxK
-        for (y in 0 until cs.rows(k)) for (x in 0 until cs.cols(k)) if (app.memory[cs.key(k, x, y)] == null) return false
-        return true
+    // =====================================================================================
+    // Sfondo
+    // =====================================================================================
+
+    /** Mappa minuscola dei colori dell'opera, dal livello più grossolano (un solo tassello di solito). */
+    private fun ensureAmbient(src: TileSource) {
+        if (ambient?.src === src || ambientBuilding === src) return
+        val k = src.maxK
+        val tiles = ArrayList<Pair<Rect, CachedTile>>()
+        for (y in 0 until src.rows(k)) for (x in 0 until src.cols(k)) {
+            val t = app.memory[src.key(k, x, y)] ?: return       // non ancora arrivato: si riprova al prossimo disegno
+            tiles += src.imageRect(k, x, y) to t
+        }
+        ambientBuilding = src
+        scope.launch {
+            val a = withContext(Dispatchers.Default) {
+                runCatching {
+                    val gw = AMBIENT_W
+                    val gh = (AMBIENT_W * src.height.toDouble() / src.width).roundToInt().coerceIn(2, 64)
+                    val grid = Bitmap.createBitmap(gw, gh, Bitmap.Config.ARGB_8888)
+                    val c = Canvas(grid)
+                    val p = Paint(Paint.FILTER_BITMAP_FLAG)
+                    val sx = gw.toFloat() / src.width; val sy = gh.toFloat() / src.height
+                    for ((r, t) in tiles) {
+                        // i bitmap HARDWARE non si leggono né si disegnano su una tela software: copia
+                        val sw = t.bitmap.copy(Bitmap.Config.ARGB_8888, false) ?: continue
+                        c.drawBitmap(sw, t.src, RectF(r.left * sx, r.top * sy, r.right * sx, r.bottom * sy), p)
+                        sw.recycle()
+                    }
+                    val px = IntArray(gw * gh)
+                    grid.getPixels(px, 0, gw, 0, 0, gw, gh)
+                    grid.recycle()
+                    Ambient(src, gw, gh, px)
+                }.getOrNull()
+            }
+            if (ambientBuilding === src) ambientBuilding = null
+            if (a != null && source === src) { ambient = a; invalidate() }
+        }
     }
 
-    /** Per lo slideshow: la finestra [p] dell'opera corrente è pronta per entrarci. */
-    fun portalReady(p: Portal): Boolean = children.firstOrNull { it.portal == p }?.let { childReady(it) } == true
-
-    private fun ensureChild(c: Child) {
-        if (c.src != null || c.loading) return
-        c.loading = true
-        scope.launch {
-            val ca = app.catalog.resolveRef(c.portal.to, c.portal.label)
-            c.art = ca
-            c.src = ca?.let { app.sources.get(it) }
-            c.loading = false
-            invalidate()
+    /** Colore medio della parte visibile, scurito: fa da cornice senza competere con il quadro. */
+    private fun drawBackground(canvas: Canvas, src: TileSource, il: Double, itop: Double, ir: Double, ib: Double) {
+        ensureAmbient(src)
+        val a = ambient?.takeIf { it.src === src }
+        var tr = 0f; var tg = 0f; var tb = 0f
+        if (a != null) {
+            val x0 = (il / src.width * a.w).toInt().coerceIn(0, a.w - 1)
+            val x1 = (ir / src.width * a.w).toInt().coerceIn(x0, a.w - 1)
+            val y0 = (itop / src.height * a.h).toInt().coerceIn(0, a.h - 1)
+            val y1 = (ib / src.height * a.h).toInt().coerceIn(y0, a.h - 1)
+            var n = 0
+            for (y in y0..y1) for (x in x0..x1) {
+                val c = a.px[y * a.w + x]
+                tr += Color.red(c); tg += Color.green(c); tb += Color.blue(c); n++
+            }
+            tr = tr / n * BG_DIM; tg = tg / n * BG_DIM; tb = tb / n * BG_DIM
         }
+        val now = SystemClock.uptimeMillis()
+        val dt = if (bgMs == 0L) 0.0 else ((now - bgMs) / 1000.0).coerceAtMost(0.1)
+        bgMs = now
+        val k = (1 - exp(-dt / BG_FADE_S)).toFloat()
+        bgR += (tr - bgR) * k; bgG += (tg - bgG) * k; bgB += (tb - bgB) * k
+        canvas.drawColor(Color.rgb(bgR.roundToInt(), bgG.roundToInt(), bgB.roundToInt()))
+        if (abs(tr - bgR) + abs(tg - bgG) + abs(tb - bgB) > 1.5f) fading = true else bgMs = 0L
     }
 
     // =====================================================================================
@@ -526,6 +471,7 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
     override fun onDraw(canvas: Canvas) {
         val s = source
         if (s == null) {
+            canvas.drawColor(Color.BLACK)
             canvas.drawText("Caricamento…", width / 2f, height / 2f, textPaint)
             return
         }
@@ -534,58 +480,12 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
         val ox = width / 2.0 - cam.cx * cam.scale
         val oy = height / 2.0 - cam.cy * cam.scale
 
-        // dentro una finestra: disegna anche il quadro esterno attorno (solo livelli grossolani)
-        stack.lastOrNull()?.let { f ->
-            val pr = f.portal.rect
-            val pw = pr.w * f.src.width; val ph = pr.h * f.src.height
-            val k = min(pw / s.width, ph / s.height)
-            val rl = pr.x * f.src.width + (pw - s.width * k) / 2
-            val rt = pr.y * f.src.height + (ph - s.height * k) / 2
-            val ps = cam.scale / k
-            drawSource(canvas, f.src, ox - rl * ps, oy - rt * ps, ps, 255, 30f, coarseOnly = true)
-        }
+        // sfondo (si vede nelle fasce della vista d'insieme) dal colore della parte visibile
+        drawBackground(canvas, s,
+            max(0.0, -ox / cam.scale), max(0.0, -oy / cam.scale),
+            min(s.width.toDouble(), (width - ox) / cam.scale), min(s.height.toDouble(), (height - oy) / cam.scale))
 
         drawSource(canvas, s, ox, oy, cam.scale, 255, 0f)
-
-        // finestre
-        for (c in children) {
-            val pr = c.portal.rect
-            val l = (ox + pr.x * s.width * cam.scale).toFloat()
-            val t = (oy + pr.y * s.height * cam.scale).toFloat()
-            val r = l + (pr.w * s.width * cam.scale).toFloat()
-            val b = t + (pr.h * s.height * cam.scale).toFloat()
-            if (r < 0 || b < 0 || l > width || t > height) continue
-            val size = max(r - l, b - t)
-            if (size > 90) ensureChild(c)
-            val cs = c.src
-            if (cs != null && childScreenRect(c, tmpRect)) {
-                val alpha = (smooth((size - 140.0) / 420.0) * 255).roundToInt()
-                if (alpha > 0) {
-                    canvas.save()
-                    canvas.clipRect(tmpRect)
-                    val k = tmpRect.width() / cs.width.toDouble()
-                    drawSource(canvas, cs, tmpRect.left.toDouble(), tmpRect.top.toDouble(), k, alpha, 12f)
-                    canvas.restore()
-                }
-            }
-            if (showPortalHints && !autoPlay && size > 36 && size < max(width, height) * 0.8f) {
-                hintPaint.alpha = (200 * (1 - smooth((size - 300.0) / 600.0))).roundToInt().coerceIn(40, 200)
-                canvas.drawRect(l, t, r, b, hintPaint)
-            }
-        }
-
-        decorate?.invoke(canvas)
-
-        if (crosshair) {
-            val cx = width / 2f; val cy = height / 2f; val g = 26f
-            for (p in arrayOf(crossShadow, crossPaint)) {
-                canvas.drawCircle(cx, cy, g, p)
-                canvas.drawLine(cx - g * 1.8f, cy, cx - g * 0.6f, cy, p)
-                canvas.drawLine(cx + g * 0.6f, cy, cx + g * 1.8f, cy, p)
-                canvas.drawLine(cx, cy - g * 1.8f, cx, cy - g * 0.6f, p)
-                canvas.drawLine(cx, cy + g * 0.6f, cx, cy + g * 1.8f, p)
-            }
-        }
 
         // invia le richieste solo se qualcosa è cambiato (camera o insieme richiesto)
         val sig = reqs.fold(17L) { acc, r -> acc * 31 + r.key.hashCode() }
@@ -598,11 +498,10 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
      * Pittore: dal livello completo più fine ≥ ideale fino all'ideale, così non restano mai buchi
      * e l'overdraw resta di 1–2 strati anche su GPU modeste.
      */
-    private fun drawSource(canvas: Canvas, src: TileSource, ox: Double, oy: Double, sc: Double, alpha: Int, basePrio: Float, coarseOnly: Boolean = false) {
+    private fun drawSource(canvas: Canvas, src: TileSource, ox: Double, oy: Double, sc: Double, alpha: Int, basePrio: Float) {
         val ideal = floor(ln(1.0 / sc) / ln(2.0) + 1e-9).toInt()
         val kMin = src.minK(); val kMax = src.maxK
-        var kIdeal = ideal.coerceIn(kMin, kMax)
-        if (coarseOnly) kIdeal = min(kMax, kIdeal + 2)
+        val kIdeal = ideal.coerceIn(kMin, kMax)
 
         // area visibile in pixel immagine
         val il = max(0.0, (0 - ox) / sc); val itop = max(0.0, (0 - oy) / sc)
@@ -664,43 +563,13 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
         want(kMax, 0, basePrio)
         for (k in min(kMax, kIdeal + 2) downTo kIdeal + 1) want(k, 0, basePrio + 1f + (k - kIdeal) * 0.1f)
         want(kIdeal, 0, basePrio + 2f)
-        if (!coarseOnly) {
-            want(kIdeal, 1, basePrio + 20f)
-            if (zv > 0.1 && kIdeal - 1 >= kMin) {
-                val rg = range(kIdeal - 1, 0)
-                val midX = (rg[0] + rg[1]) / 2; val midY = (rg[2] + rg[3]) / 2
-                for (y in max(rg[2], midY - 1)..min(rg[3], midY + 1)) for (x in max(rg[0], midX - 1)..min(rg[1], midX + 1))
-                    reqs += TileReq(src, kIdeal - 1, x, y, basePrio + 40f)
-            }
+        want(kIdeal, 1, basePrio + 20f)
+        if (zv > 0.1 && kIdeal - 1 >= kMin) {
+            val rg = range(kIdeal - 1, 0)
+            val midX = (rg[0] + rg[1]) / 2; val midY = (rg[2] + rg[3]) / 2
+            for (y in max(rg[2], midY - 1)..min(rg[3], midY + 1)) for (x in max(rg[0], midX - 1)..min(rg[1], midX + 1))
+                reqs += TileReq(src, kIdeal - 1, x, y, basePrio + 40f)
         }
-    }
-
-    // =====================================================================================
-    // Utilità per gioco/overlay
-    // =====================================================================================
-
-    fun screenRectOf(n: NRect, out: RectF): RectF {
-        val s = source ?: return out.apply { setEmpty() }
-        val ox = width / 2.0 - cam.cx * cam.scale
-        val oy = height / 2.0 - cam.cy * cam.scale
-        out.set(
-            (ox + n.x * s.width * cam.scale).toFloat(), (oy + n.y * s.height * cam.scale).toFloat(),
-            (ox + (n.x + n.w) * s.width * cam.scale).toFloat(), (oy + (n.y + n.h) * s.height * cam.scale).toFloat(),
-        )
-        return out
-    }
-
-    /** Punto al centro dello schermo (mirino) in coordinate normalizzate. */
-    fun centerNormalized(): PointF {
-        val s = source ?: return PointF(0.5f, 0.5f)
-        return PointF((cam.cx / s.width).toFloat(), (cam.cy / s.height).toFloat())
-    }
-
-    /** Area visibile in coordinate normalizzate (per creare obiettivi). */
-    fun visibleNormalized(): NRect {
-        val s = source ?: return NRect(0f, 0f, 1f, 1f)
-        val w = width / cam.scale / s.width; val h = height / cam.scale / s.height
-        return NRect((cam.cx / s.width - w / 2).toFloat(), (cam.cy / s.height - h / 2).toFloat(), w.toFloat(), h.toFloat())
     }
 
     /** Fattore di ingrandimento leggibile (1× = vista d'insieme). */
@@ -719,5 +588,8 @@ class DeepZoomView @JvmOverloads constructor(ctx: Context, attrs: AttributeSet? 
         private const val ZOOM_RAMP = 1.0
         private const val DECAY_PAN = 0.12       // inerzia al rilascio (s)
         private const val DECAY_ZOOM = 0.15
+        private const val AMBIENT_W = 32         // colonne della mappa dei colori
+        private const val BG_DIM = 0.55f         // sfondo più scuro dell'opera
+        private const val BG_FADE_S = 0.6        // costante di tempo della dissolvenza dello sfondo
     }
 }

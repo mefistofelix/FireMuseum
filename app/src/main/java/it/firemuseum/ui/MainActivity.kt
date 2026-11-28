@@ -14,7 +14,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
@@ -111,9 +110,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun buildChips() {
         val row = findViewById<LinearLayout>(R.id.chips)
-        row.addView(chip("▶ Slideshow") { startSlideshow(false) })
-        row.addView(chip("∞ Viaggio infinito") { startSlideshow(true) })
-        row.addView(chip("🎲 Sorpresa") { current().randomOrNull()?.let { openViewer(it, 0, "game") } })
+        row.addView(chip("▶ Slideshow") { startSlideshow() })
+        row.addView(chip("🎲 Sorpresa") { current().randomOrNull()?.let { openViewer(it, 0, null) } })
         Filter.values().forEach { f ->
             row.addView(chip(f.label, f in filters) { v ->
                 if (!filters.add(f)) filters.remove(f)
@@ -146,19 +144,19 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    private fun startSlideshow(infinite: Boolean) {
+    private fun startSlideshow() {
         val list = current()
         if (list.isEmpty()) return
-        val first = if (infinite) list.filter { it.portals.isNotEmpty() || it.tags.contains("quadri nel quadro") }.randomOrNull() ?: list.random() else list.first()
+        val first = list.first()
         startActivity(Intent(this, ViewerActivity::class.java).apply {
             putExtra(ViewerActivity.EXTRA_ID, first.id)
             putExtra(ViewerActivity.EXTRA_LIST, list.map { it.id }.toTypedArray())
-            putExtra(ViewerActivity.EXTRA_MODE, if (infinite) "journey" else "slideshow")
+            putExtra(ViewerActivity.EXTRA_MODE, "slideshow")
         })
     }
 
     override fun onKeyUp(keyCode: Int, event: KeyEvent): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE || keyCode == KeyEvent.KEYCODE_MEDIA_PLAY) { startSlideshow(false); return true }
+        if (keyCode == KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE || keyCode == KeyEvent.KEYCODE_MEDIA_PLAY) { startSlideshow(); return true }
         if (keyCode == KeyEvent.KEYCODE_MENU) {
             val v = currentFocus
             val pos = v?.let { grid.findContainingViewHolder(it)?.bindingAdapterPosition } ?: -1
@@ -170,13 +168,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun itemMenu(a: Artwork) {
         val fav = a.id in app.settings.favorites
-        val opts = arrayOf("Esplora", "🎯 Gioca a cerca e trova", "▶ Slideshow da qui", if (fav) "★ Togli dai preferiti" else "☆ Aggiungi ai preferiti")
+        val opts = arrayOf("Esplora", "▶ Slideshow da qui", if (fav) "★ Togli dai preferiti" else "☆ Aggiungi ai preferiti")
         AlertDialog.Builder(this).setTitle(a.title).setItems(opts) { _, w ->
             when (w) {
                 0 -> openViewer(a, 0, null)
-                1 -> openViewer(a, 0, "game")
-                2 -> openViewer(a, 0, "slideshow")
-                3 -> { app.settings.toggleFavorite(a.id); adapter.notifyDataSetChanged() }
+                1 -> openViewer(a, 0, "slideshow")
+                2 -> { app.settings.toggleFavorite(a.id); adapter.notifyDataSetChanged() }
             }
         }.show()
     }
@@ -198,7 +195,6 @@ class MainActivity : AppCompatActivity() {
             "Server LAN piramidi: ${s.lanServer.ifBlank { "nessuno" }}",
             "User-Agent / contatto per Wikimedia",
             "Archivio MEGA: ${if (s.megaLink.isBlank()) "spento" else app.mega.describe()}",
-            "Esporta i miei obiettivi",
             "Svuota cache tasselli",
             "Stato archivio",
         )
@@ -213,9 +209,8 @@ class MainActivity : AppCompatActivity() {
                 6 -> textDialog("Server LAN (es. http://192.168.1.10:8000/)", s.lanServer) { s.lanServer = it }
                 7 -> textDialog("User-Agent (metti un contatto tuo)", s.userAgent) { s.userAgent = it.ifBlank { Settings.DEFAULT_UA } }
                 8 -> textDialog("Link cartella MEGA (vuoto = spento)", s.megaLink) { s.megaLink = it; recreate() }
-                9 -> Toast.makeText(this, app.catalog.exportUserTargets()?.path ?: "Nessun disco", Toast.LENGTH_LONG).show()
-                10 -> { lifecycleScope.launch(kotlinx.coroutines.Dispatchers.IO) { app.tiles.clear() }; app.memory.clear() }
-                11 -> AlertDialog.Builder(this).setTitle("Archivio").setMessage(
+                9 -> { lifecycleScope.launch(kotlinx.coroutines.Dispatchers.IO) { app.tiles.clear() }; app.memory.clear() }
+                10 -> AlertDialog.Builder(this).setTitle("Archivio").setMessage(
                     "${app.storage.describe()}\n\nPercorso: ${app.storage.current?.root}\n" +
                         "Tasselli: ${app.tiles.totalBytes shr 20} MB in ${app.tiles.segmentCount} segmenti\n" +
                         "Originali/anteprime: ${app.blobs.totalBytes shr 20} MB\n\n" +

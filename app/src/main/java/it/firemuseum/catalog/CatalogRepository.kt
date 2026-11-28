@@ -15,8 +15,7 @@ import java.text.Normalizer
 
 /** Filtri della griglia principale. */
 enum class Filter(val label: String) {
-    KIDS("👶 Bambini"), GIGA("🔍 ≥ 20.000 px"), GAME("🎯 Con obiettivi"), PORTALS("🪟 Con finestre"),
-    FAVORITES("★ Preferiti"), OFFLINE("💾 Sul disco"), BRUEGEL("Bruegel"), BOSCH("Bosch"), BEUCKELAER("Beuckelaer"),
+    GIGA("🔍 ≥ 20.000 px"), FAVORITES("★ Preferiti"), OFFLINE("💾 Sul disco"), BRUEGEL("Bruegel"),
 }
 
 enum class Sort(val label: String) { CATALOG("Ordine catalogo"), RESOLUTION("Risoluzione"), AUTHOR("Autore"), YEAR("Anno") }
@@ -33,18 +32,21 @@ class CatalogRepository(private val app: App) {
 
     suspend fun load(): List<Artwork> = withContext(Dispatchers.IO) {
         val map = LinkedHashMap<String, Artwork>()
-        fun ingest(text: String, origin: String) {
+        fun ingest(text: String, origin: String, onlyKnown: Boolean = false) {
             runCatching {
                 val root = JSONObject(text)
                 val arr = root.optJSONArray("artworks") ?: JSONArray()
-                for (i in 0 until arr.length()) Artwork.from(arr.getJSONObject(i))?.let { map[it.id] = it }
+                for (i in 0 until arr.length()) Artwork.from(arr.getJSONObject(i))?.let {
+                    if (!onlyKnown || it.id in map) map[it.id] = it
+                }
             }.onFailure { Log.w(TAG, "bad catalog $origin: ${it.message}") }
         }
         // catalog.json (scelte curate) poi catalog_*.json (generati da tools/build_catalog.py)
         (app.assets.list("")?.filter { it.startsWith("catalog") && it.endsWith(".json") }?.sorted() ?: listOf("catalog.json"))
             .forEach { name -> ingest(app.assets.open(name).bufferedReader().readText(), "assets/$name") }
-        // archivio MEGA: catalogo completo con piramidi pronte (sostituisce le voci con lo stesso id)
-        runCatching { app.mega.indexText() }.getOrNull()?.let { ingest(it, "mega/index.json") }
+        // archivio MEGA: piramidi pronte per le voci di serie (sostituisce le voci con lo stesso id).
+        // Le altre voci dell'indice non entrano in galleria: la selezione la decide catalog.json.
+        runCatching { app.mega.indexText() }.getOrNull()?.let { ingest(it, "mega/index.json", onlyKnown = true) }
         app.storage.dir("catalog")?.listFiles { f -> f.name.endsWith(".json") }?.sortedBy { it.name }?.forEach {
             ingest(it.readText(), it.name)
         }
@@ -56,27 +58,20 @@ class CatalogRepository(private val app: App) {
 
     fun get(id: String): Artwork? = synchronized(byId) { byId[id] }
 
-    /** Opere con finestre (quadri di galleria): punti di partenza del viaggio infinito. */
-    fun galleries(): List<Artwork> = synchronized(byId) { byId.values.filter { it.portals.isNotEmpty() } }
-
     private fun norm(s: String) = Normalizer.normalize(s.lowercase(), Normalizer.Form.NFD).replace(Regex("\\p{M}"), "")
 
     fun search(query: String, filters: Set<Filter>, sort: Sort): List<Artwork> {
         val words = norm(query).split(Regex("\\s+")).filter { it.isNotBlank() }
         val fav = app.settings.favorites
-        val kids = app.settings.kidsOnly || Filter.KIDS in filters
+        val kids = app.settings.kidsOnly
         var list = all.filter { a ->
             val hay = a.searchText()
             words.all { w -> hay.contains(w) } &&
                 (!kids || a.kidSafe) &&
                 (Filter.GIGA !in filters || a.maxSide >= 20000) &&
-                (Filter.GAME !in filters || a.targets.isNotEmpty() || a.qid != null) &&
-                (Filter.PORTALS !in filters || a.portals.isNotEmpty() || a.tags.contains("quadri nel quadro")) &&
                 (Filter.FAVORITES !in filters || a.id in fav) &&
                 (Filter.OFFLINE !in filters || isOffline(a)) &&
-                (Filter.BRUEGEL !in filters || hay.contains("bruegel")) &&
-                (Filter.BOSCH !in filters || hay.contains("bosch")) &&
-                (Filter.BEUCKELAER !in filters || hay.contains("beuckelaer"))
+                (Filter.BRUEGEL !in filters || hay.contains("bruegel"))
         }
         list = when (sort) {
             Sort.CATALOG -> list

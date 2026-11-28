@@ -2,27 +2,21 @@ package it.firemuseum.ui
 
 import android.graphics.Color
 import android.os.Bundle
-import android.text.InputType
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Button
-import android.widget.EditText
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import it.firemuseum.App
 import it.firemuseum.R
-import it.firemuseum.game.Game
 import it.firemuseum.model.Artwork
-import it.firemuseum.model.NRect
-import it.firemuseum.model.Target
 import it.firemuseum.tiles.CommonsSource
 import it.firemuseum.viewer.DeepZoomView
 import it.firemuseum.viewer.Slideshow
@@ -33,9 +27,9 @@ import kotlinx.coroutines.launch
 /**
  * Schermo di esplorazione. Telecomando:
  *   frecce = muovi (tieni premuto = accelera) · OK = zoom ×2 (tieni = zoom continuo)
- *   ⏩/⏪ = zoom avanti/indietro continuo · INDIETRO = zoom out / esci dalla finestra / esci
- *   ⏯ = slideshow · MENU (≡) = menu azioni (info, gioco, indizio, scarica originale…)
- *   Nel gioco: OK = "è qui!" (il mirino al centro), tieni premuto OK = zoom.
+ *   programma su/giù = zoom avanti/indietro (tieni = continuo) · INDIETRO = zoom out / esci
+ *   ⏩/⏪ = opera successiva/precedente (con didascalia) · ⏯ = slideshow
+ *   MENU (≡) = menu azioni (info, preferiti, scarica originale…)
  */
 class ViewerActivity : AppCompatActivity(), DeepZoomView.Listener {
 
@@ -43,7 +37,6 @@ class ViewerActivity : AppCompatActivity(), DeepZoomView.Listener {
     private lateinit var zoom: DeepZoomView
     private lateinit var caption: TextView
     private lateinit var hud: TextView
-    private lateinit var gamePanel: TextView
     private lateinit var toast: TextView
     private lateinit var menu: ScrollView
     private lateinit var menuList: LinearLayout
@@ -52,7 +45,6 @@ class ViewerActivity : AppCompatActivity(), DeepZoomView.Listener {
 
     private var ids: List<String> = emptyList()
     private var index = 0
-    private var game: Game? = null
     private lateinit var slideshow: Slideshow
     private var captionJob: Job? = null
     private var toastJob: Job? = null
@@ -66,18 +58,13 @@ class ViewerActivity : AppCompatActivity(), DeepZoomView.Listener {
         ids = intent.getStringArrayExtra(EXTRA_LIST)?.toList() ?: emptyList()
         val id = intent.getStringExtra(EXTRA_ID)
         index = ids.indexOf(id).coerceAtLeast(0)
-        slideshow = Slideshow(zoom, ::nextArtwork, { app.settings.slideSeconds }, { app.settings.slidePace }, ::showCaption) { on ->
-            hudRefresh(); zoom.crosshair = game != null && !on
-            zoom.autoPlay = on; zoom.invalidate()
+        slideshow = Slideshow(zoom, ::nextArtwork, { app.settings.slideSeconds }, { app.settings.slidePace }, ::showCaption) { _ ->
+            hudRefresh()
         }
 
         val a = id?.let { app.catalog.get(it) } ?: run { finish(); return }
         openArtwork(a) {
-            when (intent.getStringExtra(EXTRA_MODE)) {
-                "game" -> startGame()
-                "slideshow" -> slideshow.start()
-                "journey" -> { slideshow.infiniteJourney = true; slideshow.start() }
-            }
+            if (intent.getStringExtra(EXTRA_MODE) == "slideshow") slideshow.start()
         }
     }
 
@@ -100,9 +87,8 @@ class ViewerActivity : AppCompatActivity(), DeepZoomView.Listener {
         root.addView(zoom, FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
         caption = tv(20f, Gravity.TOP or Gravity.START).apply { maxWidth = 1100 }
         hud = tv(13f, Gravity.BOTTOM or Gravity.END).apply { alpha = 0.75f }
-        gamePanel = tv(22f, Gravity.TOP or Gravity.END).apply { visibility = View.GONE; maxWidth = 620 }
         toast = tv(26f, Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL).apply { visibility = View.GONE }
-        listOf(caption, hud, gamePanel, toast).forEach { root.addView(it) }
+        listOf(caption, hud, toast).forEach { root.addView(it) }
 
         menuList = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL; setPadding(18, 18, 18, 18) }
         menu = ScrollView(this).apply {
@@ -139,7 +125,8 @@ class ViewerActivity : AppCompatActivity(), DeepZoomView.Listener {
             val sub = listOfNotNull(a.author, a.year).joinToString(", ")
             if (sub.isNotEmpty()) append("\n").append(sub)
             a.museum?.let { append("\n").append(it) }
-            if (zoom.depth > 0) append("\n🪟 dentro una finestra (livello ${zoom.depth}) — INDIETRO per uscire")
+            val i = ids.indexOf(a.id)
+            if (i >= 0 && ids.size > 1) append("\n").append("${i + 1} / ${ids.size}  ·  ⏪ ⏩ per cambiare quadro")
         }
         caption.alpha = 0f; caption.visibility = View.VISIBLE
         caption.animate().alpha(1f).setDuration(400).start()
@@ -163,41 +150,39 @@ class ViewerActivity : AppCompatActivity(), DeepZoomView.Listener {
     // ------------------------------------------------------------------ opere
 
     private fun openArtwork(a: Artwork, then: (() -> Unit)? = null) {
-        game = null; gamePanel.visibility = View.GONE; zoom.crosshair = false; zoom.decorate = null
         zoom.open(a) { ok ->
             if (!ok) { say("Impossibile aprire l'immagine (rete o file mancante)", 4000); return@open }
             then?.invoke()
         }
         lifecycleScope.launch {
             app.wikidata.enrich(a)
-            zoom.refreshPortals()
             if (zoom.artwork === a) showCaption(a)
         }
     }
 
-    /** Riparte da capo in modalità viaggio; se l'opera non ha finestre si va prima in una galleria. */
-    private fun startJourney() {
+    /** ⏩/⏪: quadro successivo o precedente; lo slideshow, se acceso, riparte dal nuovo quadro. */
+    private fun step(next: Boolean) {
+        val a = (if (next) nextArtwork() else prevArtwork()) ?: return
+        val wasRunning = slideshow.running
         slideshow.stop()
-        slideshow.infiniteJourney = true
-        val here = zoom.artwork
-        if (here != null && here.portals.isNotEmpty()) { slideshow.start(); return }
-        val g = app.catalog.galleries().randomOrNull() ?: run { say("Nessuna galleria con finestre nel catalogo", 4000); return }
-        openArtwork(g) { slideshow.start() }
+        openArtwork(a) { if (wasRunning) slideshow.start() }
+    }
+
+    private fun prevArtwork(): Artwork? {
+        if (ids.isEmpty()) return null
+        index = (index - 1 + ids.size) % ids.size
+        return app.catalog.get(ids[index])
     }
 
     private fun nextArtwork(): Artwork? {
-        // viaggio infinito: si passa sempre a un'altra galleria, non a un'opera qualsiasi
-        if (slideshow.infiniteJourney) app.catalog.galleries().filter { it !== zoom.artwork }.randomOrNull()?.let { return it }
         if (ids.isEmpty()) return null
         index = (index + 1) % ids.size
         return app.catalog.get(ids[index])
     }
 
-    override fun onArtworkChanged(a: Artwork, depth: Int) {
+    override fun onArtworkChanged(a: Artwork) {
         showCaption(a)
         hudRefresh()
-        if (depth > 0) lifecycleScope.launch { app.wikidata.enrich(a); zoom.refreshPortals() }
-        if (game != null && game?.art !== a) stopGame()
     }
 
     override fun onUserMoved() {
@@ -205,75 +190,13 @@ class ViewerActivity : AppCompatActivity(), DeepZoomView.Listener {
         lifecycleScope.launch { delay(250); hudRefresh() }
     }
 
-    override fun onCenterTap() {
-        val g = game
-        if (g != null) checkGame(g) else zoom.zoomStep(2.0)
-    }
-
-    // ------------------------------------------------------------------ gioco
-
-    private fun startGame() {
-        val a = zoom.artwork ?: return
-        lifecycleScope.launch {
-            app.wikidata.enrich(a)
-            val g = Game(a, zoom)
-            if (g.targets.isEmpty()) {
-                say("Nessun obiettivo per quest'opera: aggiungine dal menu (≡ → Aggiungi obiettivo qui)", 5000)
-                return@launch
-            }
-            game = g
-            zoom.crosshair = true
-            zoom.decorate = { c -> g.draw(c) }
-            updateGamePanel()
-            say("Cerca e trova! Metti il mirino sull'oggetto e premi OK")
-        }
-    }
-
-    private fun stopGame() {
-        game = null; zoom.crosshair = false; zoom.decorate = null; gamePanel.visibility = View.GONE; zoom.invalidate()
-    }
-
-    private fun updateGamePanel() {
-        val g = game ?: return
-        gamePanel.visibility = View.VISIBLE
-        gamePanel.text = if (g.isOver) "🏆 Finito! Punti: ${g.score}\n(≡ per un'altra partita)"
-            else "🎯 Trova:\n${g.current?.label}\n\n${g.progress} · ${g.score} punti\n≡ indizio"
-    }
-
-    private fun checkGame(g: Game) {
-        when (val r = g.check()) {
-            is Game.Result.Found -> say("✓ Trovato: ${r.t.label}  +${r.points}")
-            is Game.Result.TooFar -> say("Forse… avvicinati di più per esserne sicuro!")
-            Game.Result.Miss -> say("Non qui… continua a cercare")
-            Game.Result.Done -> say("Partita finita!")
-        }
-        updateGamePanel()
-        zoom.invalidate()
-    }
-
-    private fun addTargetHere() {
-        val a = zoom.artwork ?: return
-        val v = zoom.visibleNormalized()
-        val p = zoom.centerNormalized()
-        val w = v.w * 0.18f; val h = v.h * 0.18f
-        val rect = NRect(p.x - w / 2, p.y - h / 2, w, h)
-        val et = EditText(this).apply { hint = "Cosa c'è sotto il mirino? (puoi dettarlo)"; inputType = InputType.TYPE_CLASS_TEXT }
-        AlertDialog.Builder(this).setTitle("Nuovo obiettivo").setView(et)
-            .setPositiveButton("Salva") { _, _ ->
-                val label = et.text.toString().trim()
-                if (label.isNotEmpty()) {
-                    app.catalog.addUserTarget(a, Target(label, rect, null, 2, "user"))
-                    say("Salvato «$label» (${a.targets.count { it.origin == "user" }} tuoi obiettivi)")
-                }
-            }.setNegativeButton("Annulla", null).show()
-    }
+    override fun onCenterTap() = zoom.zoomStep(2.0)
 
     // ------------------------------------------------------------------ menu
 
     private fun openMenu() {
         menuList.removeAllViews()
         val a = zoom.artwork
-        val g = game
         fun item(label: String, action: () -> Unit) {
             menuList.addView(Button(this).apply {
                 text = label; isAllCaps = false; textSize = 17f; gravity = Gravity.START or Gravity.CENTER_VERTICAL
@@ -283,18 +206,8 @@ class ViewerActivity : AppCompatActivity(), DeepZoomView.Listener {
             })
         }
         item("ℹ Informazioni sull'opera") { showInfo() }
-        if (g == null) item("🎯 Gioca: cerca e trova") { startGame() }
-        else {
-            item("💡 Indizio") { g.hint()?.let { say(it, 4000) }; zoom.invalidate() }
-            item("⏭ Salta questo obiettivo") { g.skip(); updateGamePanel() }
-            item("🔁 Nuova partita") { stopGame(); startGame() }
-            item("✖ Termina il gioco") { stopGame() }
-        }
-        item("➕ Aggiungi obiettivo qui (mirino)") { zoom.crosshair = true; zoom.invalidate(); addTargetHere() }
         item(if (slideshow.running) "⏸ Ferma slideshow" else "▶ Slideshow") { if (slideshow.running) slideshow.stop() else slideshow.start() }
-        item("∞ Viaggio infinito nelle finestre") { startJourney() }
         item("🏠 Vista d'insieme") { zoom.home() }
-        item(if (zoom.showPortalHints) "🪟 Nascondi contorni finestre" else "🪟 Mostra contorni finestre") { zoom.showPortalHints = !zoom.showPortalHints; zoom.invalidate() }
         (zoom.source as? CommonsSource)?.let { cs ->
             if (!cs.originalOnDisk) item("💾 Scarica l'originale (${cs.originalBytes shr 20} MB, ${cs.width}×${cs.height}) sul disco esterno") { downloadOriginal(cs) }
         }
@@ -306,7 +219,8 @@ class ViewerActivity : AppCompatActivity(), DeepZoomView.Listener {
                 say(if (now) "Aggiunto ai preferiti (l'originale non verrà eliminato)" else "Tolto dai preferiti")
             }
         }
-        item("⏭ Opera successiva") { nextArtwork()?.let { openArtwork(it) } }
+        item("⏩ Opera successiva") { step(true) }
+        item("⏪ Opera precedente") { step(false) }
         menu.visibility = View.VISIBLE
         menuList.getChildAt(0)?.requestFocus()
     }
@@ -326,8 +240,6 @@ class ViewerActivity : AppCompatActivity(), DeepZoomView.Listener {
             row("Risoluzione", s?.let { "${it.width} × ${it.height} px (%.0f Mpx)".format(it.width.toDouble() * it.height / 1e6) })
             row("Peso originale", if (a.bytes > 0) "%.1f MB".format(a.bytes / 1e6) else null)
             row("Licenza", a.license); row("Tag", a.tags.joinToString(", ").ifBlank { null })
-            row("Obiettivi", if (a.targets.isNotEmpty()) "${a.targets.size} (${a.targets.count { it.origin == "wikidata" }} da Wikidata, ${a.targets.count { it.origin == "user" }} tuoi)" else null)
-            row("Finestre", if (a.portals.isNotEmpty()) "${a.portals.size}: " + a.portals.mapNotNull { it.label }.take(8).joinToString(", ") else null)
             row("Wikidata", a.qid); row("Sorgente", s?.describe()); row("Pagina", a.pageUrl)
             a.warning?.let { append("\n⚠ $it\n") }
             a.description?.let { append("\n").append(it).append("\n") }
@@ -383,7 +295,12 @@ class ViewerActivity : AppCompatActivity(), DeepZoomView.Listener {
                 if (e.action == KeyEvent.ACTION_UP) onBackKey()
                 return true
             }
-            KeyEvent.KEYCODE_MEDIA_NEXT -> { if (e.action == KeyEvent.ACTION_UP) nextArtwork()?.let { openArtwork(it) }; return true }
+            KeyEvent.KEYCODE_MEDIA_FAST_FORWARD, KeyEvent.KEYCODE_MEDIA_NEXT -> {
+                if (e.action == KeyEvent.ACTION_DOWN && e.repeatCount == 0) step(true); return true
+            }
+            KeyEvent.KEYCODE_MEDIA_REWIND, KeyEvent.KEYCODE_MEDIA_PREVIOUS -> {
+                if (e.action == KeyEvent.ACTION_DOWN && e.repeatCount == 0) step(false); return true
+            }
         }
         if (zoom.handleKey(e)) { lifecycleScope.launch { hudRefresh() }; return true }
         return super.dispatchKeyEvent(e)
@@ -392,7 +309,6 @@ class ViewerActivity : AppCompatActivity(), DeepZoomView.Listener {
     private fun onBackKey() {
         if (slideshow.running) { slideshow.stop(); say("Slideshow fermato"); return }
         if (!zoom.isAtOverview) { zoom.zoomStep(0.5); return }
-        if (zoom.popPortal()) return
         val now = System.currentTimeMillis()
         if (now - lastBack < 1800) finish() else { lastBack = now; say("Premi ancora INDIETRO per tornare alla galleria", 1800) }
     }

@@ -45,8 +45,6 @@ class ArtworkAdapter(
         val fav = a.id in App.instance.settings.favorites
         h.flags.text = buildString {
             if (fav) append("★")
-            if (a.targets.isNotEmpty()) append("🎯")
-            if (a.portals.isNotEmpty() || a.tags.contains("quadri nel quadro")) append("🪟")
             if (!a.kidSafe) append("⚠")
         }
         h.flags.visibility = if (h.flags.text.isEmpty()) View.GONE else View.VISIBLE

@@ -8,8 +8,7 @@ App Android TV / **Fire TV** in Kotlin, a View classiche (niente Compose, niente
 
 ```
 ui/        MainActivity (galleria, ricerca, filtri, impostazioni) · ViewerActivity (overlay, menu, tasti)
-viewer/    DeepZoomView (rendering a tasselli, fisica input, portali) · Camera/Flight (volo van Wijk) · Slideshow
-game/      Game (cerca e trova: mirino, indizi, punteggio)
+viewer/    DeepZoomView (rendering a tasselli, fisica input, inquadratura agganciata ai bordi, sfondo dal colore medio) · Camera/Flight (volo van Wijk) · Slideshow
 tiles/     TileSource (griglia uniforme 2^k) · IiifSource · DziSource (http/dir/zip/zip remoto) · RangeZip · LocalRegionSource
            CommonsSource (strati 1280/3840/originale) · SourceFactory (priorità piramidi) · TileLoader (coda a priorità)
 cache/     SegmentCache (tasselli log-structured su USB) · BlobStore (file grandi) · SpaceGovernor (pulizia) · MemoryTileCache
@@ -31,6 +30,9 @@ tools/     script Python per il PC: make_pyramids.py, build_catalog.py, seed/mak
 6. **Coordinate di annotazioni e portali normalizzate** (0..1, formato `NRect`, compatibile con IIIF `pct:` / Wikidata P2677).
 7. **Contenuti per bambini**: ogni voce di catalogo ha `kidSafe` e `warning`. Le voci generate in automatico partono con `kidSafe=false`.
 8. Testi dell'interfaccia in **italiano**.
+9. **Inquadratura**: mai sotto la vista d'insieme; in ogni asse in cui l'immagine supera lo schermo i bordi restano fuori dallo schermo (`DeepZoomView.constrain`, applicata anche a ogni fotogramma dei voli).
+10. **Galleria di serie**: solo voci `kidSafe`, lato lungo ≥ 10.000 px, scene in stile fiammingo (niente fantastico/infernale né ritratti). La selezione sta in `tools/seed/make_seed.py`; l'indice MEGA aggiorna solo le voci già nel catalogo.
+11. **Telecomando**: programma su/giù = zoom, ⏩/⏪ = quadro successivo/precedente (con didascalia), il volume resta al televisore. Gioco "cerca e trova" e finestre (portali) sono stati tolti dall'app.
 
 ## Griglia dei tasselli (contratto `TileSource`)
 

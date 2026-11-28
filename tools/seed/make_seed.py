@@ -142,6 +142,18 @@ add("rijks-pjezo", "Rijksmuseum — esempio IIIF Micrio (probabilmente La ronda 
     14645, 12158, 0, museum="Rijksmuseum, Amsterdam", style="Secolo d'oro olandese", genre="ritratto di gruppo",
     tags=["iiif", "rijksmuseum"], iiif="https://iiif.micr.io/PJEZO/info.json")
 
+# ---------------- Selezione di serie ----------------
+# Solo scene affollate adatte ai bambini (paesaggi, vedute, mercati, feste, interni: stile fiammingo)
+# e solo immagini abbastanza grandi da regalare dettagli nuovi a ogni zoom sul televisore.
+# Le voci sopra restano come riferimento; qui si tengono quelle che vanno nella galleria.
+MIN_SIDE = 10000                      # px sul lato lungo: almeno ~5 raddoppi di zoom su 1920×1080
+EXCLUDE_GENRES = {"fantastico / religioso", "ritratto di gruppo"}
+A = [a for a in A
+     if a["kidSafe"]
+     and max(a["width"], a["height"]) >= MIN_SIDE
+     and a["genre"] not in EXCLUDE_GENRES
+     and not a["id"].startswith("wd-")]
+
 OUT.parent.mkdir(parents=True, exist_ok=True)
 OUT.write_text(json.dumps({"version": 1, "artworks": A}, ensure_ascii=False, indent=1), encoding="utf-8")
 print(f"{len(A)} opere -> {OUT}")
