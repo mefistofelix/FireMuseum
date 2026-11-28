@@ -142,6 +142,60 @@ add("rijks-pjezo", "Rijksmuseum — esempio IIIF Micrio (probabilmente La ronda 
     14645, 12158, 0, museum="Rijksmuseum, Amsterdam", style="Secolo d'oro olandese", genre="ritratto di gruppo",
     tags=["iiif", "rijksmuseum"], iiif="https://iiif.micr.io/PJEZO/info.json")
 
+# ---------------- Paesaggi, vedute, marine (immagini Commons da almeno 10.000 px) ----------------
+add('bruegel-harvesters', 'I mietitori', 'Pieter_Bruegel_the_Elder-_The_Harvesters_-_Google_Art_Project.jpg', 'Pieter Bruegel il Vecchio', '1565', 30000, 21851, 212.77,
+    museum='Metropolitan Museum of Art, New York', style='Rinascimento fiammingo', genre='paesaggio', tags=['estate', 'campi', 'contadini', 'grano'])
+add('bruegel-census-bethlehem', 'Il censimento di Betlemme', 'Pieter_Bruegel_the_Elder_-_The_Numbering_at_Bethlehem_-_Google_Art_Project.jpg', 'Pieter Bruegel il Vecchio', '1566', 15647, 10843, 39.68,
+    museum='Musei reali di Belle Arti, Bruxelles', style='Rinascimento fiammingo', genre='paesaggio invernale', tags=['inverno', 'neve', 'villaggio', 'bambini'])
+add('bruegel-winter-birdtrap', 'Paesaggio invernale con pattinatori e trappola per uccelli', 'Bruegel,_Pieter_(I)_-_Winterlandschap_met_schaatsers_en_vogelknip,_1565.jpg', 'Pieter Bruegel il Vecchio', '1565', 12406, 8224, 60.01,
+    museum='Musei reali di Belle Arti, Bruxelles', style='Rinascimento fiammingo', genre='paesaggio invernale', tags=['inverno', 'ghiaccio', 'pattinatori', 'uccelli'])
+add('bruegel-icarus', 'Paesaggio con la caduta di Icaro', 'Pieter_Bruegel_the_Elder_-_Landscape_with_the_Fall_of_Icarus_-_Brussels,_Royal_Museums_of_Fine_Arts_of_Belgium_-_Google_Arts_&_Culture.jpg', 'Pieter Bruegel il Vecchio (attr.)', '1560 ca.', 12265, 8000, 81.69,
+    museum='Musei reali di Belle Arti, Bruxelles', style='Rinascimento fiammingo', genre='paesaggio', tags=['mare', 'navi', 'contadino', 'pecore'])
+add('bruegel-naples', 'Veduta del golfo di Napoli con navi', 'Bruegel_—_Naval_Battle_in_the_Gulf_of_Naples.jpg', 'Pieter Bruegel il Vecchio', '1560 ca.', 10319, 5889, 41.45,
+    museum='Galleria Doria Pamphilj, Roma', style='Rinascimento fiammingo', genre='marina', tags=['mare', 'navi', 'porto', 'Napoli'])
+add('jan-brueghel-babel', 'La Torre di Babele', 'Jan_Brueghel_I_-_Toren_van_Babel_-_947_-_Royal_Museum_of_Fine_Arts_Antwerp.jpg', 'Jan Brueghel il Vecchio', '1595 ca.', 26566, 20394, 59.70,
+    museum='KMSKA, Anversa', style='Rinascimento fiammingo', genre='paesaggio', tags=['torre', 'cantiere', 'paesaggio'])
+add('avercamp-scene-ice', 'Scena sul ghiaccio', 'A_Scene_on_the_Ice.jpg', 'Hendrick Avercamp', '1625 ca.', 17273, 8767, 58.92,
+    museum='National Gallery of Art, Washington', style="Secolo d'oro olandese", genre='paesaggio invernale', tags=['inverno', 'ghiaccio', 'pattinatori', 'slitte'])
+add('canaletto-bucentaur', 'Il ritorno del Bucintoro al molo di Palazzo Ducale', "Canaletto_-_Bucentaur's_return_to_the_pier_by_the_Palazzo_Ducale_-_Google_Art_Project.jpg", 'Canaletto', '1730 ca.', 30000, 20857, 190.21,
+    museum='Pushkin Museum, Mosca', style='Vedutismo veneziano', genre='veduta', tags=['Venezia', 'barche', 'gondole', 'festa'])
+add('canaletto-brenta', 'Il canale del Brenta a Padova', 'Giovanni_Antonio_Canal,_il_Canaletto_-_The_Brenta_Canal_at_Padua_-_WGA03914.jpg', 'Canaletto', '1740 ca.', 19535, 11085, 98.68,
+    museum='National Gallery of Art, Washington', style='Vedutismo veneziano', genre='veduta', tags=['canale', 'barche', 'città'])
+add('canaletto-regatta', 'Una regata sul Canal Grande', 'Canal,_Giovanni_Antonio_-_Venice-_A_Regatta_on_the_Grand_Canal_-_NG.jpeg', 'Canaletto', '1740 ca.', 11180, 6980, 35.90,
+    museum='National Gallery, Londra', style='Vedutismo veneziano', genre='veduta', tags=['Venezia', 'gondole', 'regata', 'folla'])
+add('bellotto-mendicanti', 'Il rio dei Mendicanti e la Scuola Grande di San Marco', '(Venice)_Il_rio_dei_Mendicanti_e_la_Scuola_Grande_di_San_Marco_-_Bernardo_Bellotto_-_Gallerie_Accademia.jpg', 'Bernardo Bellotto', '1740 ca.', 10030, 7014, 37.62,
+    museum="Gallerie dell'Accademia, Venezia", style='Vedutismo veneziano', genre='veduta', tags=['Venezia', 'canale', 'gondole'])
+add('bellotto-warsaw', 'Veduta di Varsavia dal Castello Reale', 'Bernardo_Bellotto_-_View_of_Warsaw_from_the_Royal_Castle_-_Google_Art_Project.jpg', 'Bernardo Bellotto', '1773', 19382, 11838, 45.59,
+    museum='Castello Reale, Varsavia', style='Vedutismo veneziano', genre='veduta', tags=['città', 'fiume', 'tetti'])
+add('guardi-salute', 'Santa Maria della Salute', 'Francesco_Guardi_-_Santa_Maria_della_Salute_(c._1770)_-_NGA.jpg', 'Francesco Guardi', '1770 ca.', 12251, 7372, 43.70,
+    museum='National Gallery of Art, Washington', style='Vedutismo veneziano', genre='veduta', tags=['Venezia', 'barche', 'chiesa'])
+add('bakhuizen-ships-rocks', 'Navi in difficoltà davanti a una costa rocciosa', 'Ludolf_Bakhuizen_-_Ships_in_Distress_off_a_Rocky_Coast_-_WGA01128.jpg', 'Ludolf Bakhuizen', '1667', 15918, 10823, 85.78,
+    museum='National Gallery of Art, Washington', style="Secolo d'oro olandese", genre='marina', tags=['mare', 'navi', 'tempesta', 'scogli'])
+add('vandevelde-before-storm', 'Prima della tempesta', 'Willem_van_de_Velde_(II)_-_Voor_de_storm_(NGA).jpg', 'Willem van de Velde il Giovane', '1700 ca.', 11691, 6872, 32.74,
+    museum='National Gallery of Art, Washington', style="Secolo d'oro olandese", genre='marina', tags=['mare', 'barche', 'vento'])
+add('vroom-arrival-flushing', "L'arrivo dell'elettore Federico V a Flessinga", 'Hendrik_Cornelisz._Vroom_-_The_Arrival_of_Elector_Frederick_V_of_the_Palatinate_and_Elizabeth_Stuart.jpg', 'Hendrick Cornelisz. Vroom', '1623', 14000, 6766, 39.90,
+    museum='Frans Hals Museum, Haarlem', style="Secolo d'oro olandese", genre='marina', tags=['navi', 'porto', 'bandiere', 'folla'])
+add('cuyp-pier-dordrecht', 'Un molo davanti a Dordrecht', 'A_Pier_Overlooking_Dordrecht_A22567.jpg', 'Aelbert Cuyp', '1645 ca.', 18051, 10417, 91.99,
+    museum=None, style="Secolo d'oro olandese", genre='paesaggio fluviale', tags=['fiume', 'barche', 'vele'])
+add('goyen-dordrecht-kil', 'Veduta di Dordrecht dalla Dordtse Kil', 'Goyen_1644_View_of_Dordrecht_from_the_Dordtse_Kil.jpg', 'Jan van Goyen', '1644', 13993, 9404, 45.08,
+    museum=None, style="Secolo d'oro olandese", genre='paesaggio fluviale', tags=['fiume', 'barche', 'città'])
+add('goyen-dordrecht-papendrecht', 'Veduta di Dordrecht da Papendrecht', 'Jan_van_Goyen_-_View_of_Dordrecht_from_Papendrecht_-_551_-_Mauritshuis.jpg', 'Jan van Goyen', '1633', 11194, 6928, 16.68,
+    museum="Mauritshuis, L'Aia", style="Secolo d'oro olandese", genre='paesaggio fluviale', tags=['fiume', 'barche', 'nuvole'])
+add('goyen-arnhem', 'Veduta di Arnhem', 'Jan_Josefsz_van_Goyen_-_View_of_the_City_of_Arnhem_-_Google_Art_Project.jpg', 'Jan van Goyen', '1646', 12998, 8609, 35.02,
+    museum=None, style="Secolo d'oro olandese", genre='paesaggio fluviale', tags=['fiume', 'città', 'barche'])
+add('goyen-rhenen', 'Veduta di Rhenen', 'Jan_van_Goyen_-_View_of_Rhenen.jpg', 'Jan van Goyen', '1646', 17842, 13351, 99.27,
+    museum='Corcoran Collection, Washington', style="Secolo d'oro olandese", genre='paesaggio', tags=['campagna', 'chiesa', 'carri'])
+add('sruysdael-ferry', 'Paesaggio fluviale con traghetto', 'Salomon_van_Ruysdael_-_Rivierlandschap_met_veerpont_(1649).jpg', 'Salomon van Ruysdael', '1649', 18587, 13915, 98.61,
+    museum='Rijksmuseum, Amsterdam', style="Secolo d'oro olandese", genre='paesaggio fluviale', tags=['fiume', 'traghetto', 'mucche', 'alberi'])
+add('jruisdael-oak-road', 'Strada in un bosco di querce', 'Jacob_Isaacksz._van_Ruisdael_-_Road_through_an_Oak_Forest_-_Google_Art_Project.jpg', 'Jacob van Ruisdael', '1646 ca.', 16189, 12616, 83.85,
+    museum='Getty Center, Los Angeles', style="Secolo d'oro olandese", genre='paesaggio', tags=['bosco', 'alberi', 'viandanti'])
+add('vanderneer-village-canal', 'Villaggio olandese lungo un canale', "Beaux-Arts_de_Carcassonne_-_Village_hollandais_au_bord_d'un_canal_-_Aert_Van_Der_Neer_-_Joconde04400000297.jpg", 'Aert van der Neer', '1650 ca.', 12220, 6697, 39.62,
+    museum='Musée des Beaux-Arts, Carcassonne', style="Secolo d'oro olandese", genre='paesaggio fluviale', tags=['canale', 'villaggio', 'alberi'])
+add('asselijn-ponte-molle', 'Il Tevere con Ponte Milvio al tramonto', "'The_Tiber_River_with_the_Ponte_Molle_at_Sunset'_by_Jan_Asselijn,_c._1650.jpg", 'Jan Asselijn', '1650 ca.', 10682, 8030, 46.22,
+    museum='Getty Center, Los Angeles', style="Secolo d'oro olandese", genre='paesaggio', tags=['fiume', 'ponte', 'tramonto', 'animali'])
+add('rubens-het-steen', 'Veduta di Het Steen al mattino', 'Peter_Paul_Rubens_-_View_of_Het_Steen_in_the_Early_Morning.jpg', 'Pieter Paul Rubens', '1636 ca.', 21256, 12628, 97.27,
+    museum='National Gallery, Londra', style='Barocco fiammingo', genre='paesaggio', tags=['campagna', 'castello', 'carro', 'cacciatore'])
+
 # ---------------- Selezione di serie ----------------
 # Solo scene affollate adatte ai bambini (paesaggi, vedute, mercati, feste, interni: stile fiammingo)
 # e solo immagini abbastanza grandi da regalare dettagli nuovi a ogni zoom sul televisore.

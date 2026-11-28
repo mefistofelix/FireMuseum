@@ -514,6 +514,773 @@
    "pageUrl": "https://commons.wikimedia.org/wiki/File:Conversion_of_Paul_(Bruegel).jpg",
    "targets": [],
    "portals": []
+  },
+  {
+   "id": "bruegel-harvesters",
+   "title": "I mietitori",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1565",
+   "style": "Rinascimento fiammingo",
+   "genre": "paesaggio",
+   "museum": "Metropolitan Museum of Art, New York",
+   "tags": [
+    "estate",
+    "campi",
+    "contadini",
+    "grano"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 30000,
+   "height": 21851,
+   "bytes": 223105515,
+   "source": {
+    "type": "commons",
+    "file": "Pieter_Bruegel_the_Elder-_The_Harvesters_-_Google_Art_Project.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_the_Elder-_The_Harvesters_-_Google_Art_Project.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-census-bethlehem",
+   "title": "Il censimento di Betlemme",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1566",
+   "style": "Rinascimento fiammingo",
+   "genre": "paesaggio invernale",
+   "museum": "Musei reali di Belle Arti, Bruxelles",
+   "tags": [
+    "inverno",
+    "neve",
+    "villaggio",
+    "bambini"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 15647,
+   "height": 10843,
+   "bytes": 41607495,
+   "source": {
+    "type": "commons",
+    "file": "Pieter_Bruegel_the_Elder_-_The_Numbering_at_Bethlehem_-_Google_Art_Project.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_the_Elder_-_The_Numbering_at_Bethlehem_-_Google_Art_Project.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-winter-birdtrap",
+   "title": "Paesaggio invernale con pattinatori e trappola per uccelli",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1565",
+   "style": "Rinascimento fiammingo",
+   "genre": "paesaggio invernale",
+   "museum": "Musei reali di Belle Arti, Bruxelles",
+   "tags": [
+    "inverno",
+    "ghiaccio",
+    "pattinatori",
+    "uccelli"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 12406,
+   "height": 8224,
+   "bytes": 62925045,
+   "source": {
+    "type": "commons",
+    "file": "Bruegel,_Pieter_(I)_-_Winterlandschap_met_schaatsers_en_vogelknip,_1565.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Bruegel,_Pieter_(I)_-_Winterlandschap_met_schaatsers_en_vogelknip,_1565.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-icarus",
+   "title": "Paesaggio con la caduta di Icaro",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio (attr.)",
+   "year": "1560 ca.",
+   "style": "Rinascimento fiammingo",
+   "genre": "paesaggio",
+   "museum": "Musei reali di Belle Arti, Bruxelles",
+   "tags": [
+    "mare",
+    "navi",
+    "contadino",
+    "pecore"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 12265,
+   "height": 8000,
+   "bytes": 85658173,
+   "source": {
+    "type": "commons",
+    "file": "Pieter_Bruegel_the_Elder_-_Landscape_with_the_Fall_of_Icarus_-_Brussels,_Royal_Museums_of_Fine_Arts_of_Belgium_-_Google_Arts_&_Culture.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Pieter_Bruegel_the_Elder_-_Landscape_with_the_Fall_of_Icarus_-_Brussels,_Royal_Museums_of_Fine_Arts_of_Belgium_-_Google_Arts_&_Culture.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bruegel-naples",
+   "title": "Veduta del golfo di Napoli con navi",
+   "titleOrig": null,
+   "author": "Pieter Bruegel il Vecchio",
+   "year": "1560 ca.",
+   "style": "Rinascimento fiammingo",
+   "genre": "marina",
+   "museum": "Galleria Doria Pamphilj, Roma",
+   "tags": [
+    "mare",
+    "navi",
+    "porto",
+    "Napoli"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 10319,
+   "height": 5889,
+   "bytes": 43463475,
+   "source": {
+    "type": "commons",
+    "file": "Bruegel_—_Naval_Battle_in_the_Gulf_of_Naples.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Bruegel_—_Naval_Battle_in_the_Gulf_of_Naples.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "jan-brueghel-babel",
+   "title": "La Torre di Babele",
+   "titleOrig": null,
+   "author": "Jan Brueghel il Vecchio",
+   "year": "1595 ca.",
+   "style": "Rinascimento fiammingo",
+   "genre": "paesaggio",
+   "museum": "KMSKA, Anversa",
+   "tags": [
+    "torre",
+    "cantiere",
+    "paesaggio"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 26566,
+   "height": 20394,
+   "bytes": 62599987,
+   "source": {
+    "type": "commons",
+    "file": "Jan_Brueghel_I_-_Toren_van_Babel_-_947_-_Royal_Museum_of_Fine_Arts_Antwerp.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Jan_Brueghel_I_-_Toren_van_Babel_-_947_-_Royal_Museum_of_Fine_Arts_Antwerp.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "avercamp-scene-ice",
+   "title": "Scena sul ghiaccio",
+   "titleOrig": null,
+   "author": "Hendrick Avercamp",
+   "year": "1625 ca.",
+   "style": "Secolo d'oro olandese",
+   "genre": "paesaggio invernale",
+   "museum": "National Gallery of Art, Washington",
+   "tags": [
+    "inverno",
+    "ghiaccio",
+    "pattinatori",
+    "slitte"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 17273,
+   "height": 8767,
+   "bytes": 61782097,
+   "source": {
+    "type": "commons",
+    "file": "A_Scene_on_the_Ice.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:A_Scene_on_the_Ice.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "canaletto-bucentaur",
+   "title": "Il ritorno del Bucintoro al molo di Palazzo Ducale",
+   "titleOrig": null,
+   "author": "Canaletto",
+   "year": "1730 ca.",
+   "style": "Vedutismo veneziano",
+   "genre": "veduta",
+   "museum": "Pushkin Museum, Mosca",
+   "tags": [
+    "Venezia",
+    "barche",
+    "gondole",
+    "festa"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 30000,
+   "height": 20857,
+   "bytes": 199449640,
+   "source": {
+    "type": "commons",
+    "file": "Canaletto_-_Bucentaur's_return_to_the_pier_by_the_Palazzo_Ducale_-_Google_Art_Project.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Canaletto_-_Bucentaur's_return_to_the_pier_by_the_Palazzo_Ducale_-_Google_Art_Project.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "canaletto-brenta",
+   "title": "Il canale del Brenta a Padova",
+   "titleOrig": null,
+   "author": "Canaletto",
+   "year": "1740 ca.",
+   "style": "Vedutismo veneziano",
+   "genre": "veduta",
+   "museum": "National Gallery of Art, Washington",
+   "tags": [
+    "canale",
+    "barche",
+    "città"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 19535,
+   "height": 11085,
+   "bytes": 103473479,
+   "source": {
+    "type": "commons",
+    "file": "Giovanni_Antonio_Canal,_il_Canaletto_-_The_Brenta_Canal_at_Padua_-_WGA03914.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Giovanni_Antonio_Canal,_il_Canaletto_-_The_Brenta_Canal_at_Padua_-_WGA03914.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "canaletto-regatta",
+   "title": "Una regata sul Canal Grande",
+   "titleOrig": null,
+   "author": "Canaletto",
+   "year": "1740 ca.",
+   "style": "Vedutismo veneziano",
+   "genre": "veduta",
+   "museum": "National Gallery, Londra",
+   "tags": [
+    "Venezia",
+    "gondole",
+    "regata",
+    "folla"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 11180,
+   "height": 6980,
+   "bytes": 37643878,
+   "source": {
+    "type": "commons",
+    "file": "Canal,_Giovanni_Antonio_-_Venice-_A_Regatta_on_the_Grand_Canal_-_NG.jpeg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Canal,_Giovanni_Antonio_-_Venice-_A_Regatta_on_the_Grand_Canal_-_NG.jpeg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bellotto-mendicanti",
+   "title": "Il rio dei Mendicanti e la Scuola Grande di San Marco",
+   "titleOrig": null,
+   "author": "Bernardo Bellotto",
+   "year": "1740 ca.",
+   "style": "Vedutismo veneziano",
+   "genre": "veduta",
+   "museum": "Gallerie dell'Accademia, Venezia",
+   "tags": [
+    "Venezia",
+    "canale",
+    "gondole"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 10030,
+   "height": 7014,
+   "bytes": 39447429,
+   "source": {
+    "type": "commons",
+    "file": "(Venice)_Il_rio_dei_Mendicanti_e_la_Scuola_Grande_di_San_Marco_-_Bernardo_Bellotto_-_Gallerie_Accademia.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:(Venice)_Il_rio_dei_Mendicanti_e_la_Scuola_Grande_di_San_Marco_-_Bernardo_Bellotto_-_Gallerie_Accademia.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bellotto-warsaw",
+   "title": "Veduta di Varsavia dal Castello Reale",
+   "titleOrig": null,
+   "author": "Bernardo Bellotto",
+   "year": "1773",
+   "style": "Vedutismo veneziano",
+   "genre": "veduta",
+   "museum": "Castello Reale, Varsavia",
+   "tags": [
+    "città",
+    "fiume",
+    "tetti"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 19382,
+   "height": 11838,
+   "bytes": 47804579,
+   "source": {
+    "type": "commons",
+    "file": "Bernardo_Bellotto_-_View_of_Warsaw_from_the_Royal_Castle_-_Google_Art_Project.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Bernardo_Bellotto_-_View_of_Warsaw_from_the_Royal_Castle_-_Google_Art_Project.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "guardi-salute",
+   "title": "Santa Maria della Salute",
+   "titleOrig": null,
+   "author": "Francesco Guardi",
+   "year": "1770 ca.",
+   "style": "Vedutismo veneziano",
+   "genre": "veduta",
+   "museum": "National Gallery of Art, Washington",
+   "tags": [
+    "Venezia",
+    "barche",
+    "chiesa"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 12251,
+   "height": 7372,
+   "bytes": 45822771,
+   "source": {
+    "type": "commons",
+    "file": "Francesco_Guardi_-_Santa_Maria_della_Salute_(c._1770)_-_NGA.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Francesco_Guardi_-_Santa_Maria_della_Salute_(c._1770)_-_NGA.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "bakhuizen-ships-rocks",
+   "title": "Navi in difficoltà davanti a una costa rocciosa",
+   "titleOrig": null,
+   "author": "Ludolf Bakhuizen",
+   "year": "1667",
+   "style": "Secolo d'oro olandese",
+   "genre": "marina",
+   "museum": "National Gallery of Art, Washington",
+   "tags": [
+    "mare",
+    "navi",
+    "tempesta",
+    "scogli"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 15918,
+   "height": 10823,
+   "bytes": 89946849,
+   "source": {
+    "type": "commons",
+    "file": "Ludolf_Bakhuizen_-_Ships_in_Distress_off_a_Rocky_Coast_-_WGA01128.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Ludolf_Bakhuizen_-_Ships_in_Distress_off_a_Rocky_Coast_-_WGA01128.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vandevelde-before-storm",
+   "title": "Prima della tempesta",
+   "titleOrig": null,
+   "author": "Willem van de Velde il Giovane",
+   "year": "1700 ca.",
+   "style": "Secolo d'oro olandese",
+   "genre": "marina",
+   "museum": "National Gallery of Art, Washington",
+   "tags": [
+    "mare",
+    "barche",
+    "vento"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 11691,
+   "height": 6872,
+   "bytes": 34330378,
+   "source": {
+    "type": "commons",
+    "file": "Willem_van_de_Velde_(II)_-_Voor_de_storm_(NGA).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Willem_van_de_Velde_(II)_-_Voor_de_storm_(NGA).jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vroom-arrival-flushing",
+   "title": "L'arrivo dell'elettore Federico V a Flessinga",
+   "titleOrig": null,
+   "author": "Hendrick Cornelisz. Vroom",
+   "year": "1623",
+   "style": "Secolo d'oro olandese",
+   "genre": "marina",
+   "museum": "Frans Hals Museum, Haarlem",
+   "tags": [
+    "navi",
+    "porto",
+    "bandiere",
+    "folla"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 14000,
+   "height": 6766,
+   "bytes": 41838182,
+   "source": {
+    "type": "commons",
+    "file": "Hendrik_Cornelisz._Vroom_-_The_Arrival_of_Elector_Frederick_V_of_the_Palatinate_and_Elizabeth_Stuart.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Hendrik_Cornelisz._Vroom_-_The_Arrival_of_Elector_Frederick_V_of_the_Palatinate_and_Elizabeth_Stuart.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "cuyp-pier-dordrecht",
+   "title": "Un molo davanti a Dordrecht",
+   "titleOrig": null,
+   "author": "Aelbert Cuyp",
+   "year": "1645 ca.",
+   "style": "Secolo d'oro olandese",
+   "genre": "paesaggio fluviale",
+   "museum": null,
+   "tags": [
+    "fiume",
+    "barche",
+    "vele"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 18051,
+   "height": 10417,
+   "bytes": 96458506,
+   "source": {
+    "type": "commons",
+    "file": "A_Pier_Overlooking_Dordrecht_A22567.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:A_Pier_Overlooking_Dordrecht_A22567.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "goyen-dordrecht-kil",
+   "title": "Veduta di Dordrecht dalla Dordtse Kil",
+   "titleOrig": null,
+   "author": "Jan van Goyen",
+   "year": "1644",
+   "style": "Secolo d'oro olandese",
+   "genre": "paesaggio fluviale",
+   "museum": null,
+   "tags": [
+    "fiume",
+    "barche",
+    "città"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 13993,
+   "height": 9404,
+   "bytes": 47269806,
+   "source": {
+    "type": "commons",
+    "file": "Goyen_1644_View_of_Dordrecht_from_the_Dordtse_Kil.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Goyen_1644_View_of_Dordrecht_from_the_Dordtse_Kil.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "goyen-dordrecht-papendrecht",
+   "title": "Veduta di Dordrecht da Papendrecht",
+   "titleOrig": null,
+   "author": "Jan van Goyen",
+   "year": "1633",
+   "style": "Secolo d'oro olandese",
+   "genre": "paesaggio fluviale",
+   "museum": "Mauritshuis, L'Aia",
+   "tags": [
+    "fiume",
+    "barche",
+    "nuvole"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 11194,
+   "height": 6928,
+   "bytes": 17490247,
+   "source": {
+    "type": "commons",
+    "file": "Jan_van_Goyen_-_View_of_Dordrecht_from_Papendrecht_-_551_-_Mauritshuis.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Jan_van_Goyen_-_View_of_Dordrecht_from_Papendrecht_-_551_-_Mauritshuis.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "goyen-arnhem",
+   "title": "Veduta di Arnhem",
+   "titleOrig": null,
+   "author": "Jan van Goyen",
+   "year": "1646",
+   "style": "Secolo d'oro olandese",
+   "genre": "paesaggio fluviale",
+   "museum": null,
+   "tags": [
+    "fiume",
+    "città",
+    "barche"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 12998,
+   "height": 8609,
+   "bytes": 36721131,
+   "source": {
+    "type": "commons",
+    "file": "Jan_Josefsz_van_Goyen_-_View_of_the_City_of_Arnhem_-_Google_Art_Project.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Jan_Josefsz_van_Goyen_-_View_of_the_City_of_Arnhem_-_Google_Art_Project.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "goyen-rhenen",
+   "title": "Veduta di Rhenen",
+   "titleOrig": null,
+   "author": "Jan van Goyen",
+   "year": "1646",
+   "style": "Secolo d'oro olandese",
+   "genre": "paesaggio",
+   "museum": "Corcoran Collection, Washington",
+   "tags": [
+    "campagna",
+    "chiesa",
+    "carri"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 17842,
+   "height": 13351,
+   "bytes": 104092139,
+   "source": {
+    "type": "commons",
+    "file": "Jan_van_Goyen_-_View_of_Rhenen.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Jan_van_Goyen_-_View_of_Rhenen.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "sruysdael-ferry",
+   "title": "Paesaggio fluviale con traghetto",
+   "titleOrig": null,
+   "author": "Salomon van Ruysdael",
+   "year": "1649",
+   "style": "Secolo d'oro olandese",
+   "genre": "paesaggio fluviale",
+   "museum": "Rijksmuseum, Amsterdam",
+   "tags": [
+    "fiume",
+    "traghetto",
+    "mucche",
+    "alberi"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 18587,
+   "height": 13915,
+   "bytes": 103400079,
+   "source": {
+    "type": "commons",
+    "file": "Salomon_van_Ruysdael_-_Rivierlandschap_met_veerpont_(1649).jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Salomon_van_Ruysdael_-_Rivierlandschap_met_veerpont_(1649).jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "jruisdael-oak-road",
+   "title": "Strada in un bosco di querce",
+   "titleOrig": null,
+   "author": "Jacob van Ruisdael",
+   "year": "1646 ca.",
+   "style": "Secolo d'oro olandese",
+   "genre": "paesaggio",
+   "museum": "Getty Center, Los Angeles",
+   "tags": [
+    "bosco",
+    "alberi",
+    "viandanti"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 16189,
+   "height": 12616,
+   "bytes": 87923097,
+   "source": {
+    "type": "commons",
+    "file": "Jacob_Isaacksz._van_Ruisdael_-_Road_through_an_Oak_Forest_-_Google_Art_Project.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Jacob_Isaacksz._van_Ruisdael_-_Road_through_an_Oak_Forest_-_Google_Art_Project.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "vanderneer-village-canal",
+   "title": "Villaggio olandese lungo un canale",
+   "titleOrig": null,
+   "author": "Aert van der Neer",
+   "year": "1650 ca.",
+   "style": "Secolo d'oro olandese",
+   "genre": "paesaggio fluviale",
+   "museum": "Musée des Beaux-Arts, Carcassonne",
+   "tags": [
+    "canale",
+    "villaggio",
+    "alberi"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 12220,
+   "height": 6697,
+   "bytes": 41544581,
+   "source": {
+    "type": "commons",
+    "file": "Beaux-Arts_de_Carcassonne_-_Village_hollandais_au_bord_d'un_canal_-_Aert_Van_Der_Neer_-_Joconde04400000297.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Beaux-Arts_de_Carcassonne_-_Village_hollandais_au_bord_d'un_canal_-_Aert_Van_Der_Neer_-_Joconde04400000297.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "asselijn-ponte-molle",
+   "title": "Il Tevere con Ponte Milvio al tramonto",
+   "titleOrig": null,
+   "author": "Jan Asselijn",
+   "year": "1650 ca.",
+   "style": "Secolo d'oro olandese",
+   "genre": "paesaggio",
+   "museum": "Getty Center, Los Angeles",
+   "tags": [
+    "fiume",
+    "ponte",
+    "tramonto",
+    "animali"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 10682,
+   "height": 8030,
+   "bytes": 48465182,
+   "source": {
+    "type": "commons",
+    "file": "'The_Tiber_River_with_the_Ponte_Molle_at_Sunset'_by_Jan_Asselijn,_c._1650.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:'The_Tiber_River_with_the_Ponte_Molle_at_Sunset'_by_Jan_Asselijn,_c._1650.jpg",
+   "targets": [],
+   "portals": []
+  },
+  {
+   "id": "rubens-het-steen",
+   "title": "Veduta di Het Steen al mattino",
+   "titleOrig": null,
+   "author": "Pieter Paul Rubens",
+   "year": "1636 ca.",
+   "style": "Barocco fiammingo",
+   "genre": "paesaggio",
+   "museum": "National Gallery, Londra",
+   "tags": [
+    "campagna",
+    "castello",
+    "carro",
+    "cacciatore"
+   ],
+   "kidSafe": true,
+   "warning": null,
+   "width": 21256,
+   "height": 12628,
+   "bytes": 101994987,
+   "source": {
+    "type": "commons",
+    "file": "Peter_Paul_Rubens_-_View_of_Het_Steen_in_the_Early_Morning.jpg"
+   },
+   "qid": null,
+   "license": "Pubblico dominio (opera); verificare i diritti della riproduzione",
+   "pageUrl": "https://commons.wikimedia.org/wiki/File:Peter_Paul_Rubens_-_View_of_Het_Steen_in_the_Early_Morning.jpg",
+   "targets": [],
+   "portals": []
   }
  ]
 }
